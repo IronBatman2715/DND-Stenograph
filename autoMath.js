@@ -12,7 +12,7 @@ function updateStats() {
     if (Number.isInteger(stat) && 0 < stat && stat < 21) {
       //Valid input
       let calcMod = Math.floor((stat - 10) / 2);
-      if (0 < calcMod) {
+      if (0 <= calcMod) {
         statmods[i].value = "+" + calcMod.toString();
       } else {
         statmods[i].value = calcMod.toString();
@@ -53,7 +53,7 @@ function updateSaves() {
         save = statmod;
       }
 
-      if (0 < save) {
+      if (0 <= save) {
         saves[i].value = "+" + save.toString();
       } else {
         saves[i].value = save.toString();
@@ -142,7 +142,7 @@ function updateSkills() {
           }
           break;
       }
-      if (0 < skill) {
+      if (0 <= skill) {
         skills[i].value = "+" + skill.toString();
       } else {
         skills[i].value = skill.toString();

@@ -20,7 +20,11 @@ function saveData() {
     "href",
     "data:text/plain;charset=utf-8," + encodeURIComponent(jsonText)
   );
-  a.setAttribute("download", `${charsheet[0].value}.json`);
+  if (!charsheet[0].value) {
+    a.setAttribute("download", "stenograph_character.json");
+  } else {
+    a.setAttribute("download", `stenograph_${charsheet[0].value}.json`);
+  }
   a.click();
 }
 
