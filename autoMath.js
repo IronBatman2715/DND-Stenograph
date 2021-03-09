@@ -53,7 +53,9 @@ function updateSaves() {
         save = statmod;
       }
 
-      if (0 <= save) {
+      if (!save && save !== 0) {
+        saves[i].value = "";
+      } else if (0 <= save) {
         saves[i].value = "+" + save.toString();
       } else {
         saves[i].value = save.toString();
@@ -142,7 +144,9 @@ function updateSkills() {
           }
           break;
       }
-      if (0 <= skill) {
+      if (!skill && skill !== 0) {
+        skills[i].value = "";
+      } else if (0 <= skill) {
         skills[i].value = "+" + skill.toString();
       } else {
         skills[i].value = skill.toString();
