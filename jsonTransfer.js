@@ -2,7 +2,7 @@
 function saveData() {
   let charsheet = document.getElementById("charsheet");
   let elementValueObj = new Object();
-  for (let i = 0; i < 108; i++) {
+  for (let i = 0; i < charsheet.length; i++) {
     let desValue;
     if (charsheet[i].type == "text" || charsheet[i].type == "textarea") {
       desValue = charsheet[i].value;
@@ -28,11 +28,13 @@ function saveData() {
   a.click();
 }
 
+//Prompt use to upload file
 function getLoadedData() {
   let loadDataButton = document.getElementsByClassName("loaddata");
-  loadDataButton[0].click(); //prompt for new file
+  loadDataButton[0].click();
 }
 
+//Once file has been uploaded, run loadData
 $(document).ready(function () {
   $(".loaddata").change(function () {
     loadData();
@@ -56,7 +58,7 @@ function loadData() {
       let dataObj = JSON.parse(jsonText);
 
       let charsheet = document.getElementById("charsheet");
-      for (let i = 0; i < 108; i++) {
+      for (let i = 0; i < charsheet.length; i++) {
         if (charsheet[i].type == "text" || charsheet[i].type == "textarea") {
           charsheet[i].value = dataObj[charsheet[i].name];
         } else if (charsheet[i].type == "checkbox") {
