@@ -1,15 +1,3 @@
-.red {
-  background: red;
-}
-
-.blue {
-  background: blue;
-}
-
-.hide {
-  display: none !important;
-}
-
 textarea {
   font-size: 12px;
   text-align: left;
@@ -254,6 +242,15 @@ form.charsheet
   border: 1px solid black;
   padding: 15px;
   border-radius: 10px;
+}
+form.charsheet
+  main
+  > section
+  section.attributes
+  div.attr-applications
+  div.inspiration
+  input[type="checkbox"]:checked {
+  background-color: black;
 }
 form.charsheet
   main

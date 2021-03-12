@@ -46,7 +46,7 @@ function loadData() {
   let loadDataButton = document.getElementsByClassName("loaddata");
   let files = loadDataButton[0].files;
   if (files.length !== 1) {
-    alert("Submit exactly one .json!");
+    alert("Submit exactly one .json or .txt!");
     return false;
   } else {
     let fr = new FileReader();
