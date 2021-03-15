@@ -59,15 +59,19 @@ function loadData() {
 
       let charsheet = document.getElementById("charsheet");
       for (let i = 0; i < charsheet.length; i++) {
-        if (!dataObj[charsheet[i].name] && dataObj[charsheet[i].name] !== 0) {
-          //value DNE, do nothing
-        } else if (
-          charsheet[i].type == "text" ||
-          charsheet[i].type == "textarea"
-        ) {
-          charsheet[i].value = dataObj[charsheet[i].name];
+        let value = dataObj[charsheet[i].name];
+        if (charsheet[i].type == "text" || charsheet[i].type == "textarea") {
+          if (!value && value !== 0) {
+            //value DNE
+            value = "";
+          }
+          charsheet[i].value = value;
         } else if (charsheet[i].type == "checkbox") {
-          charsheet[i].checked = dataObj[charsheet[i].name];
+          if (!value && value !== 0) {
+            //value DNE
+            value = false;
+          }
+          charsheet[i].checked = value;
         }
       }
     };
