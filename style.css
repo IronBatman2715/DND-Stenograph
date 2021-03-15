@@ -13,6 +13,10 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+input[type="checkbox"]:checked {
+  background-color: black;
+}
+
 div.box {
   margin-top: 10px;
 }
@@ -248,15 +252,6 @@ form.charsheet
   > section
   section.attributes
   div.attr-applications
-  div.inspiration
-  input[type="checkbox"]:checked {
-  background-color: black;
-}
-form.charsheet
-  main
-  > section
-  section.attributes
-  div.attr-applications
   div.proficiencybonus {
   display: flex;
   flex-direction: row-reverse;
@@ -380,17 +375,6 @@ form.charsheet
   border: 1px solid black;
   border-radius: 10px;
   order: 1;
-}
-form.charsheet
-  main
-  > section
-  section.attributes
-  div.attr-applications
-  div.list-section
-  ul
-  li
-  input[type="checkbox"]:checked {
-  background-color: black;
 }
 form.charsheet main > section div.passive-perception {
   display: flex;
@@ -647,15 +631,6 @@ form.charsheet
   border: 1px solid black;
   border-radius: 10px;
 }
-form.charsheet
-  main
-  section.combat
-  > div.deathsaves
-  > div
-  div.bubbles
-  input[type="checkbox"]:checked {
-  background-color: black;
-}
 form.charsheet main section.attacksandspellcasting {
   border: 1px solid black;
   border-radius: 10px;
@@ -782,4 +757,187 @@ form.charsheet main section.features div textarea {
   border: 0;
   padding: 5px;
   height: 43em;
+}
+
+form.charsheet section.spellcastingclassandability {
+  border: 1px solid black;
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
+  padding: 5px 0;
+  background-color: #eee;
+  width: 30%;
+  height: 20%;
+  display: flex;
+  flex-direction: column-reverse;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+form.charsheet section.spellcastingclassandability input {
+  padding: 0.5em;
+  margin: 5px;
+  border: 0;
+}
+form.charsheet section.spellcastingclassandability label {
+  padding-left: 1em;
+}
+form.charsheet section.spellcastingmisc {
+  width: 70%;
+  height: 80px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+  text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+form.charsheet section.spellcastingmisc div label {
+  text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0.25em;
+}
+form.charsheet section.spellcastingmisc div input {
+  text-align: center;
+  width: 35%;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 30px;
+}
+
+form.charsheet div.spellcastingpage main div {
+  width: 32%;
+}
+form.charsheet div.spellcastingpage main div div {
+  width: 100%;
+  padding: 5px;
+}
+form.charsheet div.spellcastingpage main div div section.spellheader {
+  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+form.charsheet
+  div.spellcastingpage
+  main
+  div
+  div
+  section.spellheader
+  section.spelllevel0
+  label,
+form.charsheet
+  div.spellcastingpage
+  main
+  div
+  div
+  section.spellheader
+  section.spelllevel
+  label {
+  font-size: 24px;
+}
+form.charsheet
+  div.spellcastingpage
+  main
+  div
+  div
+  section.spellheader
+  section.spelllevel0,
+form.charsheet
+  div.spellcastingpage
+  main
+  div
+  div
+  section.spellheader
+  section.spelllevel {
+  float: left;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0;
+  width: 80px;
+  height: 60px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+form.charsheet
+  div.spellcastingpage
+  main
+  div
+  div
+  section.spellheader
+  section.cantripslabel {
+  border: 1px solid black;
+  border-left: 0;
+  border-radius: 0 10px 10px 0;
+  margin: 0.4em 0 0.4em 0;
+  padding: 2px;
+  width: 100%;
+  height: 45px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+form.charsheet section.spellheader section.spelllabel {
+  width: 100%;
+  height: 45px;
+  border: 1px solid black;
+  border-left: 0;
+  border-radius: 0 10px 10px 0;
+  text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+form.charsheet section.spellheader section.spelllabel div {
+  padding: 2px;
+}
+form.charsheet section.spellheader section.spelllabel div label {
+  text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 2px;
+  font-size: 8px;
+}
+form.charsheet section.spellheader section.spelllabel div input {
+  text-align: center;
+  padding: 2px;
+  width: 35%;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+form.charsheet div.spellcastingpage main div div section.spelllist ul li {
+  padding: 0.25em;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
+  justify-content: start;
+  align-items: center;
+}
+form.charsheet
+  div.spellcastingpage
+  main
+  div
+  div
+  section.spelllist
+  ul
+  li
+  input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  order: 1;
+}
+.spelllist ul li input[type="text"] {
+  width: 100%;
+  margin-left: 5px;
 }

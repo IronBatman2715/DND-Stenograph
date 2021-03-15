@@ -19,6 +19,7 @@
   </head>
   <body>
     <form class="charsheet" id="charsheet" onsubmit="return false">
+      <div class="frontpage">
       <header>
         <section class="charname">
           <label for="charname">Character Name</label>
@@ -79,8 +80,8 @@
               <ul>
                 <li>
                   <div class="score">
-                    <label for="Strengthscore">Strength</label
-                    ><input
+                    <label for="Strengthscore">Strength</label>
+                    <input
                       name="Strengthscore"
                       placeholder="10"
                       class="stat"
@@ -97,8 +98,8 @@
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Dexterityscore">Dexterity</label
-                    ><input
+                    <label for="Dexterityscore">Dexterity</label>
+                    <input
                       name="Dexterityscore"
                       placeholder="10"
                       class="stat"
@@ -115,8 +116,8 @@
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Constitutionscore">Constitution</label
-                    ><input
+                    <label for="Constitutionscore">Constitution</label>
+                    <input
                       name="Constitutionscore"
                       placeholder="10"
                       class="stat"
@@ -133,8 +134,8 @@
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Wisdomscore">Wisdom</label
-                    ><input
+                    <label for="Wisdomscore">Wisdom</label>
+                    <input
                       name="Wisdomscore"
                       placeholder="10"
                       class="stat"
@@ -147,8 +148,8 @@
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Intelligencescore">Intelligence</label
-                    ><input
+                    <label for="Intelligencescore">Intelligence</label>
+                    <input
                       name="Intelligencescore"
                       placeholder="10"
                       class="stat"
@@ -165,8 +166,8 @@
                 </li>
                 <li>
                   <div class="score">
-                    <label for="Charismascore">Charisma</label
-                    ><input
+                    <label for="Charismascore">Charisma</label>
+                    <input
                       name="Charismascore"
                       placeholder="10"
                       class="stat"
@@ -796,6 +797,1014 @@
           </section>
         </section>
       </main>
+    </div>
+    <hr>
+    <div class="spellcastingpage">
+      <header>
+        <section class="spellcastingclassandability">
+          <label for="spellcastingclassandability">Spellcasting Class (Ability)</label>
+          <input name="spellcastingclassandability" placeholder="Wizard (Int)" />
+        </section>
+        <section class="spellcastingmisc">
+          <div class="divpreparedspellstotal">
+              <input
+                name="preparedspellstotal"
+                placeholder="2"
+                class="preparedspellstotal"
+              />
+              <label for="preparedspellstotal">Prepared Spells Total</label>
+            </div>
+            <div class="divspellsavedc">
+              <input name="spellsavedc" placeholder="10" />
+              <label for="spellsavedc">Spell Save DC</label>
+            </div>
+            <div class="divspellattackbonus">
+              <input name="spellattackbonus" placeholder="+0" />
+              <label for="spellattackbonus">Spell Attack Bonus</label>
+            </div>
+         </section>
+      </header>
+      <main>
+        <div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel0">
+                <label for="spelllevel0">0</label>
+              </section>
+              <section class="cantripslabel">
+                <label for="cantrips">Cantrips</label>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input name="0.1" type="text"/>
+                </li>
+                <li>
+                  <input name="0.2" type="text"/>
+                </li>
+                <li>
+                  <input name="0.3" type="text"/>
+                </li>
+                <li>
+                  <input name="0.4" type="text"/>
+                </li>
+                <li>
+                  <input name="0.5" type="text"/>
+                </li>
+                <li>
+                  <input name="0.6" type="text"/>
+                </li>
+                <li>
+                  <input name="0.7" type="text"/>
+                </li>
+                <li>
+                  <input name="0.8" type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel">
+                <label for="spelllevel1">1</label>
+              </section>
+              <section class="spelllabel">
+                <div class="slotstotal">
+                  <input name="totalslots1" placeholder="3" />
+                  <label for="totalslots1label">Total Slots</label>
+                </div>
+                <div class="slotsavailable">
+                  <input name="availableslots1" placeholder="3" />
+                  <label for="availableslots1label">Available Slots</label>
+                </div>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input
+                  name="prepared1.1"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.1"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.2"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.2"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.3"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.3"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.4"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.4"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.5"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.5"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.6"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.6"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.7"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.7"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.8"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.8"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.9"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.9"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.10"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.10"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.11"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.11"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.12"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.12"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared1.13"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="1.13"  type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel">
+                <label for="spelllevel2">2</label>
+              </section>
+              <section class="spelllabel">
+                <div class="slotstotal">
+                  <input name="totalslots2" placeholder="0" />
+                  <label for="totalslots2label">Total Slots</label>
+                </div>
+                <div class="slotsavailable">
+                  <input name="availableslots2" placeholder="0" />
+                  <label for="availableslots2label">Available Slots</label>
+                </div>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input
+                  name="prepared2.1"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.1"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.2"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.2"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.3"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.3"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.4"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.4"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.5"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.5"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.6"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.6"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.7"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.7"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.8"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.8"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.9"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.9"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.10"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.10"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.11"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.11"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.12"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.12"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared2.13"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="2.13"  type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+        <div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel">
+                <label for="spelllevel1">3</label>
+              </section>
+              <section class="spelllabel">
+                <div class="slotstotal">
+                  <input name="totalslots1" placeholder="0" />
+                  <label for="totalslots1label">Total Slots</label>
+                </div>
+                <div class="slotsavailable">
+                  <input name="availableslots1" placeholder="0" />
+                  <label for="availableslots1label">Available Slots</label>
+                </div>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input
+                  name="prepared3.1"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.1"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.2"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.2"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.3"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.3"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.4"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.4"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.5"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.5"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.6"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.6"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.7"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.7"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.8"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.8"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.9"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.9"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.10"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.10"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.11"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.11"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.12"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.12"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared3.13"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="3.13"  type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel">
+                <label for="spelllevel2">4</label>
+              </section>
+              <section class="spelllabel">
+                <div class="slotstotal">
+                  <input name="totalslots2" placeholder="0" />
+                  <label for="totalslots2label">Total Slots</label>
+                </div>
+                <div class="slotsavailable">
+                  <input name="availableslots2" placeholder="0" />
+                  <label for="availableslots2label">Available Slots</label>
+                </div>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input
+                  name="prepared4.1"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.1"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.2"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.2"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.3"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.3"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.4"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.4"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.5"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.5"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.6"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.6"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.7"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.7"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.8"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.8"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.9"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.9"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.10"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.10"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.11"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.11"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.12"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.12"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared4.13"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="4.13"  type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel">
+                <label for="spelllevel2">5</label>
+              </section>
+              <section class="spelllabel">
+                <div class="slotstotal">
+                  <input name="totalslots2" placeholder="0" />
+                  <label for="totalslots2label">Total Slots</label>
+                </div>
+                <div class="slotsavailable">
+                  <input name="availableslots2" placeholder="0" />
+                  <label for="availableslots2label">Available Slots</label>
+                </div>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input
+                  name="prepared5.1"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="5.1"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared5.2"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="5.2"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared5.3"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="5.3"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared5.4"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="5.4"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared5.5"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="5.5"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared5.6"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="5.6"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared5.7"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="5.7"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared5.8"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="5.8"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared5.9"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="5.9"  type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+        <div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel">
+                <label for="spelllevel1">6</label>
+              </section>
+              <section class="spelllabel">
+                <div class="slotstotal">
+                  <input name="totalslots1" placeholder="0" />
+                  <label for="totalslots1label">Total Slots</label>
+                </div>
+                <div class="slotsavailable">
+                  <input name="availableslots1" placeholder="0" />
+                  <label for="availableslots1label">Available Slots</label>
+                </div>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input
+                  name="prepared6.1"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="6.1"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared6.2"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="6.2"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared6.3"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="6.3"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared6.4"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="6.4"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared6.5"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="6.5"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared6.6"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="6.6"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared6.7"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="6.7"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared6.8"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="6.8"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared6.9"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="6.9"  type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel">
+                <label for="spelllevel2">7</label>
+              </section>
+              <section class="spelllabel">
+                <div class="slotstotal">
+                  <input name="totalslots2" placeholder="0" />
+                  <label for="totalslots2label">Total Slots</label>
+                </div>
+                <div class="slotsavailable">
+                  <input name="availableslots2" placeholder="0" />
+                  <label for="availableslots2label">Available Slots</label>
+                </div>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input
+                  name="prepared7.1"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="7.1"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared7.2"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="7.2"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared7.3"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="7.3"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared7.4"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="7.4"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared7.5"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="7.5"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared7.6"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="7.6"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared7.7"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="7.7"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared7.8"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="7.8"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared7.9"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="7.9"  type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel">
+                <label for="spelllevel1">8</label>
+              </section>
+              <section class="spelllabel">
+                <div class="slotstotal">
+                  <input name="totalslots1" placeholder="0" />
+                  <label for="totalslots1label">Total Slots</label>
+                </div>
+                <div class="slotsavailable">
+                  <input name="availableslots1" placeholder="0" />
+                  <label for="availableslots1label">Available Slots</label>
+                </div>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input
+                  name="prepared8.1"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="8.1"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared8.2"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="8.2"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared8.3"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="8.3"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared8.4"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="8.4"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared8.5"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="8.5"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared8.6"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="8.6"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared8.7"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="8.7"  type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div>
+            <section class="spellheader">
+              <section class="spelllevel">
+                <label for="spelllevel2">9</label>
+              </section>
+              <section class="spelllabel">
+                <div class="slotstotal">
+                  <input name="totalslots2" placeholder="0" />
+                  <label for="totalslots2label">Total Slots</label>
+                </div>
+                <div class="slotsavailable">
+                  <input name="availableslots2" placeholder="0" />
+                  <label for="availableslots2label">Available Slots</label>
+                </div>
+              </section>
+            </section>
+            <section class="spelllist">
+              <ul>
+                <li>
+                  <input
+                  name="prepared9.1"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="9.1"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared9.2"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="9.2"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared9.3"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="9.3"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared9.4"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="9.4"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared9.5"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="9.5"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared9.6"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="9.6"  type="text"/>
+                </li>
+                <li>
+                  <input
+                  name="prepared9.7"
+                  type="checkbox"
+                  class="prepared"
+                />
+                  <input name="9.7"  type="text"/>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+    <hr>
     </form>
   </body>
 </html>
