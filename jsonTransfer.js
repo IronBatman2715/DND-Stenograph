@@ -59,7 +59,12 @@ function loadData() {
 
       let charsheet = document.getElementById("charsheet");
       for (let i = 0; i < charsheet.length; i++) {
-        if (charsheet[i].type == "text" || charsheet[i].type == "textarea") {
+        if (!dataObj[charsheet[i].name] && dataObj[charsheet[i].name] !== 0) {
+          //value DNE, do nothing
+        } else if (
+          charsheet[i].type == "text" ||
+          charsheet[i].type == "textarea"
+        ) {
           charsheet[i].value = dataObj[charsheet[i].name];
         } else if (charsheet[i].type == "checkbox") {
           charsheet[i].checked = dataObj[charsheet[i].name];
