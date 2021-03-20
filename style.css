@@ -3,7 +3,7 @@ textarea {
   text-align: left;
   width: calc(100% - 20px - 2px);
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px;
   resize: none;
   overflow: hidden;
   height: 15em;
@@ -40,12 +40,12 @@ form.charsheet div.textblock label {
   border: 1px solid black;
   border-top: 0;
   font-size: 10px;
-  width: calc(100% - 20px - 2px);
+  width: calc(100% - 24px);
   border-radius: 0 0 10px 10px;
   padding: 4px 0;
   font-weight: bold;
 }
-form.charsheet div.textblock textarea {
+form.charsheet textarea {
   border: 1px solid black;
 }
 form.charsheet ul {
@@ -95,7 +95,7 @@ form.charsheet header section.charname label {
   padding-left: 1em;
 }
 form.charsheet header section.misc {
-  width: 70%;
+  width: 100%;
   border: 1px solid black;
   border-radius: 10px;
   padding-left: 1em;
@@ -115,6 +115,7 @@ form.charsheet header section.misc ul li label {
   margin-bottom: 5px;
 }
 form.charsheet header section.misc ul li input {
+  width: calc(100% - 10px);
   border: 0;
   border-bottom: 1px solid #ddd;
 }
@@ -200,8 +201,8 @@ form.charsheet
   input {
   text-align: center;
   font-size: 40px;
-  padding: 2px 0px 0px 0px;
   background: white;
+  width: calc(100% - 5px);
 }
 form.charsheet main > section section.attributes div.scores ul li div.modifier {
   margin-top: 3px;
@@ -469,7 +470,7 @@ form.charsheet main section.combat > div.hp > div.regular > div.current {
 }
 form.charsheet main section.combat > div.hp > div.regular > div.current input {
   border: 0;
-  width: 100%;
+  margin: 10px;
   padding: 1em 0;
   font-size: 20px;
   text-align: center;
@@ -488,10 +489,13 @@ form.charsheet main section.combat > div.hp > div.temporary {
   display: flex;
   flex-direction: column-reverse;
   background-color: white;
+  justify-content: center;
+  align-items: center;
 }
 form.charsheet main section.combat > div.hp > div.temporary input {
   padding: 1em 0;
   font-size: 20px;
+  margin: 10px;
   border: 0;
   text-align: center;
 }
@@ -554,6 +558,7 @@ form.charsheet main section.combat > div.hitdice > div > div.remaining input {
   text-align: center;
   border: 0;
   flex: 1;
+  margin: 0px 5px;
 }
 form.charsheet main section.combat > div.deathsaves > div {
   margin: 10px;
@@ -661,6 +666,7 @@ form.charsheet main section.attacksandspellcasting > div > table input {
 }
 form.charsheet main section.attacksandspellcasting > div textarea {
   border: 0;
+  width: calc(100% - 10px);
 }
 form.charsheet main section.equipment {
   border: 1px solid black;
@@ -668,7 +674,7 @@ form.charsheet main section.equipment {
   margin-top: 10px;
 }
 form.charsheet main section.equipment > div {
-  padding: 10px;
+  padding: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -708,6 +714,7 @@ form.charsheet main section.equipment > div > label {
 form.charsheet main section.equipment > div > textarea {
   flex: 1;
   border: 0;
+  margin-left: 5px;
 }
 form.charsheet main section.flavor {
   padding: 10px;
@@ -730,6 +737,7 @@ form.charsheet main section.flavor div textarea {
   border: 0;
   border-radius: 0;
   height: 4em;
+  width: calc(100% - 10px);
 }
 form.charsheet main section.flavor div:first-child {
   border-radius: 10px 10px 0 0;
@@ -742,13 +750,15 @@ form.charsheet main section.flavor div:last-child {
 }
 form.charsheet main section.features {
   padding: 10px;
+  height: 100%;
 }
 form.charsheet main section.features div {
-  padding: 10px;
+  padding: 5px;
   border: 1px solid black;
   border-radius: 10px;
   display: flex;
   flex-direction: column-reverse;
+  height: 100%;
 }
 form.charsheet main section.features div label {
   text-align: center;
@@ -756,7 +766,8 @@ form.charsheet main section.features div label {
 form.charsheet main section.features div textarea {
   border: 0;
   padding: 5px;
-  height: 43em;
+  width: calc(100% - 10px);
+  height: 100%;
 }
 
 form.charsheet section.spellcastingclassandability {
@@ -812,7 +823,6 @@ form.charsheet div.spellcastingpage main div {
 }
 form.charsheet div.spellcastingpage main div div {
   width: 100%;
-  padding: 5px;
 }
 form.charsheet div.spellcastingpage main div div section.spellheader {
   text-align: center;
@@ -940,4 +950,47 @@ form.charsheet
 .spelllist ul li input[type="text"] {
   width: 100%;
   margin-left: 5px;
+}
+
+form.charsheet div.extraspage main {
+  height: 63em;
+}
+form.charsheet div.extraspage main div.left {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  height: 100%;
+  align-items: flex-start;
+}
+form.charsheet div.extraspage main div.right {
+  display: flex;
+  flex-direction: column;
+  width: 66%;
+  height: 100%;
+  align-items: flex-start;
+}
+form.charsheet div.extraspage main div section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 33%;
+}
+form.charsheet div.extraspage main div section textarea {
+  height: 100%;
+}
+form.charsheet div.extraspage main div section label {
+  text-align: center;
+  border: 1px solid black;
+  border-top: 0;
+  font-size: 10px;
+  width: calc(100% - 24px);
+  border-radius: 0 0 10px 10px;
+  padding: 4px 0;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+form.charsheet div.extraspage main div section.characterbackstory {
+  height: 66%;
 }
