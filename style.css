@@ -818,16 +818,25 @@ form.charsheet section.spellcastingmisc div input {
   font-size: 30px;
 }
 
+form.charsheet div.spellcastingpage main {
+  display: flex;
+  align-items: flex-start;
+}
 form.charsheet div.spellcastingpage main div {
   width: 32%;
+  display: flex;
+  flex-direction: column;
 }
 form.charsheet div.spellcastingpage main div div {
   width: 100%;
+  height: 100%;
 }
 form.charsheet div.spellcastingpage main div div section.spellheader {
+  width: 100%;
+  height: 100%;
   text-align: center;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 form.charsheet
@@ -906,6 +915,10 @@ form.charsheet section.spellheader section.spelllabel {
 }
 form.charsheet section.spellheader section.spelllabel div {
   padding: 2px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 form.charsheet section.spellheader section.spelllabel div label {
   text-align: center;
@@ -921,8 +934,16 @@ form.charsheet section.spellheader section.spelllabel div input {
   border-radius: 10px;
   border: 1px solid black;
 }
+form.charsheet div.spellcastingpage main div div section.spelllist {
+  width: 100%;
+  display: flex;
+  align-content: stretch;
+}
+form.charsheet div.spellcastingpage main div div section.spelllist ul {
+  width: 100%;
+}
 form.charsheet div.spellcastingpage main div div section.spelllist ul li {
-  padding: 0.25em;
+  padding: 0.05em 0.25em;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row-reverse;
@@ -955,19 +976,17 @@ form.charsheet
 form.charsheet div.extraspage main {
   height: 63em;
 }
-form.charsheet div.extraspage main div.left {
+form.charsheet div.extraspage main div {
   display: flex;
   flex-direction: column;
-  width: 33%;
   height: 100%;
   align-items: flex-start;
 }
+form.charsheet div.extraspage main div.left {
+  width: 33%;
+}
 form.charsheet div.extraspage main div.right {
-  display: flex;
-  flex-direction: column;
   width: 66%;
-  height: 100%;
-  align-items: flex-start;
 }
 form.charsheet div.extraspage main div section {
   display: flex;
