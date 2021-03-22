@@ -224,6 +224,9 @@ form.charsheet
   margin: -1px;
   text-align: center;
 }
+form.charsheet main > section section.attributes div.attr-applications {
+  margin-left: 5px;
+}
 form.charsheet
   main
   > section
@@ -389,8 +392,12 @@ form.charsheet main > section div.passive-perception input {
   border: 1px solid black;
   border-radius: 10px;
 }
+form.charsheet main > section div.otherprofs {
+  height: 100%;
+}
 form.charsheet main > section div.otherprofs textarea {
-  height: 26em;
+  width: 100%;
+  height: 100%;
 }
 form.charsheet main section.combat {
   background-color: #eee;
@@ -676,6 +683,7 @@ form.charsheet main section.equipment {
 form.charsheet main section.equipment > div {
   padding: 5px;
   display: flex;
+  height: 100%;
   flex-direction: row;
   flex-wrap: wrap;
 }
