@@ -1,7 +1,7 @@
 textarea {
   font-size: 12px;
   text-align: left;
-  width: calc(100% - 20px - 2px);
+  width: calc(100% - 22px);
   border-radius: 10px;
   padding: 5px;
   resize: none;
@@ -22,12 +22,11 @@ div.box {
 }
 
 form.charsheet {
-  width: 800px;
-  right: 0;
-  left: 0;
+  width: 8.5in;
   margin-right: auto;
   margin-left: auto;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 form.charsheet div.textblock {
   display: flex;
@@ -72,6 +71,11 @@ form.charsheet label {
 form.charsheet header {
   display: flex;
   align-items: stretch;
+}
+form.charsheet div.frontpage,
+form.charsheet div.spellcastingpage,
+form.charsheet div.extraspage {
+  height: 11in;
 }
 form.charsheet header section.charname {
   border: 1px solid black;
@@ -119,16 +123,14 @@ form.charsheet header section.misc ul li input {
   border: 0;
   border-bottom: 1px solid #ddd;
 }
-
 form.charsheet header section.data ul li {
   padding: 5px;
   display: flex;
 }
-
 form.charsheet main {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 form.charsheet main div.label-container {
   position: relative;
@@ -147,8 +149,14 @@ form.charsheet main div.label-container > label {
   width: 100%;
   font-size: 8px;
 }
+
+/*First page*/
+form.charsheet div.frontpage main {
+  height: 940.4px;
+}
 form.charsheet main > section {
   width: 32%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -176,8 +184,9 @@ form.charsheet main > section section.attributes div.scores ul {
   height: 100%;
 }
 form.charsheet main > section section.attributes div.scores ul li {
-  height: 80px;
   width: 70px;
+  height: calc(16% - 2px);
+  margin: 5px;
   background-color: white;
   border: 1px solid black;
   text-align: center;
@@ -219,9 +228,9 @@ form.charsheet
   background: white;
   width: 30px;
   height: 20px;
-  border: 1px inset black;
+  border: 1px solid black;
   border-radius: 20px;
-  margin: -1px;
+  margin: 0px;
   text-align: center;
 }
 form.charsheet main > section section.attributes div.attr-applications {
@@ -398,7 +407,7 @@ form.charsheet main > section div.otherprofs {
   height: 100%;
 }
 form.charsheet main > section div.otherprofs textarea {
-  width: 100%;
+  width: calc(100% - 10px);
   height: 100%;
 }
 form.charsheet main section.combat {
@@ -481,7 +490,7 @@ form.charsheet main section.combat > div.hp > div.regular > div.current {
 form.charsheet main section.combat > div.hp > div.regular > div.current input {
   border: 0;
   margin: 10px;
-  padding: 1em 0;
+  padding: 0;
   font-size: 20px;
   text-align: center;
 }
@@ -503,10 +512,10 @@ form.charsheet main section.combat > div.hp > div.temporary {
   align-items: center;
 }
 form.charsheet main section.combat > div.hp > div.temporary input {
-  padding: 1em 0;
-  font-size: 20px;
-  margin: 10px;
   border: 0;
+  margin: 10px;
+  padding: 0;
+  font-size: 20px;
   text-align: center;
 }
 form.charsheet main section.combat > div.hp > div.temporary label {
@@ -682,6 +691,7 @@ form.charsheet main section.equipment {
   border: 1px solid black;
   border-radius: 10px;
   margin-top: 10px;
+  height: 100%;
 }
 form.charsheet main section.equipment > div {
   padding: 5px;
@@ -781,6 +791,10 @@ form.charsheet main section.features div textarea {
   height: 100%;
 }
 
+/*Spellcasting page*/
+form.charsheet div.spellcastingpage main {
+  height: 958.9px;
+}
 form.charsheet section.spellcastingclassandability {
   border: 1px solid black;
   border-right: 0;
@@ -832,9 +846,11 @@ form.charsheet section.spellcastingmisc div input {
 form.charsheet div.spellcastingpage main {
   display: flex;
   align-items: flex-start;
+  margin-top: 5px;
 }
 form.charsheet div.spellcastingpage main div {
   width: 32%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -844,7 +860,8 @@ form.charsheet div.spellcastingpage main div div {
 }
 form.charsheet div.spellcastingpage main div div section.spellheader {
   width: 100%;
-  height: 100%;
+  height: 60px;
+  margin: 2.5px 0px 2.5px 0px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -945,16 +962,41 @@ form.charsheet section.spellheader section.spelllabel div input {
   border-radius: 10px;
   border: 1px solid black;
 }
+form.charsheet div.spellcastingpage main div div.level0 {
+  height: 25%;
+}
+form.charsheet div.spellcastingpage main div div.level1,
+form.charsheet div.spellcastingpage main div div.level2 {
+  height: 38%;
+}
+form.charsheet div.spellcastingpage main div div.level3,
+form.charsheet div.spellcastingpage main div div.level4 {
+  height: 37%;
+}
+form.charsheet div.spellcastingpage main div div.level5 {
+  height: 26%;
+}
+form.charsheet div.spellcastingpage main div div.level6,
+form.charsheet div.spellcastingpage main div div.level7 {
+  height: 28%;
+}
+form.charsheet div.spellcastingpage main div div.level8,
+form.charsheet div.spellcastingpage main div div.level9 {
+  height: 22%;
+}
 form.charsheet div.spellcastingpage main div div section.spelllist {
   width: 100%;
-  display: flex;
-  align-content: stretch;
+  height: 100%;
+  font-size: 12px;
 }
 form.charsheet div.spellcastingpage main div div section.spelllist ul {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 form.charsheet div.spellcastingpage main div div section.spelllist ul li {
-  padding: 0.05em 0.25em;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row-reverse;
@@ -981,11 +1023,13 @@ form.charsheet
 }
 .spelllist ul li input[type="text"] {
   width: 100%;
+  /*font-size: 12px;*/
   margin-left: 5px;
 }
 
+/*Extras page*/
 form.charsheet div.extraspage main {
-  height: 63em;
+  height: 949.4px;
 }
 form.charsheet div.extraspage main div {
   display: flex;
