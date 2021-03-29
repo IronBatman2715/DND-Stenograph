@@ -268,8 +268,9 @@ form.charsheet
   div.attr-applications
   div.proficiencybonus
   input {
-  width: 30px;
-  height: 28px;
+  width: 26px;
+  height: 24px;
+  padding: 2px;
   border: 1px solid black;
   text-align: center;
   border-radius: 10px;
@@ -386,8 +387,9 @@ form.charsheet main > section div.passive-perception {
   justify-content: flex-end;
 }
 form.charsheet main > section div.passive-perception input {
-  width: 30px;
-  height: 28px;
+  width: 26px;
+  height: 24px;
+  padding: 2px;
   text-align: center;
   border: 1px solid black;
   border-radius: 10px;
@@ -437,8 +439,9 @@ form.charsheet main section.combat > div.speed > div label {
 form.charsheet main section.combat > div.armorclass > div input,
 form.charsheet main section.combat > div.initiative > div input,
 form.charsheet main section.combat > div.speed > div input {
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
+  padding: 5px;
   border-radius: 10px;
   border: 1px solid black;
   text-align: center;
