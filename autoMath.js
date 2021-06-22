@@ -166,30 +166,57 @@ function updateSkills() {
 }
 
 function level2ProfBonus() {
-  let invalid = false;
+  let invalidSyntax = false;
   let profbonus = document.getElementsByClassName("profbonus");
   let classlevel = document.getElementsByClassName("classlevel");
   let classlevelStr = classlevel[0].value;
-  let level;
-  if (!!classlevelStr && classlevelStr.includes(" ")) {
-    level = classlevelStr.substring(
-      classlevelStr.indexOf(" ") + 1,
-      classlevelStr.length
-    );
+  let level = 0;
+
+  //verify string is not empty
+  if (!!classlevelStr) {
+    //dig through each class to get level
+    let i = 0;
+    let subStr = classlevelStr;
+    while (i < classlevelStr.length) {
+      subStr = classlevelStr.substring(i, classlevelStr.length);
+
+      //more classes to come
+      if (subStr.includes(";")) {
+        subStr = classlevelStr.substring(i, classlevelStr.indexOf(";", i));
+
+        if (subStr.includes(" ")) {
+          level =
+            parseInt(level) +
+            parseInt(subStr.substring(subStr.indexOf(" ") + 1, subStr.length));
+        } else {
+          invalidSyntax = true;
+          break;
+        }
+
+        i = i + subStr.length + 1;
+
+        //single/last class
+      } else {
+        level =
+          parseInt(level) +
+          parseInt(subStr.substring(subStr.indexOf(" ") + 1, subStr.length));
+        i = classlevelStr.length; //set to max length to end loop
+      }
+    }
   } else {
-    invalid = true;
+    invalidSyntax = true;
   }
 
-  if (!level) {
-    invalid = true;
+  console.log("Total character level: " + level);
+
+  if (!level || level == 0) {
+    invalidSyntax = true;
   }
 
-  if (invalid) {
-    //something is null
+  if (invalidSyntax || 20 < level || level <= 0) {
+    console.log("Invalid Class & Level syntax! Resetting fields.");
     profbonus[0].value = "";
-  }
-
-  if (1 <= level && level <= 4) {
+  } else if (1 <= level && level <= 4) {
     profbonus[0].value = "+2";
   } else if (5 <= level && level <= 8) {
     profbonus[0].value = "+3";
@@ -199,8 +226,6 @@ function level2ProfBonus() {
     profbonus[0].value = "+5";
   } else if (level <= 20) {
     profbonus[0].value = "+6";
-  } else if (20 <= level || level <= 0) {
-    profbonus[0].value = "";
   }
 
   updateSaves();

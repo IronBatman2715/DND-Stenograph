@@ -770,11 +770,11 @@ form.charsheet main section.flavor div:last-child {
   border-radius: 0 0 10px 10px;
 }
 form.charsheet main section.features {
-  padding: 10px;
+  padding: 10px 0px;
   height: 100%;
 }
 form.charsheet main section.features div {
-  padding: 5px;
+  padding: 0px;
   border: 1px solid black;
   border-radius: 10px;
   display: flex;
