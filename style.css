@@ -71,13 +71,15 @@ form.charsheet label {
 form.charsheet header {
   display: flex;
   align-items: stretch;
+  height: 1in;
 }
 form.charsheet div.frontpage,
 form.charsheet div.spellcastingpage,
 form.charsheet div.extraspage {
   height: 11in;
 }
-form.charsheet header section.charname {
+form.charsheet header section.charname,
+form.charsheet header section.spellcastingclassandability {
   border: 1px solid black;
   border-right: 0;
   border-radius: 10px 0 0 10px;
@@ -131,6 +133,7 @@ form.charsheet main {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  height: calc(10in - 10px);
 }
 form.charsheet main div.label-container {
   position: relative;
@@ -151,9 +154,6 @@ form.charsheet main div.label-container > label {
 }
 
 /*First page*/
-form.charsheet div.frontpage main {
-  height: 940.4px;
-}
 form.charsheet main > section {
   width: 32%;
   height: 100%;
@@ -799,23 +799,6 @@ form.charsheet main section.features div textarea {
 }
 
 /*Spellcasting page*/
-form.charsheet div.spellcastingpage main {
-  height: 958.9px;
-}
-form.charsheet section.spellcastingclassandability {
-  border: 1px solid black;
-  border-right: 0;
-  border-radius: 10px 0 0 10px;
-  padding: 5px 0;
-  background-color: #eee;
-  width: 30%;
-  height: 20%;
-  display: flex;
-  flex-direction: column-reverse;
-  bottom: 0;
-  top: 0;
-  margin: auto;
-}
 form.charsheet section.spellcastingclassandability input {
   padding: 0.5em;
   margin: 5px;
@@ -1037,9 +1020,6 @@ form.charsheet
 }
 
 /*Extras page*/
-form.charsheet div.extraspage main {
-  height: 949.4px;
-}
 form.charsheet div.extraspage main div {
   display: flex;
   flex-direction: column;
