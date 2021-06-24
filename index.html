@@ -23,7 +23,8 @@
       <header>
         <section class="charname">
           <label for="charname">Character Name</label>
-          <input name="charname" placeholder="Aragorn II Elessar" />
+          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="charNameTop()"
+          class="charnametop"/>
         </section>
         <section class="misc">
           <ul>
@@ -803,25 +804,33 @@
       <header>
         <section class="spellcastingclassandability">
           <label for="spellcastingclassandability">Spellcasting Class (Ability)</label>
-          <input name="spellcastingclassandability" placeholder="Wizard (Int)" />
+          <input name="spellcastingclassandability" placeholder="Ranger (Wis)" />
         </section>
         <section class="spellcastingmisc">
+          <div class="divknownspellstotal">
+            <input
+              name="knownspellstotal"
+              placeholder="2"
+              class="kwownspellstotal"
+            />
+            <label for="knownspellstotal">Known Spells Total</label>
+          </div>
           <div class="divpreparedspellstotal">
-              <input
-                name="preparedspellstotal"
-                placeholder="2"
-                class="preparedspellstotal"
-              />
-              <label for="preparedspellstotal">Prepared Spells Total</label>
-            </div>
-            <div class="divspellsavedc">
-              <input name="spellsavedc" placeholder="10" />
-              <label for="spellsavedc">Spell Save DC</label>
-            </div>
-            <div class="divspellattackbonus">
-              <input name="spellattackbonus" placeholder="+0" />
-              <label for="spellattackbonus">Spell Attack Bonus</label>
-            </div>
+            <input
+              name="preparedspellstotal"
+              placeholder="N/A"
+              class="preparedspellstotal"
+            />
+            <label for="preparedspellstotal">Prepared Spells Total</label>
+          </div>
+          <div class="divspellsavedc">
+            <input name="spellsavedc" placeholder="11" />
+            <label for="spellsavedc">Spell Save DC</label>
+          </div>
+          <div class="divspellattackbonus">
+            <input name="spellattackbonus" placeholder="+3" />
+            <label for="spellattackbonus">Spell Attack Bonus</label>
+          </div>
          </section>
       </header>
       <main>
@@ -871,11 +880,11 @@
               </section>
               <section class="spelllabel">
                 <div class="slotstotal">
-                  <input name="totalslots1" placeholder="3" />
+                  <input name="totalslots1" placeholder="2" />
                   <label for="totalslots1label">Total Slots</label>
                 </div>
                 <div class="slotsavailable">
-                  <input name="availableslots1" placeholder="3" />
+                  <input name="availableslots1" placeholder="2" />
                   <label for="availableslots1label">Available Slots</label>
                 </div>
               </section>
@@ -888,7 +897,7 @@
                   type="checkbox"
                   class="prepared"
                 />
-                  <input name="1.1"  type="text"/>
+                  <input name="1.1"  type="text" placeholder="Cure Wounds"/>
                 </li>
                 <li>
                   <input
@@ -896,7 +905,7 @@
                   type="checkbox"
                   class="prepared"
                 />
-                  <input name="1.2"  type="text"/>
+                  <input name="1.2"  type="text" placeholder="Detect Magic"/>
                 </li>
                 <li>
                   <input
@@ -1809,7 +1818,8 @@
       <header>
         <section class="charname">
           <label for="charname">Character Name</label>
-          <input name="charname" placeholder="Gandalf the Gray" />
+          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="charNameBot()"
+          class="charnamebot"/>
         </section>
         <section class="misc">
           <ul>
@@ -1817,7 +1827,7 @@
               <label for="age">Age</label>
               <input
                 name="age"
-                placeholder="60"
+                placeholder="87"
                 class="age"
               />
             </li>
@@ -1831,7 +1841,7 @@
             </li>
             <li>
               <label for="eyes">Eyes</label>
-              <input name="eyes" placeholder="Blue" />
+              <input name="eyes" placeholder="Gray" />
             </li>
             <li>
               <label for="skin">Skin</label
@@ -1839,7 +1849,7 @@
             </li>
             <li>
               <label for="hair">Hair</label
-              ><input name="hair" placeholder="Gray" />
+              ><input name="hair" placeholder="Dark Brown" />
             </li>
           </ul>
         </section>

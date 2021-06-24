@@ -214,7 +214,9 @@ function level2ProfBonus() {
   }
 
   if (invalidSyntax || 20 < level || level <= 0) {
-    console.log("Invalid Class & Level syntax! Resetting fields.");
+    alert(
+      "Invalid Class & Level syntax! Explicitly format as follows, replacing parentheses with values: \n\n(class name 1, NO spaces)(space)(class 1's level);(repeat format, ending last WITHOUT a semicolon)"
+    );
     profbonus[0].value = "";
   } else if (1 <= level && level <= 4) {
     profbonus[0].value = "+2";
@@ -230,6 +232,20 @@ function level2ProfBonus() {
 
   updateSaves();
   updateSkills();
+}
+
+function charNameTop() {
+  let charnametop = document.getElementsByClassName("charnametop");
+  let charnamebot = document.getElementsByClassName("charnamebot");
+
+  charnamebot[0].value = charnametop[0].value;
+}
+
+function charNameBot() {
+  let charnametop = document.getElementsByClassName("charnametop");
+  let charnamebot = document.getElementsByClassName("charnamebot");
+
+  charnametop[0].value = charnamebot[0].value;
 }
 
 function deathsaves() {

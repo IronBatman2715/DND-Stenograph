@@ -168,25 +168,31 @@ form.charsheet main > section section.attributes {
 }
 form.charsheet main > section section.attributes div.scores {
   width: 101px;
+  height: 100%;
   background-color: #bbb;
   border-radius: 10px;
-  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 form.charsheet main > section section.attributes div.scores label {
-  font-size: 8px;
+  width: 100%;
+  font-size: 9px;
   font-weight: bold;
 }
 form.charsheet main > section section.attributes div.scores ul {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
+  padding: 5px 10px;
 }
 form.charsheet main > section section.attributes div.scores ul li {
-  width: 70px;
-  height: calc(16% - 2px);
-  margin: 5px;
+  width: 100%;
+  height: calc(16% - 5px);
+  margin: 0px;
   background-color: white;
   border: 1px solid black;
   text-align: center;
@@ -214,7 +220,7 @@ form.charsheet
   width: calc(100% - 5px);
 }
 form.charsheet main > section section.attributes div.scores ul li div.modifier {
-  margin-top: 3px;
+  margin-top: 0px;
 }
 form.charsheet
   main
@@ -226,8 +232,7 @@ form.charsheet
   div.modifier
   input {
   background: white;
-  width: 30px;
-  height: 20px;
+  width: 50%;
   border: 1px solid black;
   border-radius: 20px;
   margin: 0px;
@@ -235,6 +240,8 @@ form.charsheet
 }
 form.charsheet main > section section.attributes div.attr-applications {
   margin-left: 5px;
+  height: 100%;
+  width: 75%;
 }
 form.charsheet
   main
@@ -292,7 +299,7 @@ form.charsheet
   div.list-section {
   border: 1px solid black;
   border-radius: 10px;
-  padding: 10px 5px;
+  padding: 5px 5px 0px 0px;
 }
 form.charsheet
   main
@@ -340,7 +347,7 @@ form.charsheet
   li
   label {
   text-transform: none;
-  font-size: 8px;
+  font-size: 10px;
   text-align: left;
   order: 3;
 }
@@ -834,13 +841,15 @@ form.charsheet section.spellcastingmisc div label {
   display: flex;
   flex-direction: column-reverse;
   padding: 0.25em;
+  font-size: 10px;
 }
 form.charsheet section.spellcastingmisc div input {
   text-align: center;
   width: 35%;
   border-radius: 10px;
   border: 1px solid black;
-  font-size: 30px;
+  padding: 5px;
+  font-size: 24px;
 }
 
 form.charsheet div.spellcastingpage main {
