@@ -181,8 +181,8 @@ function level2ProfBonus() {
       subStr = classlevelStr.substring(i, classlevelStr.length);
 
       //more classes to come
-      if (subStr.includes(";")) {
-        subStr = classlevelStr.substring(i, classlevelStr.indexOf(";", i));
+      if (subStr.includes("/")) {
+        subStr = classlevelStr.substring(i, classlevelStr.indexOf("/", i));
 
         if (subStr.includes(" ")) {
           level =
@@ -215,7 +215,7 @@ function level2ProfBonus() {
 
   if (invalidSyntax || 20 < level || level <= 0) {
     alert(
-      "Invalid Class & Level syntax! Explicitly format as follows, replacing parentheses with values: \n\n(class name 1, NO spaces)(space)(class 1's level);(repeat format, ending last WITHOUT a semicolon)"
+      "Invalid Class & Level syntax! Explicitly format as follows, replacing parentheses with values: \n\n(class name 1, NO spaces)(space)(class 1's level)/(repeat format, ending last WITHOUT a semicolon)"
     );
     profbonus[0].value = "";
   } else if (1 <= level && level <= 4) {
