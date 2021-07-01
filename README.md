@@ -1,4 +1,4 @@
-# IronBatman2715.github.io
+# D&D Stenograph: An HTML based D&D 5e character sheet
 Version 1.5.0
 
 D&D character sheet with html, css, and js.
