@@ -1,6 +1,12 @@
 function clearData() {
   if (confirm("Are you sure you want to clear the entire sheet?") == true) {
-    document.getElementById("charsheet").reset();
+    //Reset proficiency buttons
+    let prof = document.querySelectorAll("div.skillprofbox div");
+    for (let i = 0; i < 18; i++) {
+      prof[i].className = "state0";
+    }
+
+    document.getElementById("charsheet").reset(); //reset rest of sheet
   }
 }
 
@@ -68,10 +74,14 @@ function updateSkills() {
   let statmods = document.getElementsByClassName("statmod");
   let profbonus = document.getElementsByClassName("profbonus");
   let skills = document.getElementsByClassName("skill");
-  let skillprofs = document.getElementsByClassName("skillprof");
+  let skillprofs = document.querySelectorAll("div.skillprofbox div");
   let passiveperception = document.getElementsByClassName("passiveperception");
-  for (let i = 0; i < 18; i++) {
-    let skillprof = skillprofs[i].checked;
+
+  //Iterate through 18 total skills
+  for (let i = 0; i < skillprofs.length; i++) {
+    let skillprofstate = skillprofs[i].className;
+    let skillprof = parseInt(skillprofstate.substring(5)); //pick out state number
+
     if (!profbonus[0].value) {
       //Invalid proficiency bonus
       skills[i].value = "";
@@ -79,11 +89,26 @@ function updateSkills() {
       let bonus;
       let skill;
       let statmod;
-      if (skillprof) {
-        bonus = parseInt(profbonus[0].value);
-      } else {
-        bonus = 0;
+
+      //Determine proficiency type and save bonus
+      switch (skillprof) {
+        case 0: //no proficiency
+          bonus = 0;
+          break;
+        case 1: //proficiency
+          bonus = parseInt(profbonus[0].value);
+          break;
+        case 2: //half proficiency
+          bonus = Math.floor(parseInt(profbonus[0].value) / 2);
+          break;
+        case 3: //expertise (double proficiency)
+          bonus = parseInt(profbonus[0].value) * 2;
+          break;
+        default:
+          bonus = 0;
+          break;
       }
+
       switch (i) {
         case 3: //str
           statmod = parseInt(statmods[0].value);

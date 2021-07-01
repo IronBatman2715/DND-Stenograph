@@ -1,7 +1,23 @@
+//*** VERSION NUMBER FOR WHOLE CHARACTER SHEET PROGRAM. WILL CHECK JSON FILE TO MATCH VERSION, OR SUPPLY WARNING ***//
+let stenographVersion = "1.5.0";
+
 // Saving data
 function saveData() {
-  let charsheet = document.getElementById("charsheet");
   let elementValueObj = new Object();
+  //Save version number
+  elementValueObj["stenographVersion"] = stenographVersion;
+
+  //Save skill proficiencies
+  let skillprof = document.querySelectorAll("div.skillprofbox div");
+  for (let i = 0; i < skillprof.length; i++) {
+    //console.log(skillprof[i].getAttribute("class"));
+    elementValueObj[skillprof[i].getAttribute("name")] = skillprof[
+      i
+    ].getAttribute("class");
+  }
+
+  //Save rest of inputs
+  let charsheet = document.getElementById("charsheet");
   for (let i = 0; i < charsheet.length; i++) {
     let desValue;
     if (charsheet[i].type == "text" || charsheet[i].type == "textarea") {
@@ -13,8 +29,9 @@ function saveData() {
     elementValueObj[charsheet[i].name] = desValue;
   }
 
-  jsonText = JSON.stringify(elementValueObj);
+  jsonText = JSON.stringify(elementValueObj); //translate object to JSON
 
+  //Prompt user with download
   let a = document.createElement("a");
   a.setAttribute(
     "href",
@@ -28,7 +45,7 @@ function saveData() {
   a.click();
 }
 
-//Prompt use to upload file
+//Prompt user to upload file
 function getLoadedData() {
   let loadDataButton = document.getElementsByClassName("loaddata");
   loadDataButton[0].click();
@@ -45,7 +62,9 @@ $(document).ready(function () {
 function loadData() {
   let loadDataButton = document.getElementsByClassName("loaddata");
   let files = loadDataButton[0].files;
+
   if (files.length !== 1) {
+    //Invalid upload
     alert("Submit exactly one .json or .txt!");
     return false;
   } else {
@@ -54,9 +73,22 @@ function loadData() {
     fr.onload = function (e) {
       let result = JSON.parse(e.target.result);
       let jsonText = JSON.stringify(result, null, 2);
-
       let dataObj = JSON.parse(jsonText);
 
+      //Check version of loaded data
+      if (dataObj["stenographVersion"] !== stenographVersion) {
+        alert(
+          `Different version warning!\n\nThis character sheet was made on an different version of Stenograph (Current: ${stenographVersion}; Your version: ${dataObj["stenographVersion"]}). Some data may not transfer or may transfer incorrectly!`
+        );
+      }
+
+      //Load skill proficiencies
+      let skillprof = document.querySelectorAll("div.skillprofbox div");
+      for (let i = 0; i < skillprof.length; i++) {
+        skillprof[i].className = dataObj[skillprof[i].getAttribute("name")];
+      }
+
+      //Load rest of inputs
       let charsheet = document.getElementById("charsheet");
       for (let i = 0; i < charsheet.length; i++) {
         let value = dataObj[charsheet[i].name];

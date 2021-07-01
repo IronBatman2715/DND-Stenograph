@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US"> 
   <head>
     <meta charset="UTF-8" />
     <title>D&D Stenograph</title>
@@ -14,8 +14,10 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./profButton/style.css" />
     <script src="./autoMath.js"></script>
     <script src="./jsonTransfer.js"></script>
+    <script src="./profButton/script.js"></script>
   </head>
   <body>
     <form class="charsheet" id="charsheet" onsubmit="return false">
@@ -213,7 +215,7 @@
                       class="save"
                     />
                     <input
-                      name="Strength-save-prof"
+                      name="Strength-saveprof"
                       type="checkbox"
                       class="saveprof"
                       onchange="updateSaves()"
@@ -228,7 +230,7 @@
                       class="save"
                     />
                     <input
-                      name="Dexterity-save-prof"
+                      name="Dexterity-saveprof"
                       type="checkbox"
                       class="saveprof"
                       onchange="updateSaves()"
@@ -243,7 +245,7 @@
                       class="save"
                     />
                     <input
-                      name="Constitution-save-prof"
+                      name="Constitution-saveprof"
                       type="checkbox"
                       class="saveprof"
                       onchange="updateSaves()"
@@ -258,7 +260,7 @@
                       class="save"
                     />
                     <input
-                      name="Wisdom-save-prof"
+                      name="Wisdom-saveprof"
                       type="checkbox"
                       class="saveprof"
                       onchange="updateSaves()"
@@ -273,7 +275,7 @@
                       class="save"
                     />
                     <input
-                      name="Intelligence-save-prof"
+                      name="Intelligence-saveprof"
                       type="checkbox"
                       class="saveprof"
                       onchange="updateSaves()"
@@ -288,7 +290,7 @@
                       class="save"
                     />
                     <input
-                      name="Charisma-save-prof"
+                      name="Charisma-saveprof"
                       type="checkbox"
                       class="saveprof"
                       onchange="updateSaves()"
@@ -309,12 +311,9 @@
                       type="text"
                       class="skill"
                     />
-                    <input
-                      name="Acrobatics-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
-                    />
+                    <div class="skillprofbox" onclick="updateProfBox(0)">
+                      <div name="Acrobatics-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Animal Handling"
@@ -326,12 +325,9 @@
                       type="text"
                       class="skill"
                     />
-                    <input
-                      name="Animal Handling-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
-                    />
+                    <div class="skillprofbox" onclick="updateProfBox(1)">
+                      <div name="Animal Handling-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Arcana"
@@ -343,12 +339,9 @@
                       type="text"
                       class="skill"
                     />
-                    <input
-                      name="Arcana-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
-                    />
+                    <div class="skillprofbox" onclick="updateProfBox(2)">
+                      <div name="Arcana-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Athletics"
@@ -360,12 +353,9 @@
                       type="text"
                       class="skill"
                     />
-                    <input
-                      name="Athletics-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
-                    />
+                    <div class="skillprofbox" onclick="updateProfBox(3)">
+                      <div name="Athletics-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Deception"
@@ -375,12 +365,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Deception-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(4)">
+                      <div name="Deception-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="History"
@@ -390,12 +378,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="History-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(5)">
+                      <div name="History-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Insight"
@@ -405,12 +391,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Insight-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(6)">
+                      <div name="Insight-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Intimidation"
@@ -420,12 +404,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Intimidation-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(7)">
+                      <div name="Intimidation-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Investigation"
@@ -435,12 +417,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Investigation-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(8)">
+                      <div name="Investigation-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Medicine"
@@ -450,12 +430,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Medicine-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(9)">
+                      <div name="Medicine-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Nature"
@@ -465,12 +443,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Nature-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(10)">
+                      <div name="Nature-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Perception"
@@ -480,12 +456,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Perception-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(11)">
+                      <div name="Perception-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Performance"
@@ -495,12 +469,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Performance-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(12)">
+                      <div name="Performance-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Persuasion"
@@ -510,12 +482,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Persuasion-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(13)">
+                      <div name="Persuasion-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Religion"
@@ -525,12 +495,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Religion-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(14)">
+                      <div name="Religion-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Sleight of Hand"
@@ -541,12 +509,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Sleight of Hand-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(15)">
+                      <div name="Sleight of Hand-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Stealth"
@@ -556,12 +522,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Stealth-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(16)">
+                      <div name="Stealth-skillprof" class="state0"></div>
+                    </div>
                   </li>
                   <li>
                     <label for="Survival"
@@ -571,12 +535,10 @@
                       placeholder="+0"
                       type="text"
                       class="skill"
-                    /><input
-                      name="Survival-prof"
-                      type="checkbox"
-                      class="skillprof"
-                      onchange="updateSkills()"
                     />
+                    <div class="skillprofbox" onclick="updateProfBox(17)">
+                      <div name="Survival-skillprof" class="state0"></div>
+                    </div>
                   </li>
                 </ul>
                 <div class="label">Skills</div>
@@ -627,7 +589,7 @@
               <div class="regular">
                 <div class="max">
                   <label for="maxhp">Hit Point Maximum</label
-                  ><input name="maxhp" placeholder="10" type="text" />
+                  ><input name="maxhp" type="text" />
                 </div>
                 <div class="current">
                   <label for="currenthp">Current Hit Points</label
@@ -642,12 +604,12 @@
             <div class="hitdice">
               <div>
                 <div class="total">
-                  <label onclick="totalhd_clicked()" for="totalhd">Total</label
-                  ><input name="totalhd" placeholder="2d6" type="text" />
+                  <label for="totalhd">Total</label
+                  ><input name="totalhd" placeholder="5d10" type="text" />
                 </div>
                 <div class="remaining">
                   <label for="remaininghd">Hit Dice</label
-                  ><input name="remaininghd" type="text" />
+                  ><input name="remaininghd" placeholder="5" type="text" />
                 </div>
               </div>
             </div>
