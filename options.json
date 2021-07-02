@@ -1,0 +1,13 @@
+{
+  "optionsStenographVersion": "1.6.0",
+  "optionsVersion": "1.0.0",
+  "statLimits": {
+    "min": 1,
+    "typmax": 20,
+    "absmax": 30
+  },
+  "levelLimits": {
+    "min": 1,
+    "max": 20
+  }
+}

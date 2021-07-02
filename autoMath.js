@@ -1,9 +1,9 @@
 function clearData() {
   if (confirm("Are you sure you want to clear the entire sheet?") == true) {
-    //Reset proficiency buttons
-    let prof = document.querySelectorAll("div.skillprofbox div");
-    for (let i = 0; i < 18; i++) {
-      prof[i].className = "state0";
+    //Reset skill proficiency buttons
+    let skillprofs = document.querySelectorAll("div.skillprofbox div");
+    for (let i = 0; i < skillprofs.length; i++) {
+      skillprofs[i].className = "state0";
     }
 
     document.getElementById("charsheet").reset(); //reset rest of sheet
@@ -13,29 +13,56 @@ function clearData() {
 function updateStats() {
   let stats = document.getElementsByClassName("stat");
   let statmods = document.getElementsByClassName("statmod");
+  let statNames = [
+    "Strength",
+    "Dexterity",
+    "Constitution",
+    "Wisdom",
+    "Intelligence",
+    "Charisma",
+  ];
+  let isAboveTypStatMax = false;
+
+  //Iterate through all 6 stats/statmods
   for (let i = 0; i < 6; i++) {
     let stat = parseInt(stats[i].value);
-    if (Number.isInteger(stat) && 0 < stat && stat < 21) {
-      //Valid input
+    let isStatValid = statLimits.min <= stat && stat <= statLimits.absmax;
+
+    //Check for valid input
+    if (Number.isInteger(stat) && isStatValid) {
+      //Check if above usual values
+      if (stat > statLimits.typmax) {
+        isAboveTypStatMax = true;
+      }
+
+      //Calculate modifier
       let calcMod = Math.floor((stat - 10) / 2);
       if (0 <= calcMod) {
+        //Positive modifier
         statmods[i].value = "+" + calcMod.toString();
       } else {
+        //Negative modifier
         statmods[i].value = calcMod.toString();
-      }
-      if (i == 1) {
-        let initiative = document.getElementsByClassName("initiativevalue");
-        initiative[0].value = statmods[1].value;
       }
     } else {
       //Invalid input
       statmods[i].value = "";
-      if (i == 1) {
-        let initiative = document.getElementsByClassName("initiativevalue");
-        initiative[0].value = "";
+
+      //If stat value is not empty, send invalid input alert
+      if (!!stats[i].value) {
+        alert(
+          `Invalid ${statNames[i]} value: ${stats[i].value}\n\nAll stat values must be integers from ${statLimits.min} to ${statLimits.absmax}. Note that you can only go above ${statLimits.typmax} when explicitly told you can do so!`
+        );
       }
     }
   }
+  //Warn user about going above usual values
+  if (isAboveTypStatMax) {
+    alert(
+      `Note that any stat can NOT go above ${statLimits.typmax} unless EXPLICITLY told you can do so. Be sure you have something that allows that!`
+    );
+  }
+
   updateSaves();
   updateSkills();
 }
@@ -45,6 +72,8 @@ function updateSaves() {
   let profbonus = document.getElementsByClassName("profbonus");
   let saves = document.getElementsByClassName("save");
   let saveprofs = document.getElementsByClassName("saveprof");
+
+  //Iterate through all 6 stats/saves
   for (let i = 0; i < 6; i++) {
     let statmod = parseInt(statmods[i].value);
     let saveprof = saveprofs[i].checked;
@@ -191,8 +220,6 @@ function updateSkills() {
 }
 
 function level2ProfBonus() {
-  let levelLimits = [1, 20]; //Min and Max levels allowed
-
   let classlevel = document.getElementsByClassName("classlevel");
   let classlevelStr = classlevel[0].value;
   console.log(classlevelStr);
@@ -305,6 +332,7 @@ function level2ProfBonus() {
 
   //Check validity of input level helper function
   function isValidLevel(level, str, classNum) {
+    //Ensure correct ordinal suffix
     if (classNum > 0) {
       let num;
       switch (classNum) {
@@ -324,16 +352,16 @@ function level2ProfBonus() {
       str = num.concat(str);
     }
 
-    if (level > levelLimits[1]) {
+    if (level > levelLimits.max) {
       //level is above maximum
       alert(
-        `Invalid ${str}!\n\nMust be no more than ${levelLimits[1]} (Current: ${level})!`
+        `Invalid ${str}!\n\nMust be no more than ${levelLimits.max} (Current: ${level})!`
       );
       return false;
-    } else if (level < levelLimits[0]) {
+    } else if (level < levelLimits.min) {
       //level is below minimum
       alert(
-        `Invalid ${str}!\n\nMust be at least ${levelLimits[0]} (Current: ${level})!`
+        `Invalid ${str}!\n\nMust be at least ${levelLimits.min} (Current: ${level})!`
       );
       return false;
     } else {

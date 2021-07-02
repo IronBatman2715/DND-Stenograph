@@ -13,49 +13,66 @@
   border: solid 1px black;
   cursor: pointer;
 }
+.skillprofbox div > p {
+  visibility: hidden;
 
+  user-select: none;
+  margin: 0;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 1.75px;
+  color: white;
+  font-size: 6px;
+}
+
+/*No proficiency*/
 .skillprofbox div.state0 {
   order: 2;
   box-sizing: border-box;
   align-self: center;
 
-  /*No proficiency*/
   height: 8px;
   width: 8px;
   background-color: white;
   border-radius: 10px;
 }
+
+/*Proficiency*/
 .skillprofbox div.state1 {
   order: 2;
   box-sizing: border-box;
   align-self: center;
 
-  /*Proficiency*/
-  height: 6px;
-  width: 6px;
+  height: 9px;
+  width: 9px;
   background-color: black;
   border-radius: 10px;
 }
+
+/*Half proficiency*/
 .skillprofbox div.state2 {
   order: 2;
   box-sizing: border-box;
   align-self: center;
 
-  /*Half proficiency*/
-  height: 6px;
-  width: 3px;
-  margin-left: 2.5px;
+  height: 9px;
+  width: 5px;
+  margin-left: 4px;
   background-color: black;
-  border-radius: 0px 4px 4px 0px;
+  border-radius: 0px 5px 5px 0px;
 }
+
+/*Expertise (Double proficiency)*/
 .skillprofbox div.state3 {
   order: 2;
   box-sizing: border-box;
   align-self: center;
 
-  /*Expertise (Double proficiency)*/
   height: 9px;
-  width: 9px;
+  width: 8px;
   background-color: black;
   border-radius: 10px;
+}
+.skillprofbox div.state3 p {
+  visibility: visible;
 }

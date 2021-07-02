@@ -1,4 +1,52 @@
-// Saving data
+//Import options.json and parse values to global variables used in autoMath.js
+let chosenOptionsLocation = "./options.json";
+/** Global options variables used throughout JS code (mostly autoMath.js) **/
+let optionsStenographVersion;
+let optionsVersion;
+let statLimits;
+let levelLimits;
+
+function getOptionsJSON(callback) {
+  let xobj = new XMLHttpRequest();
+  xobj.overrideMimeType("application/json");
+  xobj.open("GET", chosenOptionsLocation, true);
+  xobj.onreadystatechange = function () {
+    if (xobj.readyState == 4 && xobj.status == "200") {
+      callback(xobj.responseText);
+    }
+  };
+  xobj.send(null);
+}
+
+function loadOptions() {
+  getOptionsJSON(function (response) {
+    let options = JSON.parse(response);
+    console.log("Options:");
+
+    optionsStenographVersion = options.optionsStenographVersion;
+    //Check version of loaded options data
+    if (optionsStenographVersion !== stenographVersion) {
+      alert(
+        `Different version warning!\n\nThe options data used was made on an different version of Stenograph (Current: ${stenographVersion}; Your version: ${optionsStenographVersion}). Some automatic math calculations might work incorrectly!`
+      );
+    }
+
+    optionsVersion = options.optionsVersion;
+    statLimits = options.statLimits;
+    levelLimits = options.levelLimits;
+
+    console.log(`Options Stenograph Version: ${optionsStenographVersion}`);
+    console.log(`Options Version: ${optionsVersion}`);
+    console.log(
+      `Stat Limits:\n\tmin: ${statLimits.min}\n\ttypmax: ${statLimits.typmax}\n\tabsmax: ${statLimits.absmax}`
+    );
+    console.log(
+      `Level Limits:\n\tmin: ${levelLimits.min}\n\tmax: ${levelLimits.max}`
+    );
+  });
+}
+
+//Saving character data
 function saveData() {
   let elementValueObj = new Object();
   //Save version number
@@ -55,7 +103,7 @@ $(document).ready(function () {
   });
 });
 
-// Loading data
+//Loading character data
 function loadData() {
   let loadDataButton = document.getElementsByClassName("loaddata");
   let files = loadDataButton[0].files;
@@ -75,7 +123,7 @@ function loadData() {
       //Check version of loaded data
       if (dataObj["stenographVersion"] !== stenographVersion) {
         alert(
-          `Different version warning!\n\nThis character sheet was made on an different version of Stenograph (Current: ${stenographVersion}; Your version: ${dataObj["stenographVersion"]}). Some data may not transfer or may transfer incorrectly!`
+          `Different version warning!\n\nThis character sheet was made on an different version of Stenograph (Current Stenograph version: ${stenographVersion}; Your character sheet's Stenograph version: ${dataObj["stenographVersion"]}). Some data may not transfer or may transfer incorrectly!\n\nTypically, this will happen between feature updates: when the second number in the verison number changes. Ex: 1.4.0 -> 1.5.0.`
         );
       }
 
