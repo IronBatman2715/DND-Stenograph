@@ -1,6 +1,3 @@
-//*** VERSION NUMBER FOR WHOLE CHARACTER SHEET PROGRAM. WILL CHECK JSON FILE TO MATCH VERSION, OR SUPPLY WARNING ***//
-let stenographVersion = "1.5.0";
-
 // Saving data
 function saveData() {
   let elementValueObj = new Object();

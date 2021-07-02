@@ -191,72 +191,155 @@ function updateSkills() {
 }
 
 function level2ProfBonus() {
-  let invalidSyntax = false;
-  let profbonus = document.getElementsByClassName("profbonus");
+  let levelLimits = [1, 20]; //Min and Max levels allowed
+
   let classlevel = document.getElementsByClassName("classlevel");
   let classlevelStr = classlevel[0].value;
-  let level = 0;
+  console.log(classlevelStr);
 
-  //verify string is not empty
+  //verify string is NOT empty
   if (!!classlevelStr) {
-    //dig through each class to get level
-    let i = 0;
-    let subStr = classlevelStr;
-    while (i < classlevelStr.length) {
-      subStr = classlevelStr.substring(i, classlevelStr.length);
+    let invalidSyntax = false;
+    let profbonus = document.getElementsByClassName("profbonus");
+    let totalLevel = 0;
+    let isReadingDigits = false;
+    let n = 1;
+    let nthClassLevel = "";
 
-      //more classes to come
-      if (subStr.includes("/")) {
-        subStr = classlevelStr.substring(i, classlevelStr.indexOf("/", i));
-
-        if (subStr.includes(" ")) {
-          level =
-            parseInt(level) +
-            parseInt(subStr.substring(subStr.indexOf(" ") + 1, subStr.length));
-        } else {
+    //iterate through each character of classlevelStr, checking for key characters
+    for (let i = 0; i < classlevelStr.length; i++) {
+      if (isReadingDigits) {
+        //if currrently reading digits
+        if (classlevelStr[i] == " ") {
+          //check for invalid syntax
+          console.log("Space before slash!");
           invalidSyntax = true;
           break;
+        } else if (classlevelStr[i] == "/" || i == classlevelStr.length - 1) {
+          //check for end cases
+
+          //if last character, verify and read
+          if (i == classlevelStr.length - 1) {
+            if ("0" <= classlevelStr[i] && classlevelStr[i] <= "9") {
+              nthClassLevel = nthClassLevel.concat(classlevelStr[i]);
+            } else {
+              console.log("Nonnumeric character after space at end!");
+              invalidSyntax = true;
+              break;
+            }
+          }
+
+          //verify class level and add to total if valid
+          nthClassLevel = parseInt(nthClassLevel);
+          console.log(`Class ${n}'s level: ${nthClassLevel}`);
+          if (isValidLevel(nthClassLevel, "class level", n)) {
+            totalLevel = totalLevel + nthClassLevel;
+          } else {
+            profbonus[0].value = "";
+            return;
+          }
+
+          //reset for next class
+          n = n + 1;
+          nthClassLevel = "";
+          isReadingDigits = false;
+        } else {
+          //no end cases or invalid syntax, verify and read digit character
+          if ("0" <= classlevelStr[i] && classlevelStr[i] <= "9") {
+            nthClassLevel = nthClassLevel.concat(classlevelStr[i]);
+          } else {
+            console.log("Nonnumeric character after space and before slash!");
+            invalidSyntax = true;
+            break;
+          }
         }
-
-        i = i + subStr.length + 1;
-
-        //single/last class
       } else {
-        level =
-          parseInt(level) +
-          parseInt(subStr.substring(subStr.indexOf(" ") + 1, subStr.length));
-        i = classlevelStr.length; //set to max length to end loop
+        //not reading digits
+        if (classlevelStr[i] == "/") {
+          //check for invalid syntax
+          console.log("Slash NOT after number!");
+          invalidSyntax = true;
+          break;
+        } else if (classlevelStr[i] == " ") {
+          //check for flag to start reading digits
+          console.log(`Start reading digits at index ${i}`);
+          isReadingDigits = true;
+        } else {
+          //no end cases or invalid syntax, go to next character
+        }
       }
     }
-  } else {
-    invalidSyntax = true;
+
+    if (invalidSyntax) {
+      alert(
+        "Invalid Class & Level syntax! Explicitly format as follows with NO spaces or slashes unless specified. Replace parentheses and their contents with values:\n\n(class name 1)(space)(class 1's level)(slash)(repeat format, ending last WITHOUT a slash)"
+      );
+      profbonus[0].value = "";
+      return;
+    }
+
+    if (isValidLevel(totalLevel, "total character level", 0)) {
+      console.log(`Total character level: ${totalLevel}`);
+      /* Hard coded proficiency bonus progression according to official rules */
+      if (1 <= totalLevel && totalLevel <= 4) {
+        profbonus[0].value = "+2";
+      } else if (5 <= totalLevel && totalLevel <= 8) {
+        profbonus[0].value = "+3";
+      } else if (9 <= totalLevel && totalLevel <= 12) {
+        profbonus[0].value = "+4";
+      } else if (13 <= totalLevel && totalLevel <= 16) {
+        profbonus[0].value = "+5";
+      } else if (totalLevel <= 20) {
+        profbonus[0].value = "+6";
+      } else {
+        profbonus[0].value = "invalid";
+      }
+    } else {
+      profbonus[0].value = "";
+      return;
+    }
+
+    updateSaves();
+    updateSkills();
   }
 
-  console.log("Total character level: " + level);
+  //Check validity of input level helper function
+  function isValidLevel(level, str, classNum) {
+    if (classNum > 0) {
+      let num;
+      switch (classNum) {
+        case 1:
+          num = "1st ";
+          break;
+        case 2:
+          num = "2nd ";
+          break;
+        case 3:
+          num = "3rd ";
+          break;
+        default:
+          num = `${classNum}th `;
+          break;
+      }
+      str = num.concat(str);
+    }
 
-  if (!level || level == 0) {
-    invalidSyntax = true;
+    if (level > levelLimits[1]) {
+      //level is above maximum
+      alert(
+        `Invalid ${str}!\n\nMust be no more than ${levelLimits[1]} (Current: ${level})!`
+      );
+      return false;
+    } else if (level < levelLimits[0]) {
+      //level is below minimum
+      alert(
+        `Invalid ${str}!\n\nMust be at least ${levelLimits[0]} (Current: ${level})!`
+      );
+      return false;
+    } else {
+      return true;
+    }
   }
-
-  if (invalidSyntax || 20 < level || level <= 0) {
-    alert(
-      "Invalid Class & Level syntax! Explicitly format as follows, replacing parentheses with values: \n\n(class name 1, NO spaces)(space)(class 1's level)/(repeat format, ending last WITHOUT a semicolon)"
-    );
-    profbonus[0].value = "";
-  } else if (1 <= level && level <= 4) {
-    profbonus[0].value = "+2";
-  } else if (5 <= level && level <= 8) {
-    profbonus[0].value = "+3";
-  } else if (9 <= level && level <= 12) {
-    profbonus[0].value = "+4";
-  } else if (13 <= level && level <= 16) {
-    profbonus[0].value = "+5";
-  } else if (level <= 20) {
-    profbonus[0].value = "+6";
-  }
-
-  updateSaves();
-  updateSkills();
 }
 
 function charNameTop() {
