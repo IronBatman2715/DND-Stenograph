@@ -56,9 +56,8 @@ function saveData() {
   let skillprof = document.querySelectorAll("div.skillprofbox div");
   for (let i = 0; i < skillprof.length; i++) {
     //console.log(skillprof[i].getAttribute("class"));
-    elementValueObj[skillprof[i].getAttribute("name")] = skillprof[
-      i
-    ].getAttribute("class");
+    elementValueObj[skillprof[i].getAttribute("name")] =
+      skillprof[i].getAttribute("class");
   }
 
   //Save rest of inputs

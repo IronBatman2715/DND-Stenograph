@@ -1,3 +1,18 @@
+/* Light/Dark mode */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+    color: black;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}
+
+/* Global CSS */
 textarea {
   font-size: 12px;
   text-align: left;
@@ -8,19 +23,15 @@ textarea {
   overflow: hidden;
   height: 15em;
 }
-
 input[type="checkbox"] {
   cursor: pointer;
 }
-
 input[type="checkbox"]:checked {
   background-color: black;
 }
-
 div.box {
   margin-top: 10px;
 }
-
 form.charsheet {
   width: 8.5in;
   margin-right: auto;
@@ -153,7 +164,7 @@ form.charsheet main div.label-container > label {
   font-size: 8px;
 }
 
-/*First page*/
+/* Page 1: General */
 form.charsheet main > section {
   width: 32%;
   height: 100%;
@@ -798,7 +809,7 @@ form.charsheet main section.features div textarea {
   height: 100%;
 }
 
-/*Spellcasting page*/
+/* Page 2: Spellcasting */
 form.charsheet section.spellcastingclassandability input {
   padding: 0.5em;
   margin: 5px;
@@ -1019,7 +1030,7 @@ form.charsheet
   margin-left: 5px;
 }
 
-/*Extras page*/
+/* Page 3: Extras */
 form.charsheet div.extraspage main div {
   display: flex;
   flex-direction: column;

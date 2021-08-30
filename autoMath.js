@@ -1,5 +1,5 @@
 function clearData() {
-  if (confirm("Are you sure you want to clear the entire sheet?") == true) {
+  if (confirm("Are you sure you want to clear the entire sheet?")) {
     //Reset skill proficiency buttons
     let skillprofs = document.querySelectorAll("div.skillprofbox div");
     for (let i = 0; i < skillprofs.length; i++) {
