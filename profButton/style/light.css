@@ -1,0 +1,30 @@
+/* Light mode(Default) */
+@media (prefers-color-scheme: light) {
+  .skillprofbox {
+    background-color: white;
+    border: solid 1px black;
+  }
+  .skillprofbox div > p {
+    color: white;
+  }
+
+  /*No proficiency*/
+  .skillprofbox div.state0 {
+    background-color: white;
+  }
+
+  /*Proficiency*/
+  .skillprofbox div.state1 {
+    background-color: black;
+  }
+
+  /*Half proficiency*/
+  .skillprofbox div.state2 {
+    background-color: black;
+  }
+
+  /*Expertise (Double proficiency)*/
+  .skillprofbox div.state3 {
+    background-color: black;
+  }
+}

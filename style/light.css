@@ -1,0 +1,118 @@
+/* Light mode(Default) */
+@media (prefers-color-scheme: light) {
+  /* Global CSS */
+  body {
+    color: black;
+  }
+  body,
+  input,
+  textarea {
+    background-color: white;
+    border-color: black;
+  }
+  input[type="checkbox"]:checked {
+    background-color: black;
+  }
+  form.charsheet ::-moz-placeholder,
+  form.charsheet ::placeholder {
+    color: #bbb;
+  }
+  form.charsheet header section.charname,
+  form.charsheet header section.spellcastingclassandability {
+    background-color: #eee;
+  }
+  form.charsheet header section.misc ul li input {
+    border-color: #ddd;
+  }
+
+  /* Page 1: General */
+  form.charsheet main > section section.attributes div.scores {
+    background-color: #bbb;
+  }
+  form.charsheet main > section section.attributes div.scores ul li {
+    background-color: white;
+  }
+  form.charsheet
+    main
+    > section
+    section.attributes
+    div.scores
+    ul
+    li
+    div.score
+    input {
+    background: white;
+  }
+  form.charsheet
+    main
+    > section
+    section.attributes
+    div.scores
+    ul
+    li
+    div.modifier
+    input {
+    background: white;
+  }
+  form.charsheet
+    main
+    > section
+    section.attributes
+    div.attr-applications
+    div.list-section
+    ul
+    li
+    label
+    span.skillstat {
+    color: #bbb;
+  }
+  form.charsheet main section.combat {
+    background-color: #eee;
+  }
+  form.charsheet main section.combat > div.armorclass > div label,
+  form.charsheet main section.combat > div.initiative > div label,
+  form.charsheet main section.combat > div.speed > div label {
+    background-color: white;
+  }
+  form.charsheet main section.combat > div.hp > div.regular {
+    background-color: white;
+  }
+  form.charsheet main section.combat > div.hp > div.regular > div.max label {
+    color: #bbb;
+  }
+  form.charsheet main section.combat > div.hp > div.regular > div.max input {
+    border-bottom: #ddd;
+  }
+  form.charsheet main section.combat > div.hp > div.temporary {
+    background-color: white;
+  }
+  form.charsheet main section.combat > div.hitdice > div {
+    background-color: white;
+  }
+  form.charsheet main section.combat > div.hitdice > div > div.total label {
+    color: #bbb;
+  }
+  form.charsheet main section.combat > div.hitdice > div > div.total input {
+    border-bottom: #ddd;
+  }
+  form.charsheet main section.combat > div.deathsaves > div {
+    background: white;
+  }
+  form.charsheet main section.attacksandspellcasting > div > table th {
+    color: #ddd;
+  }
+  form.charsheet main section.attacksandspellcasting > div > table input {
+    background-color: #eee;
+  }
+  form.charsheet main section.flavor {
+    background: #bbb;
+  }
+  form.charsheet main section.flavor div {
+    background: white;
+  }
+
+  /* Page 2: Spells */
+  .spelllist ul li input[type="text"] {
+    border-color: black;
+  }
+}
