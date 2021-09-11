@@ -1,13 +1,11 @@
 /* Light mode(Default) */
 @media (prefers-color-scheme: light) {
   /* Global CSS */
-  body {
-    color: black;
-  }
   body,
   input,
   textarea {
     background-color: white;
+    color: black;
     border-color: black;
   }
   input[type="checkbox"]:checked {

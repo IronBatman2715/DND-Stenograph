@@ -9,6 +9,7 @@
   input,
   textarea {
     background-color: #444;
+    color: white;
     border-color: white;
   }
   input[type="checkbox"]:checked {
