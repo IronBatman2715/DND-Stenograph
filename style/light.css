@@ -79,7 +79,7 @@
     color: #bbb;
   }
   form.charsheet main section.combat > div.hp > div.regular > div.max input {
-    border-bottom: #ddd;
+    border-bottom-color: #bbb;
   }
   form.charsheet main section.combat > div.hp > div.temporary {
     background-color: white;
@@ -91,7 +91,7 @@
     color: #bbb;
   }
   form.charsheet main section.combat > div.hitdice > div > div.total input {
-    border-bottom: #ddd;
+    border-bottom-color: #ddd;
   }
   form.charsheet main section.combat > div.deathsaves > div {
     background: white;

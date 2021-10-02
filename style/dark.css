@@ -30,7 +30,7 @@
     background-color: #111;
   }
   form.charsheet header section.misc ul li input {
-    border-bottom: #222;
+    border-bottom-color: #222;
   }
 
   /* Page 1: General */
@@ -89,7 +89,7 @@
     color: #444;
   }
   form.charsheet main section.combat > div.hp > div.regular > div.max input {
-    border-bottom: #222;
+    border-bottom-color: #222;
   }
   form.charsheet main section.combat > div.hp > div.temporary {
     background-color: black;
@@ -101,7 +101,7 @@
     color: #444;
   }
   form.charsheet main section.combat > div.hitdice > div > div.total input {
-    border-bottom: #222;
+    border-bottom-color: #222;
   }
   form.charsheet main section.combat > div.deathsaves > div {
     background: black;

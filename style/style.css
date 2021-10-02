@@ -94,9 +94,11 @@ form.charsheet header section.misc {
   border-radius: 10px;
   padding-left: 1em;
   padding-right: 1em;
+  display: flex;
+  align-content: space-between;
 }
 form.charsheet header section.misc ul {
-  padding: 10px 0px 5px 0px;
+  padding: 5px 0px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -113,9 +115,26 @@ form.charsheet header section.misc ul li input {
   border-style: solid;
   border-width: 0px 0px 1px 0px;
 }
-form.charsheet header section.data ul li {
-  padding: 5px;
+form.charsheet header section.data {
   display: flex;
+  align-content: space-between;
+}
+form.charsheet header section.data ul {
+  width: 56px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: initial;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+form.charsheet header section.data ul li {
+  width: 51px;
+  margin: auto;
+  padding: initial;
+}
+form.charsheet header section.data ul li button {
+  width: 51px;
 }
 form.charsheet main {
   display: flex;
@@ -392,6 +411,8 @@ form.charsheet main > section div.passive-perception input {
 }
 form.charsheet main > section div.otherprofs {
   height: 100%;
+  max-height: 348px;
+  min-height: 339px;
 }
 form.charsheet main > section div.otherprofs textarea {
   width: calc(100% - 10px);

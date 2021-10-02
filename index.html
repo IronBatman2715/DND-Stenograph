@@ -21,16 +21,16 @@
     <link rel="stylesheet" href="./profButton/style/dark.css" />
     <script src="./profButton/script.js"></script>
     <script src="./version.js"></script>
-    <script src="./jsonTransfer.js"></script>
+    <script src="./jsonHandler.js"></script>
     <script src="./autoMath.js"></script>
   </head>
-  <body onload="loadOptions()">
+  <body onload="loadOptions('./options.json')">
     <form class="charsheet" id="charsheet" onsubmit="return false">
       <div class="frontpage">
       <header>
         <section class="charname">
           <label for="charname">Character Name</label>
-          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="charNameTop()"
+          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="charName(0)"
           class="charnametop"/>
         </section>
         <section class="misc">
@@ -70,7 +70,8 @@
           <ul>
             <li>
               <input type="file" class="loaddata" style="display: none;" accept=".json,.txt"></input>
-              <button type="button" onclick="getLoadedData()">Load</button>
+              <button type="button" onclick="let loadDataButton = document.getElementsByClassName(`loaddata`);
+              loadDataButton[0].click();">Load</button>
             </li>
             <li>
               <button onclick="saveData()">Save</button>
@@ -93,13 +94,14 @@
                       name="Strengthscore"
                       placeholder="10"
                       class="stat"
-                      onfocusout="updateStats()"
+                      onfocusout="updateStats(0)"
                     />
                   </div>
                   <div class="modifier">
                     <input
                       name="Strengthmod"
                       placeholder="+0"
+                      readonly="true"
                       class="statmod"
                     />
                   </div>
@@ -111,13 +113,14 @@
                       name="Dexterityscore"
                       placeholder="10"
                       class="stat"
-                      onfocusout="updateStats()"
+                      onfocusout="updateStats(1)"
                     />
                   </div>
                   <div class="modifier">
                     <input
                       name="Dexteritymod"
                       placeholder="+0"
+                      readonly="true"
                       class="statmod"
                     />
                   </div>
@@ -129,13 +132,14 @@
                       name="Constitutionscore"
                       placeholder="10"
                       class="stat"
-                      onfocusout="updateStats()"
+                      onfocusout="updateStats(2)"
                     />
                   </div>
                   <div class="modifier">
                     <input
                       name="Constitutionmod"
                       placeholder="+0"
+                      readonly="true"
                       class="statmod"
                     />
                   </div>
@@ -147,11 +151,12 @@
                       name="Wisdomscore"
                       placeholder="10"
                       class="stat"
-                      onfocusout="updateStats()"
+                      onfocusout="updateStats(3)"
                     />
                   </div>
                   <div class="modifier">
-                    <input name="Wisdommod" placeholder="+0" class="statmod" />
+                    <input name="Wisdommod" placeholder="+0"
+                    readonly="true" class="statmod" />
                   </div>
                 </li>
                 <li>
@@ -161,13 +166,14 @@
                       name="Intelligencescore"
                       placeholder="10"
                       class="stat"
-                      onfocusout="updateStats()"
+                      onfocusout="updateStats(4)"
                     />
                   </div>
                   <div class="modifier">
                     <input
                       name="Intelligencemod"
                       placeholder="+0"
+                      readonly="true"
                       class="statmod"
                     />
                   </div>
@@ -179,13 +185,14 @@
                       name="Charismascore"
                       placeholder="10"
                       class="stat"
-                      onfocusout="updateStats()"
+                      onfocusout="updateStats(5)"
                     />
                   </div>
                   <div class="modifier">
                     <input
                       name="Charismamod"
                       placeholder="+0"
+                      readonly="true"
                       class="statmod"
                     />
                   </div>
@@ -206,6 +213,7 @@
                 <input
                   name="proficiencybonus"
                   placeholder="+3"
+                  readonly="true"
                   class="profbonus"
                 />
               </div>
@@ -216,6 +224,7 @@
                     <input
                       name="Strength-save"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="save"
                     />
@@ -223,7 +232,7 @@
                       name="Strength-saveprof"
                       type="checkbox"
                       class="saveprof"
-                      onchange="updateSaves()"
+                      onchange="updateSaves(0)"
                     />
                   </li>
                   <li>
@@ -231,6 +240,7 @@
                     <input
                       name="Dexterity-save"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="save"
                     />
@@ -238,7 +248,7 @@
                       name="Dexterity-saveprof"
                       type="checkbox"
                       class="saveprof"
-                      onchange="updateSaves()"
+                      onchange="updateSaves(1)"
                     />
                   </li>
                   <li>
@@ -246,6 +256,7 @@
                     <input
                       name="Constitution-save"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="save"
                     />
@@ -253,7 +264,7 @@
                       name="Constitution-saveprof"
                       type="checkbox"
                       class="saveprof"
-                      onchange="updateSaves()"
+                      onchange="updateSaves(2)"
                     />
                   </li>
                   <li>
@@ -261,6 +272,7 @@
                     <input
                       name="Wisdom-save"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="save"
                     />
@@ -268,7 +280,7 @@
                       name="Wisdom-saveprof"
                       type="checkbox"
                       class="saveprof"
-                      onchange="updateSaves()"
+                      onchange="updateSaves(3)"
                     />
                   </li>
                   <li>
@@ -276,6 +288,7 @@
                     <input
                       name="Intelligence-save"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="save"
                     />
@@ -283,7 +296,7 @@
                       name="Intelligence-saveprof"
                       type="checkbox"
                       class="saveprof"
-                      onchange="updateSaves()"
+                      onchange="updateSaves(4)"
                     />
                   </li>
                   <li>
@@ -291,6 +304,7 @@
                     <input
                       name="Charisma-save"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="save"
                     />
@@ -298,7 +312,7 @@
                       name="Charisma-saveprof"
                       type="checkbox"
                       class="saveprof"
-                      onchange="updateSaves()"
+                      onchange="updateSaves(5)"
                     />
                   </li>
                 </ul>
@@ -313,6 +327,7 @@
                     <input
                       name="Acrobatics"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -329,6 +344,7 @@
                     <input
                       name="Animal Handling"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -345,6 +361,7 @@
                     <input
                       name="Arcana"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -361,6 +378,7 @@
                     <input
                       name="Athletics"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -376,6 +394,7 @@
                     ><input
                       name="Deception"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -391,6 +410,7 @@
                     ><input
                       name="History"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -406,6 +426,7 @@
                     ><input
                       name="Insight"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -421,6 +442,7 @@
                     ><input
                       name="Intimidation"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -436,6 +458,7 @@
                     ><input
                       name="Investigation"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -451,6 +474,7 @@
                     ><input
                       name="Medicine"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -466,6 +490,7 @@
                     ><input
                       name="Nature"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -481,6 +506,7 @@
                     ><input
                       name="Perception"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -496,6 +522,7 @@
                     ><input
                       name="Performance"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -511,6 +538,7 @@
                     ><input
                       name="Persuasion"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -526,6 +554,7 @@
                     ><input
                       name="Religion"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -542,6 +571,7 @@
                     ><input
                       name="Sleight of Hand"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -557,6 +587,7 @@
                     ><input
                       name="Stealth"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -572,6 +603,7 @@
                     ><input
                       name="Survival"
                       placeholder="+0"
+                      readonly="true"
                       type="text"
                       class="skill"
                     />
@@ -593,6 +625,7 @@
             <input
               name="passiveperception"
               placeholder="10"
+              readonly="true"
               class="passiveperception"
             />
           </div>
@@ -630,28 +663,28 @@
             <div class="hp">
               <div class="regular">
                 <div class="max">
-                  <label for="maxhp">Hit Point Maximum</label
-                  ><input name="maxhp" type="text" />
+                  <label for="maxhp">Hit Point Maximum</label>
+                  <input name="maxhp" type="text" />
                 </div>
                 <div class="current">
-                  <label for="currenthp">Current Hit Points</label
-                  ><input name="currenthp" type="text" />
+                  <label for="currenthp">Current Hit Points</label>
+                  <input name="currenthp" type="text" />
                 </div>
               </div>
               <div class="temporary">
-                <label for="temphp">Temporary Hit Points</label
-                ><input name="temphp" type="text" />
+                <label for="temphp">Temporary Hit Points</label>
+                <input name="temphp" type="text" />
               </div>
             </div>
             <div class="hitdice">
               <div>
                 <div class="total">
-                  <label for="totalhd">Total</label
-                  ><input name="totalhd" placeholder="5d10" type="text" />
+                  <label for="totalhd">Total</label>
+                  <input name="totalhd" placeholder="5d10" type="text" />
                 </div>
                 <div class="remaining">
-                  <label for="remaininghd">Hit Dice</label
-                  ><input name="remaininghd" placeholder="5" type="text" />
+                  <label for="remaininghd">Hit Dice</label>
+                  <input name="remaininghd" placeholder="5" type="text" />
                 </div>
               </div>
             </div>
@@ -1822,7 +1855,7 @@
       <header>
         <section class="charname">
           <label for="charname">Character Name</label>
-          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="charNameBot()"
+          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="charName(1)"
           class="charnamebot"/>
         </section>
         <section class="misc">

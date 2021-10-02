@@ -1,13 +1,24 @@
 {
-  "optionsStenographVersion": "1.6.3",
-  "optionsVersion": "1.0.0",
-  "statLimits": {
-    "min": 1,
-    "typmax": 20,
-    "absmax": 30
-  },
-  "levelLimits": {
+  "stenographVersion": "1.6.4",
+  "version": "1.1.0",
+  "characterLevel": {
     "min": 1,
     "max": 20
+  },
+  "proficiencyProgression": [
+    { "bonus": "+2", "levelRange": [1, 4] },
+    { "bonus": "+3", "levelRange": [5, 8] },
+    { "bonus": "+4", "levelRange": [9, 12] },
+    { "bonus": "+5", "levelRange": [13, 16] },
+    { "bonus": "+6", "levelRange": [17, 20] }
+  ],
+  "stat": {
+    "min": 1,
+    "typicalMax": 20,
+    "max": 30,
+    "modFunction": {
+      "argument": "stat",
+      "body": "return Math.floor((stat - 10) / 2);"
+    }
   }
 }
