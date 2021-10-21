@@ -127,6 +127,7 @@ form.charsheet header section.data ul {
   flex-direction: column;
   justify-content: space-between;
   align-content: space-between;
+  margin-left: 5px
 }
 form.charsheet header section.data ul li {
   width: 51px;
@@ -411,8 +412,6 @@ form.charsheet main > section div.passive-perception input {
 }
 form.charsheet main > section div.otherprofs {
   height: 100%;
-  max-height: 348px;
-  min-height: 339px;
 }
 form.charsheet main > section div.otherprofs textarea {
   width: calc(100% - 10px);

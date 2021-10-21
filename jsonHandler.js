@@ -221,7 +221,7 @@ function loadData() {
       //Check stenograph version of loaded data
       if (dataObj["stenographVersion"] !== stenographVersion) {
         alert(
-          `Different version warning!\n\nThis character sheet was made on an different version of Stenograph (Current Stenograph version: ${stenographVersion}; Your character sheet's Stenograph version: ${dataObj["stenographVersion"]}). Some data may not transfer or may transfer incorrectly!\n\nTypically, this will happen between feature updates: when the second number in the verison number changes. Ex: 1.4.0 -> 1.5.0.`
+          `This character sheet was made on an different version of Stenograph!\n\nCurrent Stenograph version: ${stenographVersion}\nYour character sheet's Stenograph version: ${dataObj["stenographVersion"]}\n\nSome data may transfer incorrectly! Typically, this will happen between feature updates: when the second number in the verison number changes. Ex: 1.4.0 -> 1.5.0.`
         );
       }
 
