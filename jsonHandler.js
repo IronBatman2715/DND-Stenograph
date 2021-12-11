@@ -178,7 +178,7 @@ function saveData() {
     elementValueObj[charsheet[i].name] = desValue;
   }
 
-  jsonText = JSON.stringify(elementValueObj); //translate object to JSON
+  jsonText = JSON.stringify(elementValueObj, null, "\t"); //translate object to JSON
 
   //Prompt user with download
   let a = document.createElement("a");
