@@ -22,15 +22,16 @@ function updateStats(statNum) {
     "Charisma",
   ];
   let isAboveTypMax = false;
-  let typMaxEqualsMax = options.stat.typMax == null;
+  let typMaxEqualsMax = options.statLimits.typMax == null;
 
   let stat = parseInt(stats[statNum].value);
-  let isStatValid = options.stat.min <= stat && stat <= options.stat.max;
+  let isStatValid =
+    options.statLimits.min <= stat && stat <= options.statLimits.max;
 
   //Check for valid input
   if (Number.isInteger(stat) && isStatValid) {
     //Check if above usual values
-    if (stat > options.stat.typMax) {
+    if (stat > options.statLimits.typMax) {
       isAboveTypMax = true;
     }
 
@@ -53,11 +54,11 @@ function updateStats(statNum) {
     if (!!stats[statNum].value) {
       if (typMaxEqualsMax) {
         alert(
-          `Invalid ${statNames[statNum]} value: ${stats[statNum].value}\n\nAll stat values must be integers from ${options.stat.min} to ${options.stat.max}.`
+          `Invalid ${statNames[statNum]} value: ${stats[statNum].value}\n\nAll stat values must be integers from ${options.statLimits.min} to ${options.statLimits.max}.`
         );
       } else {
         alert(
-          `Invalid ${statNames[statNum]} value: ${stats[statNum].value}\n\nAll stat values must be integers from ${options.stat.min} to ${options.stat.max}. Note that you can only go above ${options.stat.typMax} when explicitly told you can do so!`
+          `Invalid ${statNames[statNum]} value: ${stats[statNum].value}\n\nAll stat values must be integers from ${options.statLimits.min} to ${options.statLimits.max}. Note that you can only go above ${options.statLimits.typMax} when explicitly told you can do so!`
         );
       }
     }
@@ -65,7 +66,7 @@ function updateStats(statNum) {
   //Warn user about going above usual values
   if (isAboveTypMax && !typMaxEqualsMax) {
     alert(
-      `Note that any stat can NOT go above ${options.stat.typMax} unless EXPLICITLY told you can do so. Be sure you have something that allows that!`
+      `Note that any stat can NOT go above ${options.statLimits.typMax} unless EXPLICITLY told you can do so. Be sure you have something that allows that!`
     );
   }
 
@@ -384,16 +385,16 @@ function level2ProfBonus() {
     }
 
     //Validity tests
-    if (level > options.characterLevel.max) {
+    if (level > options.levelLimits.max) {
       //level is above maximum, alert user and mark as invalid
       alert(
-        `Invalid ${levelDescriptorStr}!\n\nMust be no more than ${options.characterLevel.max} (Current: ${level})!`
+        `Invalid ${levelDescriptorStr}!\n\nMust be no more than ${options.levelLimits.max} (Current: ${level})!`
       );
       return false;
-    } else if (level < options.characterLevel.min) {
+    } else if (level < options.levelLimits.min) {
       //level is below minimum, alert user and mark as invalid
       alert(
-        `Invalid ${levelDescriptorStr}!\n\nMust be at least ${options.characterLevel.min} (Current: ${level})!`
+        `Invalid ${levelDescriptorStr}!\n\nMust be at least ${options.levelLimits.min} (Current: ${level})!`
       );
       return false;
     } else {

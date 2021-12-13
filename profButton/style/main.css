@@ -1,4 +1,7 @@
 .skillprofbox {
+  background-color: var(--background);
+  border-color: var(--border);
+
   display: flex;
   justify-content: center;
   align-content: center;
@@ -10,8 +13,11 @@
   width: 10px;
   border-radius: 10px;
   cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
 }
 .skillprofbox div > p {
+  color: var(--background);
   visibility: hidden;
 
   user-select: none;
@@ -24,6 +30,7 @@
 
 /*No proficiency*/
 .skillprofbox div.state0 {
+  background-color: var(--background);
   order: 2;
   box-sizing: border-box;
   align-self: center;
@@ -35,6 +42,7 @@
 
 /*Proficiency*/
 .skillprofbox div.state1 {
+  background-color: var(--border);
   order: 2;
   box-sizing: border-box;
   align-self: center;
@@ -46,6 +54,7 @@
 
 /*Half proficiency*/
 .skillprofbox div.state2 {
+  background-color: var(--border);
   order: 2;
   box-sizing: border-box;
   align-self: center;
@@ -58,6 +67,7 @@
 
 /*Expertise (Double proficiency)*/
 .skillprofbox div.state3 {
+  background-color: var(--border);
   order: 2;
   box-sizing: border-box;
   align-self: center;

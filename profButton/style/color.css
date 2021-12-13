@@ -1,0 +1,20 @@
+:root {
+  --border: black;
+  --background: white;
+}
+
+/* Light mode(Default) */
+/*@media (prefers-color-scheme: light) {
+  :root {
+    --border: black;
+    --background: white;
+  }
+}*/
+
+/* Dark mode */
+/*@media (prefers-color-scheme: dark) {
+  :root {
+    --border: white;
+    --background: black;
+  }
+}*/

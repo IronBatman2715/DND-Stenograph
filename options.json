@@ -1,7 +1,149 @@
 {
-  "stenographVersion": "1.6.6",
-  "version": "1.1.0",
-  "characterLevel": {
+  "stenographVersion": "0.1.0",
+  "version": "0.1.0",
+  "author": "WotC",
+  "stat": {
+    "min": 1,
+    "typMax": 20,
+    "max": 30,
+    "modFunction": {
+      "argument": "stat",
+      "body": "return Math.floor((stat - 10) / 2);"
+    },
+    "list": [
+      {
+        "name": "Strength",
+        "skills": [
+          {
+            "name": "Athletics"
+          }
+        ]
+      },
+      {
+        "name": "Dexterity",
+        "skills": [
+          {
+            "name": "Acrobatics"
+          },
+          {
+            "name": "Sleight of Hand"
+          },
+          {
+            "name": "Stealth"
+          }
+        ]
+      },
+      {
+        "name": "Constitution",
+        "skills": []
+      },
+      {
+        "name": "Intelligence",
+        "skills": [
+          {
+            "name": "Arcana"
+          },
+          {
+            "name": "History"
+          },
+          {
+            "name": "Investigation"
+          },
+          {
+            "name": "Nature"
+          },
+          {
+            "name": "Religion"
+          }
+        ]
+      },
+      {
+        "name": "Wisdom",
+        "skills": [
+          {
+            "name": "Animal handling"
+          },
+          {
+            "name": "Insight"
+          },
+          {
+            "name": "Medicine"
+          },
+          {
+            "name": "Perception",
+            "doPassive": true
+          },
+          {
+            "name": "Survival"
+          }
+        ]
+      },
+      {
+        "name": "Charisma",
+        "skills": [
+          {
+            "name": "Deception"
+          },
+          {
+            "name": "Intimidation"
+          },
+          {
+            "name": "Performance"
+          },
+          {
+            "name": "Persuasion"
+          }
+        ]
+      }
+    ]
+  },
+  "damageTypes": [
+    {
+      "name": "Bludgeoning",
+      "abvName": "Bludg."
+    },
+    {
+      "name": "Piercing"
+    },
+    {
+      "name": "Slashing"
+    },
+    {
+      "name": "Cold"
+    },
+    {
+      "name": "Fire"
+    },
+    {
+      "name": "Poison"
+    },
+    {
+      "name": "Acid"
+    },
+    {
+      "name": "Psychic"
+    },
+    {
+      "name": "Necrotic"
+    },
+    {
+      "name": "Radiant"
+    },
+    {
+      "name": "Lightning"
+    },
+    {
+      "name": "Thunder"
+    },
+    {
+      "name": "Force"
+    }
+  ],
+
+  "items": {
+    "list": []
+  },
+  "characterTotalLevel": {
     "min": 1,
     "max": 20
   },
@@ -11,14 +153,5 @@
     { "bonus": "+4", "levelRange": [9, 12] },
     { "bonus": "+5", "levelRange": [13, 16] },
     { "bonus": "+6", "levelRange": [17, 20] }
-  ],
-  "stat": {
-    "min": 1,
-    "typicalMax": 20,
-    "max": 30,
-    "modFunction": {
-      "argument": "stat",
-      "body": "return Math.floor((stat - 10) / 2);"
-    }
-  }
+  ]
 }

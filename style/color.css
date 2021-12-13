@@ -1,0 +1,29 @@
+/*
+    white
+    black
+    #eee
+    #bbb
+    #ddd
+    */
+
+/* Light mode(Default) */
+@media (prefers-color-scheme: light) {
+  /*
+    white
+    black
+    #eee
+    #bbb
+    #ddd
+    */
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  /*
+    white
+    black
+    #444
+    #111
+    #222
+    */
+}
