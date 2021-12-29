@@ -1,6 +1,6 @@
 //Import options.json and parse values to global variables used in autoMath.js
 let options;
-let defaultOptionsLocation = "./options.json";
+const defaultOptionsLocation = "../resources/data/defaultOptions.json";
 /** Global options variables used throughout JS code (mostly autoMath.js)
  * options.stenographVersion;
  * options.version;

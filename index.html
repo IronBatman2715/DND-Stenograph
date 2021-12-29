@@ -2,66 +2,88 @@
 <html lang="en-US">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>D&D Stenograph</title>
     <link
       rel="icon"
       type="image/png"
       href="https://img.icons8.com/color/452/dungeons-and-dragons.png"
     />
+
+    <!--Libraries-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./libraries/util.js"></script>
+    <script src="./scripts/libraries/util.js"></script>
+
+    <!--Proficiency button-->
+    <link rel="stylesheet" href="./profButton/style/main.css" />
+    <link rel="stylesheet" href="./profButton/style/color.css" />
+
+    <script src="./profButton/script.js"></script>
+    <!--End Proficiency button-->
+
     <link rel="stylesheet" href="./style/main.css" />
     <link rel="stylesheet" href="./style/color.css" />
     <link rel="stylesheet" href="./style/print.css" />
-    <link rel="stylesheet" href="./profButton/style/main.css" />
-    <link rel="stylesheet" href="./profButton/style/color.css" />
-    <script src="./profButton/script.js"></script>
+
     <script src="./version.js"></script>
-    <script src="./optionsCompiler.js"></script>
-    <!--<script src="./autoMath.js"></script>
-    <script src="./characterDataHandler.js"></script>-->
+    <script src="./scripts/optionsCompiler.js"></script>
+    <!--
+    <script src="./scripts/autoMath.js"></script>
+    <script src="./scripts/characterDataHandler.js"></script>-->
   </head>
-  <body onload="loadOptions('./options.json');">
+  <body onload="loadOptions(`../resources/data/defaultOptions.json`);">
+    <input type="file" id="loadData" style="display: none;" accept=".json,.txt"></input>
     <div class="page overview">
       <header>
-        <div class="head">
+        <div class="title">
           <h1>OVERVIEW</h1>
-          <div>
+          <div class="rows">
             <input type="text" name="charNameFront" id="charNameFront" />
             <label for="charNameFront">CHARACTER NAME</label>
           </div>
         </div>
-        <div class="misc">
-          <div>
+        <div class="misc boxStyle1">
+          <div class="rows">
             <input type="text" name="class&Level" id="class&Level" />
             <label for="class&Level">CLASS & LEVEL</label>
           </div>
-          <div>
+          <div class="rows">
             <input type="text" name="background" id="background" />
             <label for="background">BACKGROUND</label>
           </div>
-          <div>
+          <div class="rows">
             <input type="text" name="playerName" id="playerName" />
             <label for="playerName">PLAYER NAME</label>
           </div>
-          <div>
+          <div class="rows">
             <input type="text" name="race" id="race" />
             <label for="race">RACE</label>
           </div>
-          <div>
+          <div class="rows">
             <input type="text" name="alignment" id="alignment" />
             <label for="alignment">ALIGNMENT</label>
           </div>
-          <div>
+          <div class="rows">
             <input type="text" name="experiencePoints" id="experiencePoints" />
             <label for="experiencePoints">EXPERIENCE POINTS</label>
           </div>
         </div>
-        <div class="data"></div>
+        <div class="data">
+          <button
+            type="button"
+            onclick="let loadDataButton = document.getElementById(`loadData`);
+            loadDataButton.click();"
+          >
+            Load
+          </button>
+          <button onclick="saveData()">Save</button>
+          <button onclick="clearData()">Clear</button>
+        </div>
       </header>
       <main class="even-columns">
         <!--Stats & Equipped gear-->
-        <div class="rows f">
+        <div class="rows">
           <!--Stats-->
           <section id="stats" class="rows">
             <!--Inspiration-->
@@ -84,7 +106,7 @@
           <!--Equipped Gear-->
           <section class="rows">
             <div>
-              <img src="./images/helmet.png" alt="helmet" />
+              <img src="./resources/assets/images/helmet.png" alt="helmet" />
               <input
                 type="text"
                 name="equippedHelmet"
@@ -92,7 +114,10 @@
               />
             </div>
             <div>
-              <img src="./images/necklace.png" alt="necklace" />
+              <img
+                src="./resources/assets/images/necklace.png"
+                alt="necklace"
+              />
               <input
                 type="text"
                 name="equippedNecklace"
@@ -100,7 +125,10 @@
               />
             </div>
             <div>
-              <img src="./images/chestpiece.png" alt="chestpiece" />
+              <img
+                src="./resources/assets/images/chestpiece.png"
+                alt="chestpiece"
+              />
               <input
                 type="text"
                 name="equippedChestpiece"
@@ -108,7 +136,10 @@
               />
             </div>
             <div>
-              <img src="./images/gauntlet.png" alt="gauntlet" />
+              <img
+                src="./resources/assets/images/gauntlet.png"
+                alt="gauntlet"
+              />
               <input
                 type="text"
                 name="equippedGauntlet"
@@ -116,7 +147,7 @@
               />
             </div>
             <div>
-              <img src="./images/cloak.png" alt="cloak" />
+              <img src="./resources/assets/images/cloak.png" alt="cloak" />
               <input
                 type="text"
                 name="equippedCloak"
@@ -124,19 +155,19 @@
               />
             </div>
             <div>
-              <img src="./images/ring.png" alt="ring" />
+              <img src="./resources/assets/images/ring.png" alt="ring" />
               <input type="text" name="equippedRing1" placeholder="Ring 1" />
             </div>
             <div>
-              <img src="./images/ring.png" alt="ring" />
+              <img src="./resources/assets/images/ring.png" alt="ring" />
               <input type="text" name="equippedRing2" placeholder="Ring 2" />
             </div>
             <div>
-              <img src="./images/belt.png" alt="belt" />
+              <img src="./resources/assets/images/belt.png" alt="belt" />
               <input type="text" name="equippedBelt" placeholder="Belt" />
             </div>
             <div>
-              <img src="./images/boots.png" alt="boots" />
+              <img src="./resources/assets/images/boots.png" alt="boots" />
               <input
                 type="text"
                 name="equippedBoots"
@@ -146,7 +177,7 @@
           </section>
         </div>
         <!--Health, Combat, and Other gear/items-->
-        <div class="rows s">
+        <div class="rows">
           <!--Initiative, HP, and Conditions-->
           <section class="rows">
             <!--AC, Initiative, Movement-->
@@ -764,7 +795,7 @@
           </section>
         </div>
         <!--Hit dice, Death, IRVs, Langauges, Proficiencies, and Features & Traits-->
-        <div class="rows t">
+        <div class="rows">
           <!--Hit dice & Death & IRVs-->
           <section class="rows">
             <!--Hit dice and Death-->
@@ -829,8 +860,11 @@
                       id="failedDeathSave3"
                     />
                   </div>
-                  <img src="./images/reaper.png" alt="reaper" />
-                  <img src="./images/angel.png" alt="angel" />
+                  <img
+                    src="./resources/assets/images/reaper.png"
+                    alt="reaper"
+                  />
+                  <img src="./resources/assets/images/angel.png" alt="angel" />
                   <!--Successful death saves-->
                   <div class="rows">
                     <input
@@ -929,7 +963,7 @@
     <hr />
     <div class="page background">
       <header>
-        <div class="head">
+        <div class="title">
           <h1>BACKGROUND</h1>
           <div class="boxed">
             <input
