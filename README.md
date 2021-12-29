@@ -1,10 +1,11 @@
 # D&D Stenograph: An HTML based D&D 5e character sheet
 
-Version 1.6.6
+> v1.6.6
 
-D&D character sheet with html, css, and js.
+A webpage-based D&D 5e character sheet.
 
-Run the character sheet for yourself by typing "ironbatman2715.github.io/DND-Stenograph/" into your web browser!
+Run the character sheet for yourself by clicking [here](https://ironbatman2715.github.io/DND-Stenograph/)!
 
-Character sheets are saved, stored, and loaded by the individual user as a JSON or TXT document.
-Currently, the automatic math done is specified from a local JSON (options.json), but in the future this will be editable/uploadable by your DM.
+Presently, it is up to the *individual user* to *save, store, and upload* their character sheet data if they want to access it again (data is saved as a JSON or TXT)!
+
+The calculations done by the program are specified by the repository file "options.json". In the future, plans are to make this customizeable by your DM.
