@@ -1,21 +1,24 @@
 :root {
-  /* Defaults -> Light */
-  --blank: rgba(255, 255, 255, 1); /*white*/
-  --border: rgba(0, 0, 0, 1); /*black*/
+  /* Defaults */
+  --profButton-background: rgba(255, 255, 255, 1); /*white*/
+  --profButton-text: rgba(255, 255, 255, 1); /*white*/
+  --profButton-border: rgba(0, 0, 0, 1); /*black*/
 }
 
-/* Light mode*/
+/* Light mode [default]*/
 @media (prefers-color-scheme: light) {
   :root {
-    --blank: rgba(255, 255, 255, 1); /*white*/
-    --border: rgba(0, 0, 0, 1); /*black*/
+    --profButton-background: rgba(255, 255, 255, 1); /*white*/
+    --profButton-text: rgba(255, 255, 255, 1); /*white*/
+    --profButton-border: rgba(0, 0, 0, 1); /*black*/
   }
 }
 
-/* Dark mode [default]*/
+/* Dark mode*/
 @media (prefers-color-scheme: dark) {
   :root {
-    --blank: rgba(0, 0, 0, 1); /*black*/
-    --border: rgba(255, 255, 255, 1); /*white*/
+    --profButton-background: rgba(68, 68, 68, 1); /*custom*/
+    --profButton-text: rgba(0, 0, 0, 1); /*black*/
+    --profButton-border: rgba(255, 255, 255, 1); /*white*/
   }
 }
