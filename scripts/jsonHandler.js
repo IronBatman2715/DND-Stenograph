@@ -1,67 +1,69 @@
 //Import options.json and parse values to global variables used in autoMath.js
+/**
+ * @typedef {{min: number, max: number}} CharacterLevel
+ * @typedef {{bonus: string, levelRange: number[]}} ProficiencyProgression
+ * @typedef {{argument: string, body: string}} ModFunction
+ * @typedef {{min: number, typicalMax: number, max: number, modFunction: ModFunction}} Stat
+ * @typedef {{stenographVersion: string, version: string, characterLevel: CharacterLevel, proficiencyProgression: ProficiencyProgression[], stat: Stat}} Options
+ * @type {Options}
+ */
 let options;
 let defaultOptionsLocation = "./resources/data/options.json";
-/** Global options variables used throughout JS code (mostly autoMath.js)
- * options.stenographVersion;
- * options.version;
- * options.stat;
- * options.characterLevel;
- * options.proficiencyProgression
- **/
 let statModFunction; //function to convert from stat to stat modifier
 
-function getOptionsJSON(callback, optionsLocation) {
-  let xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open("GET", optionsLocation, true);
-  xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == "200") {
-      callback(xobj.responseText);
-    }
-  };
-  xobj.send(null);
+/** Load data from json options file
+ * @param {String} optionsLocation
+ */
+async function loadOptions(optionsLocation = defaultOptionsLocation) {
+  try {
+    const response = await fetch(optionsLocation);
+    options = await response.json();
+
+    optionsParser(optionsLocation);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-//Load data from json options file
-function loadOptions(optionsLocation = defaultOptionsLocation) {
-  getOptionsJSON(function (response) {
-    options = JSON.parse(response); //load data from json
+/** Parse options data into html
+ * @param {String} optionsLocation
+ */
+function optionsParser(optionsLocation) {
+  /** Versions **/
+  console.log(`Stenograph Version: ${stenographVersion}\n`); //currently running version of Stenograph
+  console.log(
+    `Loading ${
+      optionsLocation == defaultOptionsLocation ? "DEFAULT " : ""
+    }Options file: ${optionsLocation}`
+  ); //currently loaded options file
+  console.log(`\tOptions Stenograph Version: ${options.stenographVersion}`); //version of Stenograph this options file was designed on
+  console.log(`\tOptions Version: ${options.version}`); //version of options file
 
-    /** Versions **/
-    console.log(`Stenograph Version: ${stenographVersion}\n`); //currently running version of Stenograph
-    console.log(`Loading Options file: ${optionsLocation}`); //currently loaded options file
-    console.log(`\tOptions Stenograph Version: ${options.stenographVersion}`); //version of Stenograph this options file was designed on
-    console.log(`\tOptions Version: ${options.version}`); //version of options file
+  /** Data **/
+  //characterLevel
+  console.log(
+    `\tCharacter Level:\n\t\tmin: ${options.characterLevel.min}\n\t\tmax: ${options.characterLevel.max}`
+  );
 
-    /** Data **/
-    //characterLevel
+  //proficicncyProgression
+  console.log("\tProficiency progression:");
+  for (let i = 0; i < options.proficiencyProgression.length; i++) {
     console.log(
-      `\tCharacter Level:\n\t\tmin: ${options.characterLevel.min}\n\t\tmax: ${options.characterLevel.max}`
+      `\t\tbonus: ${options.proficiencyProgression[i].bonus}\n\t\tlevelRange: ${options.proficiencyProgression[i].levelRange[0]} to ${options.proficiencyProgression[i].levelRange[1]}\n`
     );
+  }
 
-    //proficicncyProgression
-    console.log("\tProficiency progression:");
-    for (let i = 0; i < options.proficiencyProgression.length; i++) {
-      console.log(
-        `\t\tbonus: ${options.proficiencyProgression[i].bonus}\n\t\tlevelRange: ${options.proficiencyProgression[i].levelRange[0]} to ${options.proficiencyProgression[i].levelRange[1]}\n`
-      );
-    }
+  /* stat */
+  //stat.min, stat.typicalMax, stat.max
+  console.log(
+    `\tStat Limits:\n\t\tmin: ${options.stat.min}\n\t\ttypicalMax: ${options.stat.typicalMax}\n\t\tmax: ${options.stat.max}`
+  );
+  //modFunction: Assume all values MUST be integers
+  statModFunction = new Function(options.stat.modFunction.argument, options.stat.modFunction.body);
+  console.log(`\tStat Modifer Function:\n\t\t${options.stat.modFunction.body}`);
 
-    /* stat */
-    //stat.min, stat.typMax, stat.max
-    console.log(
-      `\tStat Limits:\n\t\tmin: ${options.stat.min}\n\t\ttypMax: ${options.stat.typMax}\n\t\tmax: ${options.stat.max}`
-    );
-    //modFunction: Assume all values MUST be integers
-    statModFunction = new Function(
-      options.stat.modFunction.argument,
-      options.stat.modFunction.body
-    );
-    console.log(`\tStat Modifer Function:\n\t\t${options.stat.modFunction.body}`);
-
-    /** Verify **/
-    verifyOptions(optionsLocation);
-  }, optionsLocation);
+  /** Verify **/
+  verifyOptions(optionsLocation);
 }
 
 //Verify that options file has valid values
