@@ -1,0 +1,21 @@
+:root {
+  /* Defaults -> Light */
+  --blank: rgba(255, 255, 255, 1); /*white*/
+  --border: rgba(0, 0, 0, 1); /*black*/
+}
+
+/* Light mode*/
+@media (prefers-color-scheme: light) {
+  :root {
+    --blank: rgba(255, 255, 255, 1); /*white*/
+    --border: rgba(0, 0, 0, 1); /*black*/
+  }
+}
+
+/* Dark mode [default]*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --blank: rgba(0, 0, 0, 1); /*black*/
+    --border: rgba(255, 255, 255, 1); /*white*/
+  }
+}

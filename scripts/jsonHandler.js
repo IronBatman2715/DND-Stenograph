@@ -1,6 +1,6 @@
 //Import options.json and parse values to global variables used in autoMath.js
 let options;
-let defaultOptionsLocation = "./options.json";
+let defaultOptionsLocation = "./resources/data/options.json";
 /** Global options variables used throughout JS code (mostly autoMath.js)
  * options.stenographVersion;
  * options.version;
@@ -23,7 +23,7 @@ function getOptionsJSON(callback, optionsLocation) {
 }
 
 //Load data from json options file
-function loadOptions(optionsLocation) {
+function loadOptions(optionsLocation = defaultOptionsLocation) {
   getOptionsJSON(function (response) {
     options = JSON.parse(response); //load data from json
 
@@ -57,9 +57,7 @@ function loadOptions(optionsLocation) {
       options.stat.modFunction.argument,
       options.stat.modFunction.body
     );
-    console.log(
-      `\tStat Modifer Function:\n\t\t${options.stat.modFunction.body}`
-    );
+    console.log(`\tStat Modifer Function:\n\t\t${options.stat.modFunction.body}`);
 
     /** Verify **/
     verifyOptions(optionsLocation);
@@ -116,10 +114,7 @@ function verifyOptions(optionsLocation) {
       invalidOptions("stat");
     }
   } else {
-    if (
-      options.stat.min >= options.stat.typMax ||
-      options.stat.typMax >= options.stat.max
-    ) {
+    if (options.stat.min >= options.stat.typMax || options.stat.typMax >= options.stat.max) {
       invalidOptions("stat");
     }
   }
@@ -127,9 +122,7 @@ function verifyOptions(optionsLocation) {
   //stat.modFunction: assume all returned values must be integers
   for (let stat = options.stat.min; stat <= options.stat.max; stat++) {
     if (!Number.isInteger(statModFunction(stat))) {
-      invalidOptions(
-        "stat.modFunction(must yield integers for all values in stat range)"
-      );
+      invalidOptions("stat.modFunction(must yield integers for all values in stat range)");
       break;
     }
   }
@@ -137,16 +130,12 @@ function verifyOptions(optionsLocation) {
   if (!invalid) {
     console.log(`Options file(${optionsLocation}) is valid!`);
   } else {
-    console.log(
-      `Options file(${optionsLocation}) is invalid! Refer to alert(s) that popped up.`
-    );
+    console.log(`Options file(${optionsLocation}) is invalid! Refer to alert(s) that popped up.`);
   }
 
   /* Invalid data alert helper function */
   function invalidOptions(str) {
-    alert(
-      `Invalid options file! Check your values!\n\nInvalid ${str} value(s)`
-    );
+    alert(`Invalid options file! Check your values!\n\nInvalid ${str} value(s)`);
     invalid = true;
   }
 }
@@ -161,8 +150,7 @@ function saveData() {
   let skillprof = document.querySelectorAll("div.skillprofbox div");
   for (let i = 0; i < skillprof.length; i++) {
     //console.log(skillprof[i].getAttribute("class"));
-    elementValueObj[skillprof[i].getAttribute("name")] =
-      skillprof[i].getAttribute("class");
+    elementValueObj[skillprof[i].getAttribute("name")] = skillprof[i].getAttribute("class");
   }
 
   //Save rest of inputs
@@ -182,10 +170,7 @@ function saveData() {
 
   //Prompt user with download
   let a = document.createElement("a");
-  a.setAttribute(
-    "href",
-    "data:text/plain;charset=utf-8," + encodeURIComponent(jsonText)
-  );
+  a.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(jsonText));
   if (!charsheet[0].value) {
     a.setAttribute("download", "stenograph_character.json");
   } else {

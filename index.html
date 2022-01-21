@@ -4,27 +4,39 @@
     <meta charset="UTF-8" />
     <title>D&D Stenograph</title>
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
-    />
-    <link
       rel="icon"
       type="image/png"
       href="https://img.icons8.com/color/452/dungeons-and-dragons.png"
     />
+
+    <!--Libraries-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--Stylesheets-->
+    <!--<link rel="stylesheet" href="./style/color.css" />
+    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/mediaQueries.css" />-->
     <link rel="stylesheet" href="./style/style.css" />
     <link rel="stylesheet" href="./style/light.css" />
     <link rel="stylesheet" href="./style/dark.css" />
-    <link rel="stylesheet" href="./profButton/style/style.css" />
-    <link rel="stylesheet" href="./profButton/style/light.css" />
-    <link rel="stylesheet" href="./profButton/style/dark.css" />
-    <script src="./profButton/script.js"></script>
-    <script src="./version.js"></script>
-    <script src="./jsonHandler.js"></script>
-    <script src="./autoMath.js"></script>
+    <!--<link rel="stylesheet" href="./customElements/profButton/style/color.css" />
+    <link rel="stylesheet" href="./customElements/profButton/style/main.css" />
+    <link rel="stylesheet" href="./customElements/profButton/style/mediaQueries.css" />-->
+    <link rel="stylesheet" href="./customElements/profButton/style/style.css" />
+    <link rel="stylesheet" href="./customElements/profButton/style/light.css" />
+    <link rel="stylesheet" href="./customElements/profButton/style/dark.css" />
+
+    <!--Scripts-->
+    <script src="./customElements/profButton/main.js"></script>
+    <script src="./resources/data/version.js"></script>
+    <script src="./scripts/jsonHandler.js"></script>
+    <script src="./scripts/autoMath.js"></script>
   </head>
-  <body onload="loadOptions('./options.json')">
+  <body onload="loadOptions()">
     <form class="charsheet" id="charsheet" onsubmit="return false">
       <div class="frontpage">
       <header>

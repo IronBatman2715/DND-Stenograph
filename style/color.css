@@ -1,0 +1,38 @@
+:root {
+  /* Defaults -> Light */
+  --background: rgba(255, 255, 255, 1); /*white*/
+  --offBackground1: rgba(238, 238, 238, 1); /*custom*/
+  --offBackground2: rgba(221, 221, 221, 1); /*custom*/
+  --offBackground3: rgba(187, 187, 187, 1); /*custom*/
+  --inverseBackground: rgba(0, 0, 0, 1); /*black*/
+  --text: rgba(0, 0, 0, 1); /*black*/
+
+  /* Constants */
+  --white: rgba(255, 255, 255, 1); /*white*/
+  --black: rgba(0, 0, 0, 1); /*black*/
+  --clear: rgba(0, 0, 0, 0); /*clear*/
+}
+
+/* Light mode*/
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: rgba(255, 255, 255, 1); /*white*/
+    --offBackground1: rgba(238, 238, 238, 1); /*custom*/
+    --offBackground2: rgba(221, 221, 221, 1); /*custom*/
+    --offBackground3: rgba(187, 187, 187, 1); /*custom*/
+    --inverseBackground: rgba(0, 0, 0, 1); /*black*/
+    --text: rgba(0, 0, 0, 1); /*black*/
+  }
+}
+
+/* Dark mode [default]*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: rgba(0, 0, 0, 1); /*black*/
+    --offBackground1: rgba(17, 17, 17, 1); /*custom*/
+    --offBackground2: rgba(34, 34, 34, 1); /*custom*/
+    --offBackground3: rgba(68, 68, 68, 1); /*custom*/
+    --inverseBackground: rgba(255, 255, 255, 1); /*white*/
+    --text: rgba(255, 255, 255, 1); /*white*/
+  }
+}
