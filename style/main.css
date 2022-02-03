@@ -176,8 +176,7 @@ form.charsheet header section.data ul li button {
   color: var(--text);
   border-radius: 0.25em;
 }
-form.charsheet header section.data ul li button:hover,
-form.charsheet header section.data ul li button:focus {
+form.charsheet header section.data ul li button:hover {
   background-color: var(--offBackground3);
 }
 form.charsheet header section.data ul li button:active {

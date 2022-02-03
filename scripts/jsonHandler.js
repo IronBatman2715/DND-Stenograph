@@ -144,57 +144,58 @@ function verifyOptions(optionsLocation) {
 
 //Saving character data
 function saveData() {
-  let elementValueObj = new Object();
+  const elementValueObj = {};
   //Save Stenogrpah version number
-  elementValueObj["stenographVersion"] = stenographVersion;
+  elementValueObj.stenographVersion = stenographVersion;
 
   //Save skill proficiencies
-  let skillprof = document.querySelectorAll("div.skillprofbox div");
-  for (let i = 0; i < skillprof.length; i++) {
-    //console.log(skillprof[i].getAttribute("class"));
-    elementValueObj[skillprof[i].getAttribute("name")] = skillprof[i].getAttribute("class");
-  }
+  document.querySelectorAll("div.skillprofbox div").forEach((skillprof) => {
+    //console.log(skillprof.getAttribute("class"));
+    elementValueObj[skillprof.getAttribute("name")] = skillprof.getAttribute("class");
+  });
 
   //Save rest of inputs
-  let charsheet = document.getElementById("charsheet");
+  const charsheet = document.getElementById("charsheet");
   for (let i = 0; i < charsheet.length; i++) {
-    let desValue;
-    if (charsheet[i].type == "text" || charsheet[i].type == "textarea") {
-      desValue = charsheet[i].value;
-    } else if (charsheet[i].type == "checkbox") {
-      desValue = charsheet[i].checked;
+    const { checked, name, type, value } = charsheet[i];
+
+    let relevantValue;
+    if (type === "text" || type === "textarea") {
+      relevantValue = value;
+    } else if (type === "checkbox") {
+      relevantValue = checked;
     }
 
-    elementValueObj[charsheet[i].name] = desValue;
+    elementValueObj[name] = relevantValue;
   }
 
-  jsonText = JSON.stringify(elementValueObj, null, "\t"); //translate object to JSON
+  const jsonText = JSON.stringify(elementValueObj, null, "\t"); //translate object to JSON
 
   //Prompt user with download
   let a = document.createElement("a");
-  a.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(jsonText));
-  if (!charsheet[0].value) {
+  a.setAttribute("href", `data:text/json;charset=utf-8,${encodeURIComponent(jsonText)}`);
+  if (elementValueObj.charname.length === 0) {
     a.setAttribute("download", "stenograph_character.json");
   } else {
-    a.setAttribute("download", `stenograph_${charsheet[0].value}.json`);
+    a.setAttribute("download", `stenograph_${elementValueObj.charname.split(" ").join("_")}.json`);
   }
   a.click();
+  a.remove();
 }
 
 //Loading character data
 function loadData() {
-  let loadDataButton = document.getElementsByClassName("loaddata");
-  let files = loadDataButton[0].files;
+  const { files } = document.getElementsByClassName("loaddata").item(0);
 
   if (files.length !== 1) {
     //Invalid upload
-    alert("Submit exactly one .json or .txt!");
+    alert("Submit exactly one .json!");
     return false;
   } else {
-    let fr = new FileReader();
+    const fr = new FileReader();
 
-    fr.onload = function (e) {
-      let result = JSON.parse(e.target.result);
+    fr.onload = (event) => {
+      let result = JSON.parse(event.target.result);
       let jsonText = JSON.stringify(result, null, 2);
       let dataObj = JSON.parse(jsonText);
 
@@ -206,13 +207,12 @@ function loadData() {
       }
 
       //Load skill proficiencies
-      let skillprof = document.querySelectorAll("div.skillprofbox div");
-      for (let i = 0; i < skillprof.length; i++) {
-        skillprof[i].className = dataObj[skillprof[i].getAttribute("name")];
-      }
+      document.querySelectorAll("div.skillprofbox div").forEach((skillprof) => {
+        skillprof.className = dataObj[skillprof.getAttribute("name")];
+      });
 
       //Load rest of inputs
-      let charsheet = document.getElementById("charsheet");
+      const charsheet = document.getElementById("charsheet");
       for (let i = 0; i < charsheet.length; i++) {
         let value = dataObj[charsheet[i].name];
         if (charsheet[i].type == "text" || charsheet[i].type == "textarea") {

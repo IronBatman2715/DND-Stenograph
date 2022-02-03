@@ -4,10 +4,10 @@
 let states = Array(18).fill(0); //default state 0
 
 function updateSkillProfBox(i) {
-  let skillprofs = document.querySelectorAll("div.skillprofbox div");
-
   states[i] = (states[i] + 1) % 4; //cycle to next state
-  skillprofs[i].className = "state" + states[i];
+
+  const skillprof = document.querySelectorAll("div.skillprofbox div").item(i);
+  skillprof.className = "state" + states[i];
 
   updateSkills();
 }
