@@ -10,7 +10,6 @@
     />
 
     <!--Libraries-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--End Libraries-->
 
     <!--Stylesheets-->
@@ -78,9 +77,8 @@
         <section class="data">
           <ul>
             <li>
-              <input type="file" class="loaddata" style="display: none;" accept=".json,.txt"></input>
-              <button type="button" onclick="let loadDataButton = document.getElementsByClassName(`loaddata`);
-              loadDataButton[0].click();">Load</button>
+              <input type="file" oninput="loadData()" class="loaddata" style="display: none;" accept=".json,.txt"></input>
+              <button type="button" onclick="document.getElementsByClassName(`loaddata`).item(0).click()">Load</button>
             </li>
             <li>
               <button onclick="saveData()">Save</button>

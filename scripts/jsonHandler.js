@@ -181,13 +181,6 @@ function saveData() {
   a.click();
 }
 
-//Once file has been uploaded, run loadData
-$(document).ready(function () {
-  $(".loaddata").change(function () {
-    loadData();
-  });
-});
-
 //Loading character data
 function loadData() {
   let loadDataButton = document.getElementsByClassName("loaddata");
