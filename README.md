@@ -1,8 +1,6 @@
-# D&D Stenograph: An HTML based D&D 5e character sheet
+# D&D Stenograph: A D&D 5e character sheet web app
 
 > v1.6.7
-
-A webpage-based D&D 5e character sheet.
 
 Run the character sheet for yourself by clicking [here](https://ironbatman2715.github.io/DND-Stenograph/)!
 
