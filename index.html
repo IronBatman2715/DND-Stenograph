@@ -40,7 +40,7 @@
       <header>
         <section class="charname">
           <label for="charname">Character Name</label>
-          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="charName(0)"
+          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="mirrorCharName(0)"
           class="charnametop"/>
         </section>
         <section class="misc">
@@ -710,19 +710,19 @@
                         name="deathsuccess1"
                         type="checkbox"
                         class="deathsuccess"
-                        onchange="deathsaves()"
+                        onchange="deathSaves()"
                       />
                       <input
                         name="deathsuccess2"
                         type="checkbox"
                         class="deathsuccess"
-                        onchange="deathsaves()"
+                        onchange="deathSaves()"
                       />
                       <input
                         name="deathsuccess3"
                         type="checkbox"
                         class="deathsuccess"
-                        onchange="deathsaves()"
+                        onchange="deathSaves()"
                       />
                     </div>
                   </div>
@@ -732,20 +732,20 @@
                       <input
                         name="deathfail1"
                         type="checkbox"
-                        class="deathfail"
-                        onchange="deathsaves()"
+                        class="deathfailure"
+                        onchange="deathSaves()"
                       />
                       <input
                         name="deathfail2"
                         type="checkbox"
-                        class="deathfail"
-                        onchange="deathsaves()"
+                        class="deathfailure"
+                        onchange="deathSaves()"
                       />
                       <input
                         name="deathfail3"
                         type="checkbox"
-                        class="deathfail"
-                        onchange="deathsaves()"
+                        class="deathfailure"
+                        onchange="deathSaves()"
                       />
                     </div>
                   </div>
@@ -1864,7 +1864,7 @@
       <header>
         <section class="charname">
           <label for="charname">Character Name</label>
-          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="charName(1)"
+          <input name="charname" placeholder="Aragorn II Elessar" onfocusout="mirrorCharName(1)"
           class="charnamebot"/>
         </section>
         <section class="misc">

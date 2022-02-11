@@ -8,6 +8,8 @@ function clearData() {
       .forEach((skillprof) => (skillprof.className = "state0"));
 
     document.getElementById("charsheet").reset(); //reset rest of sheet
+
+    console.log("Cleared the character sheet!");
   }
 }
 
@@ -215,40 +217,50 @@ function updateSkills() {
 }
 
 function level2ProfBonus() {
-  let classlevel = document.getElementsByClassName("classlevel");
-  let classlevelStr = classlevel[0].value;
+  /** @type {string} */
+  const classlevelStr = document.getElementsByClassName("classlevel").item(0).value;
+
   console.log(`Reading class level(s) from string: ${classlevelStr}`);
 
   //verify string is NOT empty. if is empty, do nothing
   if (!!classlevelStr) {
+    const profbonus = document.getElementsByClassName("profbonus").item(0);
+
     let invalidSyntax = false; //assume valid syntax until proven otherwise
-    let invalidIndex = null; //index that threw invalidSyntax flag
-    let profbonus = document.getElementsByClassName("profbonus");
-    let totalLevel = 0; //total character level
-    let isReadingDigits = false; //currently parsing through level number(s)
+    let invalidIndex = NaN; //index that threw invalidSyntax flag
     let n = 1; //nth class parsed through
-    let classes = Array(1).fill({ name: "", level: "", startIndex: 0 }); //array of objects of class information
+    let isReadingDigits = false; //currently parsing through level number(s)
+    let currentLevelStr = "";
+
+    /**
+     * @typedef {{name: string; level: number; startIndex: number}} ClassInfo
+     * @type {ClassInfo[]}
+     */
+    const classes = [{ name: "", level: NaN, startIndex: 0 }]; //array of objects of class information
+    let totalLevel = 0; //total character level
 
     //iterate through each character of classlevelStr, checking for key characters
     for (let i = 0; i < classlevelStr.length; i++) {
-      //i is current character of classlevelStr
+      //i is current char of classlevelStr
+      const char = classlevelStr[i];
+      //console.log(i, "th character: ", char);
 
       if (isReadingDigits) {
         //if currrently reading digits
 
-        if (classlevelStr[i] == " ") {
+        if (char == " ") {
           //check for invalid syntax
           console.log("\tSpace before slash!");
           invalidSyntax = true;
           invalidIndex = i;
           break;
-        } else if (classlevelStr[i] == "/" || i == classlevelStr.length - 1) {
+        } else if (char == "/" || i == classlevelStr.length - 1) {
           //check for end cases
 
           //if last character, verify and read
           if (i == classlevelStr.length - 1) {
-            if ("0" <= classlevelStr[i] && classlevelStr[i] <= "9") {
-              classes[n - 1].level = classes[n - 1].level.concat(classlevelStr[i]);
+            if ("0" <= char && char <= "9") {
+              currentLevelStr = currentLevelStr.concat(char);
             } else {
               console.log("\tNonnumeric character after space at end!");
               invalidSyntax = true;
@@ -258,11 +270,11 @@ function level2ProfBonus() {
           }
 
           //verify class level and add to total if valid
-          classes[n - 1].level = parseInt(classes[n - 1].level);
-          if (isValidLevel(classes[n - 1].level, "class level", n)) {
+          if (isValidLevel(parseInt(currentLevelStr), "class level", n)) {
+            classes[n - 1].level = parseInt(currentLevelStr);
             totalLevel = totalLevel + classes[n - 1].level;
           } else {
-            profbonus[0].value = "";
+            profbonus.value = "";
             return;
           }
 
@@ -275,6 +287,7 @@ function level2ProfBonus() {
           //reset for next class
           n = n + 1;
           isReadingDigits = false;
+          currentLevelStr = "";
 
           //if NOT last character, add next classes index
           if (i != classlevelStr.length - 1) {
@@ -282,8 +295,8 @@ function level2ProfBonus() {
           }
         } else {
           //no end cases or invalid syntax, verify and read digit character
-          if ("0" <= classlevelStr[i] && classlevelStr[i] <= "9") {
-            classes[n - 1].level = classes[n - 1].level.concat(classlevelStr[i]);
+          if ("0" <= char && char <= "9") {
+            currentLevelStr = currentLevelStr.concat(char);
           } else {
             console.log("Nonnumeric character after space and before slash!");
             invalidSyntax = true;
@@ -293,18 +306,18 @@ function level2ProfBonus() {
         }
       } else {
         //not reading digits
-        if (classlevelStr[i] == "/") {
+        if (char == "/") {
           //check for invalid syntax
           console.log("Slash NOT after number!");
           invalidSyntax = true;
           invalidIndex = i;
           break;
-        } else if (classlevelStr[i] == " ") {
+        } else if (char == " ") {
           //check for flag to start reading digits
           isReadingDigits = true;
         } else {
           //no end cases or invalid syntax, enter character into nth class name
-          classes[n - 1].name = classes[n - 1].name.concat(classlevelStr[i]);
+          classes[n - 1].name = classes[n - 1].name.concat(char);
         }
       }
     }
@@ -317,11 +330,11 @@ function level2ProfBonus() {
           invalidIndex + 1
         })! Explicitly format as follows with NO spaces or slashes unless specified. Replace parentheses and their contents with values:\n\n(class name 1)(space)(class 1's level)(slash)(repeat format, ending last WITHOUT a slash)`
       );
-      profbonus[0].value = "";
+      profbonus.value = "";
       return;
     }
 
-    if (isValidLevel(totalLevel, "total character level", 0)) {
+    if (isValidLevel(totalLevel, "total character level")) {
       console.log(`\tTotal character level: ${totalLevel}`);
       // Proficiency bonus progression
       for (let i = 0; i < options.proficiencyProgression.length; i++) {
@@ -329,24 +342,29 @@ function level2ProfBonus() {
           options.proficiencyProgression[i].levelRange[0] <= totalLevel &&
           totalLevel <= options.proficiencyProgression[i].levelRange[1]
         ) {
-          profbonus[0].value = options.proficiencyProgression[i].bonus;
+          profbonus.value = options.proficiencyProgression[i].bonus;
 
           updateSaves("all");
           updateSkills();
           return;
         }
       }
-      profbonus[0].value = "invalid";
+      profbonus.value = "invalid";
     } else {
-      profbonus[0].value = "invalid";
+      profbonus.value = "invalid";
       return;
     }
   }
 
-  //Check validity of input level helper function
-  function isValidLevel(level, levelDescriptorStr, classNum) {
+  /** Validate class/character level
+   * @param {number} level
+   * @param {string} levelDescriptorStr
+   * @param {number} classNum omit if validating total character level
+   * @returns {boolean}
+   */
+  function isValidLevel(level, levelDescriptorStr, classNum = 0) {
     //Ensure correct ordinal suffix
-    if (classNum > 0) {
+    if (classNum > 0 && Number.isInteger(classNum)) {
       let num;
       switch (classNum) {
         case 1:
@@ -384,17 +402,17 @@ function level2ProfBonus() {
   }
 }
 
-function charName(num) {
-  const charnametop = document.getElementsByClassName("charnametop").item(0);
-  const charnamebot = document.getElementsByClassName("charnamebot").item(0);
+function mirrorCharName(num) {
+  const charNameTop = document.getElementsByClassName("charnametop").item(0);
+  const charNameBot = document.getElementsByClassName("charnamebot").item(0);
 
   switch (num) {
     case 0: {
-      charnamebot.value = charnametop.value;
+      charNameBot.value = charNameTop.value;
       break;
     }
     case 1: {
-      charnametop.value = charnamebot.value;
+      charNameTop.value = charNameBot.value;
       break;
     }
     default:
@@ -402,37 +420,50 @@ function charName(num) {
   }
 }
 
-function deathsaves() {
-  const deathsuccesses = document.getElementsByClassName("deathsuccess");
+function deathSaves() {
+  //Map checkbox data from DOM to boolean arrays
+  /** @type {boolean[]} */
+  const deathSuccesses = Array.from(document.getElementsByClassName("deathsuccess")).map(
+    (e) => e.checked
+  );
+  /** @type {boolean[]} */
+  const deathFailures = Array.from(document.getElementsByClassName("deathfailure")).map(
+    (e) => e.checked
+  );
 
-  if (!deathsuccesses[0].checked) {
-    if (deathsuccesses[1].checked) {
-      deathsuccesses[0].checked = true;
-      deathsuccesses[1].checked = false;
-    } else if (deathsuccesses[2].checked) {
-      deathsuccesses[0].checked = true;
-      deathsuccesses[2].checked = false;
-    }
-  } else if (!deathsuccesses[1].checked && deathsuccesses[2].checked) {
-    deathsuccesses[1].checked = true;
-    deathsuccesses[2].checked = false;
+  //Sort arrays (trues then falses) then update DOM to match
+  deathSuccesses
+    .sort()
+    .reverse()
+    .forEach((e, i) => {
+      document.getElementsByClassName("deathsuccess").item(i).checked = e;
+    });
+  deathFailures
+    .sort()
+    .reverse()
+    .forEach((e, i) => {
+      document.getElementsByClassName("deathfailure").item(i).checked = e;
+    });
+
+  //Check if all death successes have occurred
+  if (deathSuccesses.every((e) => e === true)) {
+    alert("You survived! :)");
+    resetDeathSaves();
   }
-
-  const deathfails = document.getElementsByClassName("deathfail");
-  if (!deathfails[0].checked) {
-    if (deathfails[1].checked) {
-      deathfails[0].checked = true;
-      deathfails[1].checked = false;
-    } else if (deathfails[2].checked) {
-      deathfails[0].checked = true;
-      deathfails[2].checked = false;
-    }
-  } else if (!deathfails[1].checked && deathfails[2].checked) {
-    deathfails[1].checked = true;
-    deathfails[2].checked = false;
-  }
-
-  if (deathfails[0].checked && deathfails[1].checked && deathfails[2].checked) {
+  //Check if all death failures have occurred
+  if (deathFailures.every((e) => e === true)) {
     alert("You died! :(");
+    resetDeathSaves();
+  }
+
+  /** Reset DOM death save checkboxes */
+  function resetDeathSaves() {
+    deathSuccesses.forEach((e, i) => {
+      document.getElementsByClassName("deathsuccess").item(i).checked = false;
+    });
+
+    deathFailures.forEach((e, i) => {
+      document.getElementsByClassName("deathfailure").item(i).checked = false;
+    });
   }
 }
