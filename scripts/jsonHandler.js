@@ -8,8 +8,13 @@
  * @type {Options}
  */
 let options;
-let defaultOptionsLocation = "./resources/data/options.json";
-let statModFunction; //function to convert from stat to stat modifier
+const defaultOptionsLocation = "./resources/data/options.json";
+/** Function to convert from stat to stat modifier
+ * @type {Function}
+ * @param {number} stat
+ * @returns {number}
+ */
+let statModFunction;
 
 /** Load data from json options file
  * @param {String} optionsLocation
@@ -66,7 +71,9 @@ function optionsParser(optionsLocation) {
   verifyOptions(optionsLocation);
 }
 
-//Verify that options file has valid values
+/** Verify that options file has valid values
+ * @param {String} optionsLocation
+ */
 function verifyOptions(optionsLocation) {
   let invalid = false;
 
@@ -110,13 +117,16 @@ function verifyOptions(optionsLocation) {
   }
 
   /* stat */
-  //stat.min, stat.typMax, stat.max: ensure consecutive order & typMax is null if not below max
-  if (options.stat.typMax == null) {
+  //stat.min, stat.typicalMax, stat.max: ensure consecutive order & typicalMax is null if not below max
+  if (options.stat.typicalMax == null) {
     if (options.stat.min >= options.stat.max) {
       invalidOptions("stat");
     }
   } else {
-    if (options.stat.min >= options.stat.typMax || options.stat.typMax >= options.stat.max) {
+    if (
+      options.stat.min >= options.stat.typicalMax ||
+      options.stat.typicalMax >= options.stat.max
+    ) {
       invalidOptions("stat");
     }
   }

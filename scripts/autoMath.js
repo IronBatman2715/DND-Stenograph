@@ -1,72 +1,61 @@
+const statNames = ["Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma"];
+
 function clearData() {
   if (confirm("Are you sure you want to clear the entire sheet?")) {
     //Reset skill proficiency buttons
-    let skillprofs = document.querySelectorAll("div.skillprofbox div");
-    for (let i = 0; i < skillprofs.length; i++) {
-      skillprofs[i].className = "state0";
-    }
+    document
+      .querySelectorAll("div.skillprofbox div")
+      .forEach((skillprof) => (skillprof.className = "state0"));
 
     document.getElementById("charsheet").reset(); //reset rest of sheet
   }
 }
 
 function updateStats(statNum) {
-  let stats = document.getElementsByClassName("stat");
-  let statmods = document.getElementsByClassName("statmod");
-  let statNames = [
-    "Strength",
-    "Dexterity",
-    "Constitution",
-    "Wisdom",
-    "Intelligence",
-    "Charisma",
-  ];
-  let isAboveTypMax = false;
-  let typMaxEqualsMax = options.stat.typMax == null;
+  const stat = document.getElementsByClassName("stat").item(statNum);
+  const statMod = document.getElementsByClassName("statmod").item(statNum);
+  const statName = statNames[statNum];
+  const typicalMaxEqualsMax = options.stat.typicalMax == null;
 
-  let stat = parseInt(stats[statNum].value);
-  let isStatValid = options.stat.min <= stat && stat <= options.stat.max;
+  const statValue = parseInt(stat.value);
+  const isStatValid = options.stat.min <= statValue && statValue <= options.stat.max;
 
   //Check for valid input
-  if (Number.isInteger(stat) && isStatValid) {
-    //Check if above usual values
-    if (stat > options.stat.typMax) {
-      isAboveTypMax = true;
-    }
-
+  if (Number.isInteger(statValue) && isStatValid) {
     //Calculate modifier
-    let calcMod = statModFunction(stat);
+    const calcMod = statModFunction(statValue);
 
     //Add prefix to modifier
     if (0 <= calcMod) {
       //Positive modifier
-      statmods[statNum].value = "+" + calcMod.toString();
+      statMod.value = "+" + calcMod.toString();
     } else {
       //Negative modifier
-      statmods[statNum].value = calcMod.toString();
+      statMod.value = calcMod.toString();
+    }
+
+    //Check/warn user about going above typical values
+    if (statValue > options.stat.typicalMax) {
+      alert(
+        `Note that any stat can NOT go above ${options.stat.typicalMax} unless EXPLICITLY told you can do so. Be sure you have something that allows that!`
+      );
     }
   } else {
     //Invalid input
-    statmods[statNum].value = "";
+    statMod.value = "";
 
     //If stat value is not empty, send invalid input alert
-    if (!!stats[statNum].value) {
-      if (typMaxEqualsMax) {
+    if (!!stat.value) {
+      if (typicalMaxEqualsMax) {
         alert(
-          `Invalid ${statNames[statNum]} value: ${stats[statNum].value}\n\nAll stat values must be integers from ${options.stat.min} to ${options.stat.max}.`
+          `Invalid ${statName} value: ${stat.value}\n\nAll stat values must be integers from ${options.stat.min} to ${options.stat.max}.`
         );
       } else {
         alert(
-          `Invalid ${statNames[statNum]} value: ${stats[statNum].value}\n\nAll stat values must be integers from ${options.stat.min} to ${options.stat.max}. Note that you can only go above ${options.stat.typMax} when explicitly told you can do so!`
+          `Invalid ${statName} value: ${stat.value}\n\nAll stat values must be integers from ${options.stat.min} to ${options.stat.max}. Note that you can only go above ${options.stat.typicalMax} when explicitly told you can do so!`
         );
       }
     }
-  }
-  //Warn user about going above usual values
-  if (isAboveTypMax && !typMaxEqualsMax) {
-    alert(
-      `Note that any stat can NOT go above ${options.stat.typMax} unless EXPLICITLY told you can do so. Be sure you have something that allows that!`
-    );
   }
 
   updateSaves(statNum);
@@ -74,140 +63,137 @@ function updateStats(statNum) {
 }
 
 function updateSaves(statNum) {
-  let statmods = document.getElementsByClassName("statmod");
-  let profbonus = document.getElementsByClassName("profbonus");
-  let saves = document.getElementsByClassName("save");
-  let saveprofs = document.getElementsByClassName("saveprof");
-
   if (statNum == "all") {
-    for (let i = 0; i < 6; i++) {
+    //Recursively update all saves
+    for (let i = 0; i < statNames.length; i++) {
       updateSaves(i);
     }
   } else {
-    let statmod = parseInt(statmods[statNum].value);
-    let saveprof = saveprofs[statNum].checked;
+    const statMod = parseInt(document.getElementsByClassName("statmod").item(statNum).value);
+    const profbonus = document.getElementsByClassName("profbonus").item(0).value;
+    const save = document.getElementsByClassName("save").item(statNum);
 
-    if ((!statmod && 0 !== statmod) || !profbonus[0].value) {
-      saves[statNum].value = "";
+    /** @type {boolean} */
+    const saveprof = document.getElementsByClassName("saveprof").item(statNum).checked;
+
+    if ((!statMod && 0 !== statMod) || !profbonus) {
+      save.value = "";
     } else {
-      let save;
-      if (saveprof) {
-        save = parseInt(profbonus[0].value) + statmod;
-      } else {
-        save = statmod;
-      }
+      //Add proficiency bonus if applicable
+      const saveValue = saveprof ? parseInt(profbonus) + statMod : statMod;
 
-      if (!save && save !== 0) {
-        saves[statNum].value = "";
-      } else if (0 <= save) {
-        saves[statNum].value = "+" + save.toString();
+      if (!saveValue && saveValue !== 0) {
+        save.value = "";
+      } else if (0 <= saveValue) {
+        save.value = "+" + saveValue.toString();
       } else {
-        saves[statNum].value = save.toString();
+        save.value = saveValue.toString();
       }
     }
   }
 }
 
 function updateSkills() {
-  let statmods = document.getElementsByClassName("statmod");
-  let profbonus = document.getElementsByClassName("profbonus");
-  let skills = document.getElementsByClassName("skill");
-  let skillprofs = document.querySelectorAll("div.skillprofbox div");
-  let passiveperception = document.getElementsByClassName("passiveperception");
+  const skills = document.getElementsByClassName("skill");
+  const skillprofs = document.querySelectorAll("div.skillprofbox div");
 
-  //Iterate through 18 total skills
-  for (let i = 0; i < skillprofs.length; i++) {
-    let skillprofstate = skillprofs[i].className;
-    let skillprof = parseInt(skillprofstate.substring(5)); //pick out state number
+  if (skillprofs.length !== skills.length) {
+    console.error(
+      "Number of skill proficiencies does NOT match number of skills! Skipping update of skills."
+    );
+    return;
+  }
 
-    if (!profbonus[0].value) {
+  const profbonus = document.getElementsByClassName("profbonus").item(0).value;
+
+  //Iterate through all skills (18 is standard)
+  for (let i = 0; i < skills.length; i++) {
+    if (!profbonus) {
       //Invalid proficiency bonus
       skills[i].value = "";
     } else {
+      /** @type {number} */
       let bonus;
+      /** @type {number} */
       let skill;
+      /** @type {number} */
       let statmod;
 
       //Determine proficiency type and save bonus
+      const skillprof = parseInt(skillprofs[i].className.substring(5)); //pick out state number
       switch (skillprof) {
+        case 1: {
+          //proficiency
+          bonus = parseInt(profbonus);
+          break;
+        }
+        case 2: {
+          //half proficiency
+          bonus = Math.floor(parseInt(profbonus) / 2);
+          break;
+        }
+        case 3: {
+          //expertise (double proficiency)
+          bonus = parseInt(profbonus) * 2;
+          break;
+        }
         case 0: //no proficiency
+        default: {
           bonus = 0;
           break;
-        case 1: //proficiency
-          bonus = parseInt(profbonus[0].value);
-          break;
-        case 2: //half proficiency
-          bonus = Math.floor(parseInt(profbonus[0].value) / 2);
-          break;
-        case 3: //expertise (double proficiency)
-          bonus = parseInt(profbonus[0].value) * 2;
-          break;
-        default:
-          bonus = 0;
-          break;
+        }
       }
 
+      function getNewSkillValue(statNum) {
+        statmod = parseInt(document.getElementsByClassName("statmod").item(statNum).value);
+        if (!statmod && 0 !== statmod) {
+          //Invalid stat modifier
+          skill = NaN;
+        } else {
+          skill = bonus + statmod;
+        }
+      }
+
+      //Switch through all skills; fall-through allows all skills of same stat to have the same functionality
       switch (i) {
-        case 3: //str
-          statmod = parseInt(statmods[0].value);
-          if (!statmod && 0 !== statmod) {
-            //Invalid stat modifier
-            skill = "";
-          } else {
-            skill = bonus + statmod;
-          }
+        case 3: {
+          //Strength
+          getNewSkillValue(0);
           break;
-        case 0: //dex
+        }
+        case 0: //Dexterity
         case 15:
-        case 16:
-          statmod = parseInt(statmods[1].value);
-          if (!statmod && 0 !== statmod) {
-            //Invalid stat modifier
-            skill = "";
-          } else {
-            skill = bonus + statmod;
-          }
+        case 16: {
+          getNewSkillValue(1);
           break;
-        case 1: //wis
+        }
+        case 1: //Wisdom
         case 6:
         case 9:
         case 11:
-        case 17:
-          statmod = parseInt(statmods[3].value);
-          if (!statmod && 0 !== statmod) {
-            //Invalid stat modifier
-            skill = "";
-          } else {
-            skill = bonus + statmod;
-          }
+        case 17: {
+          getNewSkillValue(3);
           break;
-        case 2: //int
+        }
+        case 2: //Intelligence
         case 5:
         case 8:
         case 10:
-        case 14:
-          statmod = parseInt(statmods[4].value);
-          if (!statmod && 0 !== statmod) {
-            //Invalid stat modifier
-            skill = "";
-          } else {
-            skill = bonus + statmod;
-          }
+        case 14: {
+          getNewSkillValue(4);
           break;
-        case 4: //cha
+        }
+        case 4: //Charisma
         case 7:
         case 12:
-        case 13:
-          statmod = parseInt(statmods[5].value);
-          if (!statmod && 0 !== statmod) {
-            //Invalid stat modifier
-            skill = "";
-          } else {
-            skill = bonus + statmod;
-          }
+        case 13: {
+          getNewSkillValue(5);
           break;
+        }
       }
-      if (!skill && skill !== 0) {
+
+      //Save new skill value
+      if ((!skill && skill !== 0) || skill === NaN) {
         skills[i].value = "";
       } else if (0 <= skill) {
         skills[i].value = "+" + skill.toString();
@@ -217,11 +203,11 @@ function updateSkills() {
 
       //Passive Perception
       if (i == 11) {
+        const passiveperception = document.getElementsByClassName("passiveperception").item(0);
         if (!statmod && 0 !== statmod) {
-          passiveperception[0].value = "";
+          passiveperception.value = "";
         } else {
-          let passiveperceptionInt = 10 + skill;
-          passiveperception[0].value = passiveperceptionInt.toString();
+          passiveperception.value = (10 + skill).toString();
         }
       }
     }
@@ -262,9 +248,7 @@ function level2ProfBonus() {
           //if last character, verify and read
           if (i == classlevelStr.length - 1) {
             if ("0" <= classlevelStr[i] && classlevelStr[i] <= "9") {
-              classes[n - 1].level = classes[n - 1].level.concat(
-                classlevelStr[i]
-              );
+              classes[n - 1].level = classes[n - 1].level.concat(classlevelStr[i]);
             } else {
               console.log("\tNonnumeric character after space at end!");
               invalidSyntax = true;
@@ -299,9 +283,7 @@ function level2ProfBonus() {
         } else {
           //no end cases or invalid syntax, verify and read digit character
           if ("0" <= classlevelStr[i] && classlevelStr[i] <= "9") {
-            classes[n - 1].level = classes[n - 1].level.concat(
-              classlevelStr[i]
-            );
+            classes[n - 1].level = classes[n - 1].level.concat(classlevelStr[i]);
           } else {
             console.log("Nonnumeric character after space and before slash!");
             invalidSyntax = true;
@@ -403,23 +385,26 @@ function level2ProfBonus() {
 }
 
 function charName(num) {
-  let charnametop = document.getElementsByClassName("charnametop");
-  let charnamebot = document.getElementsByClassName("charnamebot");
+  const charnametop = document.getElementsByClassName("charnametop").item(0);
+  const charnamebot = document.getElementsByClassName("charnamebot").item(0);
 
   switch (num) {
-    case 0:
-      charnamebot[0].value = charnametop[0].value;
+    case 0: {
+      charnamebot.value = charnametop.value;
       break;
-    case 1:
-      charnametop[0].value = charnamebot[0].value;
+    }
+    case 1: {
+      charnametop.value = charnamebot.value;
       break;
+    }
     default:
       break;
   }
 }
 
 function deathsaves() {
-  let deathsuccesses = document.getElementsByClassName("deathsuccess");
+  const deathsuccesses = document.getElementsByClassName("deathsuccess");
+
   if (!deathsuccesses[0].checked) {
     if (deathsuccesses[1].checked) {
       deathsuccesses[0].checked = true;
@@ -433,7 +418,7 @@ function deathsaves() {
     deathsuccesses[2].checked = false;
   }
 
-  let deathfails = document.getElementsByClassName("deathfail");
+  const deathfails = document.getElementsByClassName("deathfail");
   if (!deathfails[0].checked) {
     if (deathfails[1].checked) {
       deathfails[0].checked = true;
