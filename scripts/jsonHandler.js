@@ -1,7 +1,7 @@
 //Import options.json and parse values to global variables used in autoMath.js
 /**
  * @typedef {{min: number, max: number}} CharacterLevel
- * @typedef {{bonus: string, levelRange: number[]}} ProficiencyProgression
+ * @typedef {{bonus: number, levelRange: number[]}} ProficiencyProgression
  * @typedef {{argument: string, body: string}} ModFunction
  * @typedef {{min: number, typicalMax: number, max: number, modFunction: ModFunction}} Stat
  * @typedef {{stenographVersion: string, version: string, characterLevel: CharacterLevel, proficiencyProgression: ProficiencyProgression[], stat: Stat}} Options
@@ -15,6 +15,8 @@ const defaultOptionsLocation = "./resources/data/options.json";
  * @returns {number}
  */
 let statModFunction;
+
+const statNames = ["Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma"];
 
 /** Load data from json options file
  * @param {String} optionsLocation
@@ -54,7 +56,9 @@ function optionsParser(optionsLocation) {
   console.log("\tProficiency progression:");
   for (let i = 0; i < options.proficiencyProgression.length; i++) {
     console.log(
-      `\t\tbonus: ${options.proficiencyProgression[i].bonus}\n\t\tlevelRange: ${options.proficiencyProgression[i].levelRange[0]} to ${options.proficiencyProgression[i].levelRange[1]}\n`
+      `\t\tbonus: ${numberToModifier(options.proficiencyProgression[i].bonus)}\n\t\tlevelRange: ${
+        options.proficiencyProgression[i].levelRange[0]
+      } to ${options.proficiencyProgression[i].levelRange[1]}\n`
     );
   }
 
@@ -90,45 +94,53 @@ function verifyOptions(optionsLocation) {
   }
 
   //proficiencyProgression
-  for (let i = 0; i < options.proficiencyProgression.length; i++) {
-    //ensure consecutive order in levelRange
-    if (
-      options.proficiencyProgression[i].levelRange[0] >
-      options.proficiencyProgression[i].levelRange[1]
-    ) {
-      invalidOptions("proficiencyProgression.levelRange");
-    } else if (i != 0) {
-      //ensure consecutive order in bonus
-      if (
-        parseInt(options.proficiencyProgression[i - 1].bonus[1]) >=
-        parseInt(options.proficiencyProgression[i].bonus[1])
-      ) {
-        invalidOptions("proficiencyProgression.bonus");
-      }
-
-      //ensure consecutive order in levelRange between entries
-      if (
-        options.proficiencyProgression[i - 1].levelRange[1] + 1 !=
-        options.proficiencyProgression[i].levelRange[0]
-      ) {
+  options.proficiencyProgression.forEach((profProg, i) => {
+    //ensure start of levelRange equals minimum character level
+    if (i == 0) {
+      if (profProg.levelRange[0] != options.characterLevel.min) {
         invalidOptions("proficiencyProgression.levelRange");
       }
     }
-  }
+
+    //ensure ascending levelRange
+    if (profProg.levelRange[0] > profProg.levelRange[1]) {
+      invalidOptions("proficiencyProgression.levelRange");
+    } else {
+      if (i != 0) {
+        const prevProfProg = options.proficiencyProgression[i - 1];
+
+        //ensure ascending bonus
+        if (prevProfProg.bonus >= profProg.bonus) {
+          invalidOptions("proficiencyProgression.bonus");
+        }
+
+        //ensure ascending AND consecutive levelRange between entries
+        if (prevProfProg.levelRange[1] + 1 != profProg.levelRange[0]) {
+          invalidOptions("proficiencyProgression.levelRange");
+        }
+      }
+    }
+
+    //ensure end of levelRange equals maximum character level
+    if (i == options.proficiencyProgression.length - 1) {
+      if (profProg.levelRange[1] != options.characterLevel.max) {
+        invalidOptions("proficiencyProgression.levelRange");
+      }
+    }
+  });
 
   /* stat */
-  //stat.min, stat.typicalMax, stat.max: ensure consecutive order & typicalMax is null if not below max
-  if (options.stat.typicalMax == null) {
-    if (options.stat.min >= options.stat.max) {
-      invalidOptions("stat");
-    }
-  } else {
+  //stat.min, stat.typicalMax, stat.max: ensure ascending order
+  if (options.stat.typicalMax !== null) {
     if (
       options.stat.min >= options.stat.typicalMax ||
       options.stat.typicalMax >= options.stat.max
     ) {
       invalidOptions("stat");
     }
+  }
+  if (options.stat.min >= options.stat.max) {
+    invalidOptions("stat");
   }
 
   //stat.modFunction: assume all returned values must be integers
@@ -142,7 +154,7 @@ function verifyOptions(optionsLocation) {
   if (!invalid) {
     console.log(`Options file(${optionsLocation}) is valid!`);
   } else {
-    console.log(`Options file(${optionsLocation}) is invalid! Refer to alert(s) that popped up.`);
+    console.error(`Options file(${optionsLocation}) is invalid! Refer to alert(s) that popped up.`);
   }
 
   /* Invalid data alert helper function */
@@ -155,6 +167,7 @@ function verifyOptions(optionsLocation) {
 //Saving character data
 function saveData() {
   const elementValueObj = {};
+
   //Save Stenogrpah version number
   elementValueObj.stenographVersion = stenographVersion;
 
@@ -239,6 +252,8 @@ function loadData() {
           charsheet[i].checked = value;
         }
       }
+
+      console.log(`Loaded character data from uploaded file: ${files[0].name}`);
     };
 
     fr.readAsText(files.item(0));

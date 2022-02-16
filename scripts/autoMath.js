@@ -1,5 +1,3 @@
-const statNames = ["Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma"];
-
 function clearData() {
   if (confirm("Are you sure you want to clear the entire sheet?")) {
     //Reset skill proficiency buttons
@@ -17,7 +15,7 @@ function updateStats(statNum) {
   const stat = document.getElementsByClassName("stat").item(statNum);
   const statMod = document.getElementsByClassName("statmod").item(statNum);
   const statName = statNames[statNum];
-  const typicalMaxEqualsMax = options.stat.typicalMax == null;
+  const typicalMaxExists = options.stat.typicalMax !== null;
 
   const statValue = parseInt(stat.value);
   const isStatValid = options.stat.min <= statValue && statValue <= options.stat.max;
@@ -25,22 +23,19 @@ function updateStats(statNum) {
   //Check for valid input
   if (Number.isInteger(statValue) && isStatValid) {
     //Calculate modifier
+    /** @type {number} */
     const calcMod = statModFunction(statValue);
 
-    //Add prefix to modifier
-    if (0 <= calcMod) {
-      //Positive modifier
-      statMod.value = "+" + calcMod.toString();
-    } else {
-      //Negative modifier
-      statMod.value = calcMod.toString();
-    }
+    //Assign modifier
+    statMod.value = numberToModifier(calcMod);
 
     //Check/warn user about going above typical values
-    if (statValue > options.stat.typicalMax) {
-      alert(
-        `Note that any stat can NOT go above ${options.stat.typicalMax} unless EXPLICITLY told you can do so. Be sure you have something that allows that!`
-      );
+    if (typicalMaxExists) {
+      if (statValue > options.stat.typicalMax) {
+        alert(
+          `Note that any stat can NOT go above ${options.stat.typicalMax} unless EXPLICITLY told you can do so. Be sure you have something that allows that!`
+        );
+      }
     }
   } else {
     //Invalid input
@@ -48,7 +43,7 @@ function updateStats(statNum) {
 
     //If stat value is not empty, send invalid input alert
     if (!!stat.value) {
-      if (typicalMaxEqualsMax) {
+      if (!typicalMaxExists) {
         alert(
           `Invalid ${statName} value: ${stat.value}\n\nAll stat values must be integers from ${options.stat.min} to ${options.stat.max}.`
         );
@@ -84,13 +79,7 @@ function updateSaves(statNum) {
       //Add proficiency bonus if applicable
       const saveValue = saveprof ? parseInt(profbonus) + statMod : statMod;
 
-      if (!saveValue && saveValue !== 0) {
-        save.value = "";
-      } else if (0 <= saveValue) {
-        save.value = "+" + saveValue.toString();
-      } else {
-        save.value = saveValue.toString();
-      }
+      save.value = numberToModifier(saveValue);
     }
   }
 }
@@ -195,13 +184,7 @@ function updateSkills() {
       }
 
       //Save new skill value
-      if ((!skill && skill !== 0) || skill === NaN) {
-        skills[i].value = "";
-      } else if (0 <= skill) {
-        skills[i].value = "+" + skill.toString();
-      } else {
-        skills[i].value = skill.toString();
-      }
+      skills[i].value = numberToModifier(skill);
 
       //Passive Perception
       if (i == 11) {
@@ -275,6 +258,9 @@ function level2ProfBonus() {
             totalLevel = totalLevel + classes[n - 1].level;
           } else {
             profbonus.value = "";
+
+            updateSaves("all");
+            updateSkills();
             return;
           }
 
@@ -331,6 +317,9 @@ function level2ProfBonus() {
         })! Explicitly format as follows with NO spaces or slashes unless specified. Replace parentheses and their contents with values:\n\n(class name 1)(space)(class 1's level)(slash)(repeat format, ending last WITHOUT a slash)`
       );
       profbonus.value = "";
+
+      updateSaves("all");
+      updateSkills();
       return;
     }
 
@@ -338,11 +327,10 @@ function level2ProfBonus() {
       console.log(`\tTotal character level: ${totalLevel}`);
       // Proficiency bonus progression
       for (let i = 0; i < options.proficiencyProgression.length; i++) {
-        if (
-          options.proficiencyProgression[i].levelRange[0] <= totalLevel &&
-          totalLevel <= options.proficiencyProgression[i].levelRange[1]
-        ) {
-          profbonus.value = options.proficiencyProgression[i].bonus;
+        const profProg = options.proficiencyProgression[i];
+
+        if (profProg.levelRange[0] <= totalLevel && totalLevel <= profProg.levelRange[1]) {
+          profbonus.value = numberToModifier(profProg.bonus);
 
           updateSaves("all");
           updateSkills();
@@ -350,8 +338,14 @@ function level2ProfBonus() {
         }
       }
       profbonus.value = "invalid";
+
+      updateSaves("all");
+      updateSkills();
     } else {
       profbonus.value = "invalid";
+
+      updateSaves("all");
+      updateSkills();
       return;
     }
   }
