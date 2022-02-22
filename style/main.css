@@ -51,20 +51,20 @@ input[type="checkbox"]:checked {
 div.box {
   margin-top: 10px;
 }
-form.charsheet {
+#charsheet {
   width: 8.5in;
   margin-right: auto;
   margin-left: auto;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-form.charsheet div.textblock {
+#charsheet div.textblock {
   display: flex;
   flex-direction: column-reverse;
   width: 100%;
   align-items: center;
 }
-form.charsheet div.textblock label {
+#charsheet div.textblock label {
   text-align: center;
   border-width: 1px;
   border-style: solid;
@@ -75,30 +75,28 @@ form.charsheet div.textblock label {
   padding: 4px 0;
   font-weight: bold;
 }
-form.charsheet ul {
+#charsheet ul {
   margin: 0;
   padding: 0;
 }
-form.charsheet ul li {
+#charsheet ul li {
   list-style-image: none;
   display: block;
 }
-form.charsheet label {
+#charsheet label {
   text-transform: uppercase;
   font-size: 12px;
 }
-form.charsheet header {
+#charsheet header {
   display: flex;
   align-items: stretch;
   height: 1in;
 }
-form.charsheet div.frontpage,
-form.charsheet div.spellcastingpage,
-form.charsheet div.extraspage {
+#charsheet .page {
   height: 11in;
 }
-form.charsheet header section.charname,
-form.charsheet header section.spellcastingclassandability {
+#charsheet header .charname,
+#charsheet header .spellcastingclassandability {
   background-color: var(--offBackground1);
   border-width: 1px;
   border-style: solid;
@@ -112,15 +110,15 @@ form.charsheet header section.spellcastingclassandability {
   top: 0;
   margin: auto;
 }
-form.charsheet header section.charname input {
+#charsheet header .charname input {
   padding: 0.5em;
   margin: 5px;
   border: 0;
 }
-form.charsheet header section.charname label {
+#charsheet header .charname label {
   padding-left: 1em;
 }
-form.charsheet header section.misc {
+#charsheet header .misc {
   width: 100%;
   border-width: 1px;
   border-style: solid;
@@ -130,30 +128,30 @@ form.charsheet header section.misc {
   display: flex;
   align-content: space-between;
 }
-form.charsheet header section.misc ul {
+#charsheet header .misc ul {
   padding: 5px 0px;
   display: flex;
   flex-wrap: wrap;
 }
-form.charsheet header section.misc ul li {
+#charsheet header .misc ul li {
   width: 33.33333%;
   display: flex;
   flex-direction: column-reverse;
 }
-form.charsheet header section.misc ul li label {
+#charsheet header .misc ul li label {
   margin-bottom: 5px;
 }
-form.charsheet header section.misc ul li input {
+#charsheet header .misc ul li input {
   width: calc(100% - 10px);
   border-style: solid;
   border-width: 0px 0px 1px 0px;
   border-color: var(--offBackground2);
 }
-form.charsheet header section.data {
+#charsheet header .data {
   display: flex;
   align-content: space-between;
 }
-form.charsheet header section.data ul {
+#charsheet header .data ul {
   width: 56px;
   display: flex;
   flex-wrap: wrap;
@@ -163,12 +161,12 @@ form.charsheet header section.data ul {
   align-content: space-between;
   margin-left: 5px;
 }
-form.charsheet header section.data ul li {
+#charsheet header .data ul li {
   width: 51px;
   margin: auto;
   padding: initial;
 }
-form.charsheet header section.data ul li button {
+#charsheet header .data ul li button {
   width: 51px;
   cursor: pointer;
   background-color: var(--offBackground1);
@@ -176,19 +174,19 @@ form.charsheet header section.data ul li button {
   color: var(--text);
   border-radius: 0.25em;
 }
-form.charsheet header section.data ul li button:hover {
+#charsheet header .data ul li button:hover {
   background-color: var(--offBackground3);
 }
-form.charsheet header section.data ul li button:active {
+#charsheet header .data ul li button:active {
   background-color: var(--faintBlue);
 }
-form.charsheet main {
+#charsheet main {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
   height: calc(10in - 10px);
 }
-form.charsheet main div.label-container {
+#charsheet main div.label-container {
   position: relative;
   width: 100%;
   height: 18px;
@@ -198,7 +196,7 @@ form.charsheet main div.label-container {
   border-left: 0;
   text-align: center;
 }
-form.charsheet main div.label-container > label {
+#charsheet main div.label-container > label {
   position: absolute;
   left: 0;
   top: 1px;
@@ -208,19 +206,19 @@ form.charsheet main div.label-container > label {
 }
 
 /* Page 1: General */
-form.charsheet main > section {
+#charsheet main > section {
   width: 32%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-form.charsheet main > section section.attributes {
+#charsheet main > section section.attributes {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-form.charsheet main > section section.attributes div.scores {
+#charsheet main > section section.attributes div.scores {
   background-color: var(--offBackground3);
   width: 101px;
   height: 100%;
@@ -230,12 +228,12 @@ form.charsheet main > section section.attributes div.scores {
   justify-content: space-between;
   align-items: center;
 }
-form.charsheet main > section section.attributes div.scores label {
+#charsheet main > section section.attributes div.scores label {
   width: 100%;
   font-size: 9px;
   font-weight: bold;
 }
-form.charsheet main > section section.attributes div.scores ul {
+#charsheet main > section section.attributes div.scores ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -243,7 +241,7 @@ form.charsheet main > section section.attributes div.scores ul {
   height: 100%;
   padding: 5px 10px;
 }
-form.charsheet main > section section.attributes div.scores ul li {
+#charsheet main > section section.attributes div.scores ul li {
   background-color: var(--background);
   width: 100%;
   height: calc(16% - 5px);
@@ -255,21 +253,21 @@ form.charsheet main > section section.attributes div.scores ul li {
   flex-direction: column;
   border-radius: 10px;
 }
-form.charsheet main > section section.attributes div.scores ul li input {
+#charsheet main > section section.attributes div.scores ul li input {
   width: 100%;
   padding: 0;
   border: 0;
 }
-form.charsheet main > section section.attributes div.scores ul li div.score input {
+#charsheet main > section section.attributes div.scores ul li div.score input {
   background-color: var(--background);
   text-align: center;
   font-size: 40px;
   width: calc(100% - 5px);
 }
-form.charsheet main > section section.attributes div.scores ul li div.modifier {
+#charsheet main > section section.attributes div.scores ul li div.modifier {
   margin-top: 0px;
 }
-form.charsheet main > section section.attributes div.scores ul li div.modifier input {
+#charsheet main > section section.attributes div.scores ul li div.modifier input {
   background-color: var(--background);
   width: 50%;
   border-width: 1px;
@@ -278,17 +276,17 @@ form.charsheet main > section section.attributes div.scores ul li div.modifier i
   margin: 0px;
   text-align: center;
 }
-form.charsheet main > section section.attributes div.attr-applications {
+#charsheet main > section section.attributes div.attr-applications {
   margin-left: 5px;
   height: 100%;
   width: 75%;
 }
-form.charsheet main > section section.attributes div.attr-applications div.inspiration {
+#charsheet main > section section.attributes div.attr-applications div.inspiration {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
-form.charsheet main > section section.attributes div.attr-applications div.inspiration input {
+#charsheet main > section section.attributes div.attr-applications div.inspiration input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -297,12 +295,12 @@ form.charsheet main > section section.attributes div.attr-applications div.inspi
   padding: 15px;
   border-radius: 10px;
 }
-form.charsheet main > section section.attributes div.attr-applications div.proficiencybonus {
+#charsheet main > section section.attributes div.attr-applications div.proficiencybonus {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
-form.charsheet main > section section.attributes div.attr-applications div.proficiencybonus input {
+#charsheet main > section section.attributes div.attr-applications div.proficiencybonus input {
   width: 26px;
   height: 24px;
   padding: 2px;
@@ -311,13 +309,13 @@ form.charsheet main > section section.attributes div.attr-applications div.profi
   text-align: center;
   border-radius: 10px;
 }
-form.charsheet main > section section.attributes div.attr-applications div.list-section {
+#charsheet main > section section.attributes div.attr-applications div.list-section {
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;
   padding: 5px 5px 0px 0px;
 }
-form.charsheet main > section section.attributes div.attr-applications div.list-section div.label {
+#charsheet main > section section.attributes div.attr-applications div.list-section div.label {
   margin-top: 10px;
   margin-bottom: 2.5px;
   text-align: center;
@@ -325,48 +323,23 @@ form.charsheet main > section section.attributes div.attr-applications div.list-
   font-size: 10px;
   font-weight: bold;
 }
-form.charsheet main > section section.attributes div.attr-applications div.list-section ul li {
+#charsheet main > section section.attributes div.attr-applications div.list-section ul li {
   display: flex;
   align-items: center;
 }
-form.charsheet main > section section.attributes div.attr-applications div.list-section ul li > * {
+#charsheet main > section section.attributes div.attr-applications div.list-section ul li > * {
   margin-left: 5px;
 }
-form.charsheet
-  main
-  > section
-  section.attributes
-  div.attr-applications
-  div.list-section
-  ul
-  li
-  label {
+#charsheet main > section section.attributes div.attr-applications div.list-section ul li label {
   text-transform: none;
   font-size: 10px;
   text-align: left;
   order: 3;
 }
-form.charsheet
-  main
-  > section
-  section.attributes
-  div.attr-applications
-  div.list-section
-  ul
-  li
-  label
-  span.skillstat {
+#charsheet main > section section.attributes div.attr-applications div.list-section ul li label span.skillstat {
   color: var(--offBackground3);
 }
-form.charsheet
-  main
-  > section
-  section.attributes
-  div.attr-applications
-  div.list-section
-  ul
-  li
-  input[type="text"] {
+#charsheet main > section section.attributes div.attr-applications div.list-section ul li input[type="text"] {
   width: 30px;
   font-size: 12px;
   text-align: center;
@@ -374,15 +347,7 @@ form.charsheet
   border-bottom: 1px solid;
   order: 2;
 }
-form.charsheet
-  main
-  > section
-  section.attributes
-  div.attr-applications
-  div.list-section
-  ul
-  li
-  input[type="checkbox"] {
+#charsheet main > section section.attributes div.attr-applications div.list-section ul li input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -393,12 +358,12 @@ form.charsheet
   border-radius: 10px;
   order: 1;
 }
-form.charsheet main > section div.passive-perception {
+#charsheet main > section div.passive-perception {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
-form.charsheet main > section div.passive-perception input {
+#charsheet main > section div.passive-perception input {
   width: 26px;
   height: 24px;
   padding: 2px;
@@ -407,38 +372,38 @@ form.charsheet main > section div.passive-perception input {
   border-style: solid;
   border-radius: 10px;
 }
-form.charsheet main > section div.otherprofs {
+#charsheet main > section div.otherprofs {
   height: 100%;
 }
-form.charsheet main > section div.otherprofs textarea {
+#charsheet main > section div.otherprofs textarea {
   width: calc(100% - 10px);
   height: 100%;
 }
-form.charsheet main section.combat {
+#charsheet main section.combat {
   background-color: var(--offBackground2);
   display: flex;
   flex-wrap: wrap;
   border-radius: 10px;
 }
-form.charsheet main section.combat > div {
+#charsheet main section.combat > div {
   overflow: hidden;
 }
-form.charsheet main section.combat > div.armorclass,
-form.charsheet main section.combat > div.initiative,
-form.charsheet main section.combat > div.speed {
+#charsheet main section.combat > div.armorclass,
+#charsheet main section.combat > div.initiative,
+#charsheet main section.combat > div.speed {
   flex-basis: 33.333%;
 }
-form.charsheet main section.combat > div.armorclass > div,
-form.charsheet main section.combat > div.initiative > div,
-form.charsheet main section.combat > div.speed > div {
+#charsheet main section.combat > div.armorclass > div,
+#charsheet main section.combat > div.initiative > div,
+#charsheet main section.combat > div.speed > div {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   margin-top: 10px;
 }
-form.charsheet main section.combat > div.armorclass > div label,
-form.charsheet main section.combat > div.initiative > div label,
-form.charsheet main section.combat > div.speed > div label {
+#charsheet main section.combat > div.armorclass > div label,
+#charsheet main section.combat > div.initiative > div label,
+#charsheet main section.combat > div.speed > div label {
   background-color: var(--background);
   font-size: 8px;
   width: 50px;
@@ -450,9 +415,9 @@ form.charsheet main section.combat > div.speed > div label {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-form.charsheet main section.combat > div.armorclass > div input,
-form.charsheet main section.combat > div.initiative > div input,
-form.charsheet main section.combat > div.speed > div input {
+#charsheet main section.combat > div.armorclass > div input,
+#charsheet main section.combat > div.initiative > div input,
+#charsheet main section.combat > div.speed > div input {
   height: 60px;
   width: 60px;
   padding: 5px;
@@ -462,10 +427,10 @@ form.charsheet main section.combat > div.speed > div input {
   text-align: center;
   font-size: 30px;
 }
-form.charsheet main section.combat > div.hp {
+#charsheet main section.combat > div.hp {
   flex-basis: 100%;
 }
-form.charsheet main section.combat > div.hp > div.regular {
+#charsheet main section.combat > div.hp > div.regular {
   background-color: var(--background);
   border-width: 1px;
   border-style: solid;
@@ -473,43 +438,43 @@ form.charsheet main section.combat > div.hp > div.regular {
   margin-bottom: 5px;
   border-radius: 10px 10px 0 0;
 }
-form.charsheet main section.combat > div.hp > div.regular > div.max {
+#charsheet main section.combat > div.hp > div.regular > div.max {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
   margin-top: 0.25em;
 }
-form.charsheet main section.combat > div.hp > div.regular > div.max label {
+#charsheet main section.combat > div.hp > div.regular > div.max label {
   color: var(--offBackground3);
   font-size: 10px;
   text-transform: none;
 }
-form.charsheet main section.combat > div.hp > div.regular > div.max input {
+#charsheet main section.combat > div.hp > div.regular > div.max input {
   width: 40%;
   border: 0;
   border-bottom: 1px solid var(--offBackground3);
   font-size: 12px;
   text-align: center;
 }
-form.charsheet main section.combat > div.hp > div.regular > div.current {
+#charsheet main section.combat > div.hp > div.regular > div.current {
   display: flex;
   flex-direction: column-reverse;
 }
-form.charsheet main section.combat > div.hp > div.regular > div.current input,
-form.charsheet main section.combat > div.hp > div.temporary input {
+#charsheet main section.combat > div.hp > div.regular > div.current input,
+#charsheet main section.combat > div.hp > div.temporary input {
   border: 0;
   margin: 10px;
   padding: 0;
   font-size: 20px;
   text-align: center;
 }
-form.charsheet main section.combat > div.hp > div.regular > div.current label {
+#charsheet main section.combat > div.hp > div.regular > div.current label {
   font-size: 10px;
   padding-bottom: 5px;
   text-align: center;
   font-weight: bold;
 }
-form.charsheet main section.combat > div.hp > div.temporary {
+#charsheet main section.combat > div.hp > div.temporary {
   background-color: var(--background);
   margin: 10px;
   margin-top: 0;
@@ -519,22 +484,22 @@ form.charsheet main section.combat > div.hp > div.temporary {
   display: flex;
   flex-direction: column-reverse;
 }
-form.charsheet main section.combat > div.hp > div.temporary label {
+#charsheet main section.combat > div.hp > div.temporary label {
   font-size: 10px;
   padding-bottom: 5px;
   text-align: center;
   font-weight: bold;
 }
-form.charsheet main section.combat > div.hitdice,
-form.charsheet main section.combat > div.deathsaves {
+#charsheet main section.combat > div.hitdice,
+#charsheet main section.combat > div.deathsaves {
   flex: 1 50%;
   height: 100px;
 }
-form.charsheet main section.combat > div.hitdice > div,
-form.charsheet main section.combat > div.deathsaves > div {
+#charsheet main section.combat > div.hitdice > div,
+#charsheet main section.combat > div.deathsaves > div {
   height: 80px;
 }
-form.charsheet main section.combat > div.hitdice > div {
+#charsheet main section.combat > div.hitdice > div {
   background-color: var(--background);
   margin: 10px;
   border-width: 1px;
@@ -543,19 +508,19 @@ form.charsheet main section.combat > div.hitdice > div {
   display: flex;
   flex-direction: column;
 }
-form.charsheet main section.combat > div.hitdice > div > div.total {
+#charsheet main section.combat > div.hitdice > div > div.total {
   display: flex;
   align-items: baseline;
   justify-content: space-around;
   padding: 5px 0;
 }
-form.charsheet main section.combat > div.hitdice > div > div.total label {
+#charsheet main section.combat > div.hitdice > div > div.total label {
   color: var(--offBackground3);
   font-size: 10px;
   margin: 0.25em;
   text-transform: none;
 }
-form.charsheet main section.combat > div.hitdice > div > div.total input {
+#charsheet main section.combat > div.hitdice > div > div.total input {
   font-size: 12px;
   flex-grow: 1;
   border: 0;
@@ -565,23 +530,23 @@ form.charsheet main section.combat > div.hitdice > div > div.total input {
   padding: 0 0.25em;
   text-align: center;
 }
-form.charsheet main section.combat > div.hitdice > div > div.remaining {
+#charsheet main section.combat > div.hitdice > div > div.remaining {
   flex: 1;
   display: flex;
   flex-direction: column-reverse;
 }
-form.charsheet main section.combat > div.hitdice > div > div.remaining label {
+#charsheet main section.combat > div.hitdice > div > div.remaining label {
   text-align: center;
   padding: 2px;
   font-size: 10px;
 }
-form.charsheet main section.combat > div.hitdice > div > div.remaining input {
+#charsheet main section.combat > div.hitdice > div > div.remaining input {
   text-align: center;
   border: 0;
   flex: 1;
   margin: 0px 5px;
 }
-form.charsheet main section.combat > div.deathsaves > div {
+#charsheet main section.combat > div.deathsaves > div {
   background-color: var(--background);
   margin: 10px;
   border-width: 1px;
@@ -590,34 +555,34 @@ form.charsheet main section.combat > div.deathsaves > div {
   display: flex;
   flex-direction: column-reverse;
 }
-form.charsheet main section.combat > div.deathsaves > div > div.label {
+#charsheet main section.combat > div.deathsaves > div > div.label {
   text-align: center;
 }
-form.charsheet main section.combat > div.deathsaves > div > div.label label {
+#charsheet main section.combat > div.deathsaves > div > div.label label {
   font-size: 10px;
 }
-form.charsheet main section.combat > div.deathsaves > div > div.marks {
+#charsheet main section.combat > div.deathsaves > div > div.marks {
   display: flex;
   flex: 1;
   flex-direction: column;
   justify-content: center;
 }
-form.charsheet main section.combat > div.deathsaves > div > div.marks div.deathsuccesses,
-form.charsheet main section.combat > div.deathsaves > div > div.marks div.deathfails {
+#charsheet main section.combat > div.deathsaves > div > div.marks div.deathsuccesses,
+#charsheet main section.combat > div.deathsaves > div > div.marks div.deathfails {
   display: flex;
   align-items: center;
 }
-form.charsheet main section.combat > div.deathsaves > div > div.marks div.deathsuccesses label,
-form.charsheet main section.combat > div.deathsaves > div > div.marks div.deathfails label {
+#charsheet main section.combat > div.deathsaves > div > div.marks div.deathsuccesses label,
+#charsheet main section.combat > div.deathsaves > div > div.marks div.deathfails label {
   font-size: 8px;
   text-align: right;
   flex: 1 50%;
 }
-form.charsheet main section.combat > div.deathsaves > div div.bubbles {
+#charsheet main section.combat > div.deathsaves > div div.bubbles {
   flex: 1 40%;
   margin-left: 5px;
 }
-form.charsheet main section.combat > div.deathsaves > div div.bubbles input[type="checkbox"] {
+#charsheet main section.combat > div.deathsaves > div div.bubbles input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -627,65 +592,65 @@ form.charsheet main section.combat > div.deathsaves > div div.bubbles input[type
   border-style: solid;
   border-radius: 10px;
 }
-form.charsheet main section.attacksandspellcasting {
+#charsheet main section.attacksandspellcasting {
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;
   margin-top: 10px;
 }
-form.charsheet main section.attacksandspellcasting > div {
+#charsheet main section.attacksandspellcasting > div {
   margin: 10px;
   display: flex;
   flex-direction: column;
 }
-form.charsheet main section.attacksandspellcasting > div > label {
+#charsheet main section.attacksandspellcasting > div > label {
   order: 3;
   text-align: center;
 }
-form.charsheet main section.attacksandspellcasting > div > table {
+#charsheet main section.attacksandspellcasting > div > table {
   width: 100%;
 }
-form.charsheet main section.attacksandspellcasting > div > table th {
+#charsheet main section.attacksandspellcasting > div > table th {
   color: var(--offBackground3);
   font-size: 10px;
 }
-form.charsheet main section.attacksandspellcasting > div > table input {
+#charsheet main section.attacksandspellcasting > div > table input {
   background-color: var(--offBackground2);
   width: calc(100% - 4px);
   border: 0;
   font-size: 10px;
   padding: 3px;
 }
-form.charsheet main section.attacksandspellcasting > div textarea {
+#charsheet main section.attacksandspellcasting > div textarea {
   border: 0;
   margin-top: 0.5em;
   width: calc(100% - 10px);
 }
-form.charsheet main section.equipment {
+#charsheet main section.equipment {
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;
   margin-top: 10px;
   height: 100%;
 }
-form.charsheet main section.equipment > div {
+#charsheet main section.equipment > div {
   padding: 5px;
   display: flex;
   height: 100%;
   flex-direction: row;
   flex-wrap: wrap;
 }
-form.charsheet main section.equipment > div > div.money ul {
+#charsheet main section.equipment > div > div.money ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
-form.charsheet main section.equipment > div > div.money ul > li {
+#charsheet main section.equipment > div > div.money ul > li {
   display: flex;
   align-items: center;
 }
-form.charsheet main section.equipment > div > div.money ul > li label {
+#charsheet main section.equipment > div > div.money ul > li label {
   border-width: 1px;
   border-style: solid;
   border-radius: 10px 0 0 10px;
@@ -695,7 +660,7 @@ form.charsheet main section.equipment > div > div.money ul > li label {
   text-align: center;
   padding: 3px 0;
 }
-form.charsheet main section.equipment > div > div.money ul > li input {
+#charsheet main section.equipment > div > div.money ul > li input {
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;
@@ -704,22 +669,22 @@ form.charsheet main section.equipment > div > div.money ul > li input {
   font-size: 12px;
   text-align: center;
 }
-form.charsheet main section.equipment > div > label {
+#charsheet main section.equipment > div > label {
   order: 3;
   text-align: center;
   flex: 100%;
 }
-form.charsheet main section.equipment > div > textarea {
+#charsheet main section.equipment > div > textarea {
   flex: 1;
   border: 0;
   margin-left: 5px;
 }
-form.charsheet main section.flavor {
+#charsheet main section.flavor {
   background-color: var(--offBackground3);
   padding: 10px;
   border-radius: 10px;
 }
-form.charsheet main section.flavor div {
+#charsheet main section.flavor div {
   background-color: var(--background);
   display: flex;
   flex-direction: column-reverse;
@@ -727,31 +692,31 @@ form.charsheet main section.flavor div {
   border-width: 1px;
   border-style: solid;
 }
-form.charsheet main section.flavor div label {
+#charsheet main section.flavor div label {
   text-align: center;
   font-size: 10px;
   margin-top: 3px;
 }
-form.charsheet main section.flavor div textarea {
+#charsheet main section.flavor div textarea {
   border: 0;
   border-radius: 0;
   height: 4em;
   width: calc(100% - 10px);
 }
-form.charsheet main section.flavor div:first-child {
+#charsheet main section.flavor div:first-child {
   border-radius: 10px 10px 0 0;
 }
-form.charsheet main section.flavor div:not(:first-child) {
+#charsheet main section.flavor div:not(:first-child) {
   margin-top: 10px;
 }
-form.charsheet main section.flavor div:last-child {
+#charsheet main section.flavor div:last-child {
   border-radius: 0 0 10px 10px;
 }
-form.charsheet main section.features {
+#charsheet main section.features {
   padding: 10px 0px;
   height: 100%;
 }
-form.charsheet main section.features div {
+#charsheet main section.features div {
   padding: 0px;
   border-width: 1px;
   border-style: solid;
@@ -760,10 +725,10 @@ form.charsheet main section.features div {
   flex-direction: column-reverse;
   height: 100%;
 }
-form.charsheet main section.features div label {
+#charsheet main section.features div label {
   text-align: center;
 }
-form.charsheet main section.features div textarea {
+#charsheet main section.features div textarea {
   border: 0;
   padding: 5px;
   width: calc(100% - 10px);
@@ -771,15 +736,15 @@ form.charsheet main section.features div textarea {
 }
 
 /* Page 2: Spellcasting */
-form.charsheet section.spellcastingclassandability input {
+#charsheet section.spellcastingclassandability input {
   padding: 0.5em;
   margin: 5px;
   border: 0;
 }
-form.charsheet section.spellcastingclassandability label {
+#charsheet section.spellcastingclassandability label {
   padding-left: 1em;
 }
-form.charsheet section.spellcastingmisc {
+#charsheet .spellcastingmisc {
   width: 70%;
   height: 80px;
   border-width: 1px;
@@ -792,14 +757,14 @@ form.charsheet section.spellcastingmisc {
   justify-content: center;
   align-items: center;
 }
-form.charsheet section.spellcastingmisc div label {
+#charsheet .spellcastingmisc div label {
   text-align: center;
   display: flex;
   flex-direction: column-reverse;
   padding: 0.25em;
   font-size: 10px;
 }
-form.charsheet section.spellcastingmisc div input {
+#charsheet .spellcastingmisc div input {
   text-align: center;
   width: 35%;
   border-radius: 10px;
@@ -809,22 +774,22 @@ form.charsheet section.spellcastingmisc div input {
   font-size: 24px;
 }
 
-form.charsheet div.spellcastingpage main {
+#charsheet .spellcastingpage main {
   display: flex;
   align-items: flex-start;
   margin-top: 5px;
 }
-form.charsheet div.spellcastingpage main div {
+#charsheet .spellcastingpage main div {
   width: 32%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-form.charsheet div.spellcastingpage main div div {
+#charsheet .spellcastingpage main div div {
   width: 100%;
   height: 100%;
 }
-form.charsheet div.spellcastingpage main div div section.spellheader {
+#charsheet .spellcastingpage main div div .spellheader {
   width: 100%;
   height: 60px;
   margin: 2.5px 0px 2.5px 0px;
@@ -833,12 +798,12 @@ form.charsheet div.spellcastingpage main div div section.spellheader {
   justify-content: center;
   align-items: center;
 }
-form.charsheet div.spellcastingpage main div div section.spellheader section.spelllevel0 label,
-form.charsheet div.spellcastingpage main div div section.spellheader section.spelllevel label {
+#charsheet .spellcastingpage main div div .spellheader .spelllevel0 label,
+#charsheet .spellcastingpage main div div .spellheader .spelllevel label {
   font-size: 24px;
 }
-form.charsheet div.spellcastingpage main div div section.spellheader section.spelllevel0,
-form.charsheet div.spellcastingpage main div div section.spellheader section.spelllevel {
+#charsheet .spellcastingpage main div div .spellheader .spelllevel0,
+#charsheet .spellcastingpage main div div .spellheader .spelllevel {
   float: left;
   border-width: 1px;
   border-style: solid;
@@ -851,7 +816,7 @@ form.charsheet div.spellcastingpage main div div section.spellheader section.spe
   justify-content: center;
   align-items: center;
 }
-form.charsheet div.spellcastingpage main div div section.spellheader section.cantripslabel {
+#charsheet .spellcastingpage main div div .spellheader .cantripslabel {
   border-width: 1px;
   border-style: solid;
   border-left: 0;
@@ -865,7 +830,7 @@ form.charsheet div.spellcastingpage main div div section.spellheader section.can
   justify-content: center;
   align-items: center;
 }
-form.charsheet section.spellheader section.spelllabel {
+#charsheet .spellheader .spelllabel {
   width: 100%;
   height: 45px;
   border-width: 1px;
@@ -878,21 +843,21 @@ form.charsheet section.spellheader section.spelllabel {
   justify-content: center;
   align-items: center;
 }
-form.charsheet section.spellheader section.spelllabel div {
+#charsheet .spellheader .spelllabel div {
   padding: 2px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
 }
-form.charsheet section.spellheader section.spelllabel div label {
+#charsheet .spellheader .spelllabel div label {
   text-align: center;
   display: flex;
   flex-direction: column-reverse;
   padding: 2px;
   font-size: 8px;
 }
-form.charsheet section.spellheader section.spelllabel div input {
+#charsheet .spellheader .spelllabel div input {
   text-align: center;
   padding: 2px;
   width: 35%;
@@ -900,48 +865,48 @@ form.charsheet section.spellheader section.spelllabel div input {
   border-width: 1px;
   border-style: solid;
 }
-form.charsheet div.spellcastingpage main div div.level0 {
+#charsheet .spellcastingpage main div .level0 {
   height: 25%;
 }
-form.charsheet div.spellcastingpage main div div.level1,
-form.charsheet div.spellcastingpage main div div.level2 {
+#charsheet .spellcastingpage main div .level1,
+#charsheet .spellcastingpage main div .level2 {
   height: 38%;
 }
-form.charsheet div.spellcastingpage main div div.level3,
-form.charsheet div.spellcastingpage main div div.level4 {
+#charsheet .spellcastingpage main div .level3,
+#charsheet .spellcastingpage main div .level4 {
   height: 37%;
 }
-form.charsheet div.spellcastingpage main div div.level5 {
+#charsheet .spellcastingpage main div .level5 {
   height: 26%;
 }
-form.charsheet div.spellcastingpage main div div.level6,
-form.charsheet div.spellcastingpage main div div.level7 {
+#charsheet .spellcastingpage main div .level6,
+#charsheet .spellcastingpage main div .level7 {
   height: 28%;
 }
-form.charsheet div.spellcastingpage main div div.level8,
-form.charsheet div.spellcastingpage main div div.level9 {
+#charsheet .spellcastingpage main div .level8,
+#charsheet .spellcastingpage main div .level9 {
   height: 22%;
 }
-form.charsheet div.spellcastingpage main div div section.spelllist {
+#charsheet .spellcastingpage main div div .spelllist {
   width: 100%;
   height: 100%;
   font-size: 12px;
 }
-form.charsheet div.spellcastingpage main div div section.spelllist ul {
+#charsheet .spellcastingpage main div div .spelllist ul {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-form.charsheet div.spellcastingpage main div div section.spelllist ul li {
+#charsheet .spellcastingpage main div div .spelllist ul li {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row-reverse;
   justify-content: start;
   align-items: center;
 }
-form.charsheet div.spellcastingpage main div div section.spelllist ul li input[type="checkbox"] {
+#charsheet .spellcastingpage main div div .spelllist ul li input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -962,19 +927,19 @@ form.charsheet div.spellcastingpage main div div section.spelllist ul li input[t
 }
 
 /* Page 3: Extras */
-form.charsheet div.extraspage main div {
+#charsheet .extraspage main div {
   display: flex;
   flex-direction: column;
   height: 100%;
   align-items: flex-start;
 }
-form.charsheet div.extraspage main div.left {
+#charsheet .extraspage main .left {
   width: 33%;
 }
-form.charsheet div.extraspage main div.right {
+#charsheet .extraspage main .right {
   width: 66%;
 }
-form.charsheet div.extraspage main div section {
+#charsheet .extraspage main div section {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -982,10 +947,10 @@ form.charsheet div.extraspage main div section {
   justify-content: center;
   height: 33%;
 }
-form.charsheet div.extraspage main div section textarea {
+#charsheet .extraspage main div section textarea {
   height: 100%;
 }
-form.charsheet div.extraspage main div section label {
+#charsheet .extraspage main div section label {
   text-align: center;
   border-width: 1px;
   border-style: solid;
@@ -997,6 +962,6 @@ form.charsheet div.extraspage main div section label {
   font-weight: bold;
   margin-bottom: 5px;
 }
-form.charsheet div.extraspage main div section.characterbackstory {
+#charsheet .extraspage main div .characterbackstory {
   height: 66%;
 }
