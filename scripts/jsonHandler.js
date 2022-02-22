@@ -38,19 +38,13 @@ async function loadOptions(optionsLocation = defaultOptionsLocation) {
 function optionsParser(optionsLocation) {
   /** Versions **/
   console.log(`Stenograph Version: ${stenographVersion}\n`); //currently running version of Stenograph
-  console.log(
-    `Loading ${
-      optionsLocation == defaultOptionsLocation ? "DEFAULT " : ""
-    }Options file: ${optionsLocation}`
-  ); //currently loaded options file
+  console.log(`Loading ${optionsLocation == defaultOptionsLocation ? "DEFAULT " : ""}Options file: ${optionsLocation}`); //currently loaded options file
   console.log(`\tOptions Stenograph Version: ${options.stenographVersion}`); //version of Stenograph this options file was designed on
   console.log(`\tOptions Version: ${options.version}`); //version of options file
 
   /** Data **/
   //characterLevel
-  console.log(
-    `\tCharacter Level:\n\t\tmin: ${options.characterLevel.min}\n\t\tmax: ${options.characterLevel.max}`
-  );
+  console.log(`\tCharacter Level:\n\t\tmin: ${options.characterLevel.min}\n\t\tmax: ${options.characterLevel.max}`);
 
   //proficicncyProgression
   console.log("\tProficiency progression:");
@@ -132,10 +126,7 @@ function verifyOptions(optionsLocation) {
   /* stat */
   //stat.min, stat.typicalMax, stat.max: ensure ascending order
   if (options.stat.typicalMax !== null) {
-    if (
-      options.stat.min >= options.stat.typicalMax ||
-      options.stat.typicalMax >= options.stat.max
-    ) {
+    if (options.stat.min >= options.stat.typicalMax || options.stat.typicalMax >= options.stat.max) {
       invalidOptions("stat");
     }
   }
