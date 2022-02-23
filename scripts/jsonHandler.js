@@ -186,7 +186,7 @@ function saveData() {
   const jsonText = JSON.stringify(elementValueObj, null, "\t"); //translate object to JSON
 
   //Prompt user with download
-  let a = document.createElement("a");
+  const a = document.createElement("a");
   a.setAttribute("href", `data:text/json;charset=utf-8,${encodeURIComponent(jsonText)}`);
   if (elementValueObj.charname.length === 0) {
     a.setAttribute("download", "stenograph_character.json");

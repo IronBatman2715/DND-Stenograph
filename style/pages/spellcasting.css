@@ -1,0 +1,190 @@
+/* Page 2: Spellcasting */
+#charsheet section.spellcastingclassandability input {
+  padding: 0.5em;
+  margin: 5px;
+  border: 0;
+}
+#charsheet section.spellcastingclassandability label {
+  padding-left: 1em;
+}
+#charsheet .spellcastingmisc {
+  width: 70%;
+  height: 80px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+  text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#charsheet .spellcastingmisc div label {
+  text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0.25em;
+  font-size: 10px;
+}
+#charsheet .spellcastingmisc div input {
+  text-align: center;
+  width: 35%;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 5px;
+  font-size: 24px;
+}
+
+#charsheet .spellcasting-page main {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 5px;
+}
+#charsheet .spellcasting-page main div {
+  width: 32%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#charsheet .spellcasting-page main div div {
+  width: 100%;
+  height: 100%;
+}
+#charsheet .spellcasting-page main div div .spellheader {
+  width: 100%;
+  height: 60px;
+  margin: 2.5px 0px 2.5px 0px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#charsheet .spellcasting-page main div div .spellheader .spelllevel0 label,
+#charsheet .spellcasting-page main div div .spellheader .spelllevel label {
+  font-size: 24px;
+}
+#charsheet .spellcasting-page main div div .spellheader .spelllevel0,
+#charsheet .spellcasting-page main div div .spellheader .spelllevel {
+  float: left;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  margin: 0;
+  width: 80px;
+  height: 60px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#charsheet .spellcasting-page main div div .spellheader .cantripslabel {
+  border-width: 1px;
+  border-style: solid;
+  border-left: 0;
+  border-radius: 0 10px 10px 0;
+  margin: 0.4em 0 0.4em 0;
+  padding: 2px;
+  width: 100%;
+  height: 45px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#charsheet .spellheader .spelllabel {
+  width: 100%;
+  height: 45px;
+  border-width: 1px;
+  border-style: solid;
+  border-left: 0;
+  border-radius: 0 10px 10px 0;
+  text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#charsheet .spellheader .spelllabel div {
+  padding: 2px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#charsheet .spellheader .spelllabel div label {
+  text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 2px;
+  font-size: 8px;
+}
+#charsheet .spellheader .spelllabel div input {
+  text-align: center;
+  padding: 2px;
+  width: 35%;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+}
+#charsheet .spellcasting-page main div .level0 {
+  height: 25%;
+}
+#charsheet .spellcasting-page main div .level1,
+#charsheet .spellcasting-page main div .level2 {
+  height: 38%;
+}
+#charsheet .spellcasting-page main div .level3,
+#charsheet .spellcasting-page main div .level4 {
+  height: 37%;
+}
+#charsheet .spellcasting-page main div .level5 {
+  height: 26%;
+}
+#charsheet .spellcasting-page main div .level6,
+#charsheet .spellcasting-page main div .level7 {
+  height: 28%;
+}
+#charsheet .spellcasting-page main div .level8,
+#charsheet .spellcasting-page main div .level9 {
+  height: 22%;
+}
+#charsheet .spellcasting-page main div div .spelllist {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+}
+#charsheet .spellcasting-page main div div .spelllist ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#charsheet .spellcasting-page main div div .spelllist ul li {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
+  justify-content: start;
+  align-items: center;
+}
+#charsheet .spellcasting-page main div div .spelllist ul li input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  order: 1;
+}
+.spelllist ul li input[type="text"] {
+  width: 100%;
+  /*font-size: 12px;*/
+  margin-left: 5px;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: var(--inverseBackground);
+}
